@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cimdp7kay83pg"]
+
+[ext_resource type="Texture2D" uid="uid://dh4273ho65gtt" path="res://images/black_orb.png" id="1_iyhic"]
+[ext_resource type="Script" uid="uid://b1c6ftr3ht2s8" path="res://scenes/special_attacks/black_orb.gd" id="1_m4ibi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4ibi"]
+radius = 70.1783
+
+[node name="BlackOrb" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 16
+collision_mask = 21
+script = ExtResource("1_m4ibi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_iyhic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -5)
+shape = SubResource("CircleShape2D_m4ibi")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(9, -11)
+scale = Vector2(5.5, 3.9)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

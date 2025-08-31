@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cghpnqrvmfvrq"]
+
+[ext_resource type="Script" uid="uid://cbj7ahaufejld" path="res://scenes/objects/fence.gd" id="1_woogs"]
+[ext_resource type="Texture2D" uid="uid://cfyn2cqaj7jdd" path="res://images/barrier.png" id="2_ijy3e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vuvy"]
+size = Vector2(1177, 223.003)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mn8mn"]
+size = Vector2(91, 1175)
+
+[node name="Fence" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_woogs")
+
+[node name="FenceImg" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(68.592, 19.3621)
+rotation = 1.5708
+scale = Vector2(1.69079, 0.545582)
+texture = ExtResource("2_ijy3e")
+region_rect = Rect2(444.742, -89.1382, 552.364, 1113.14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(124.501, 98.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3vuvy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-40.5, 82.5)
+shape = SubResource("RectangleShape2D_mn8mn")
+
+[node name="MoveLeft" type="Timer" parent="."]
+wait_time = 6.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="MoveLeft" to="." method="_on_move_left_timeout"]

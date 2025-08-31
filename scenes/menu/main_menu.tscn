@@ -1,0 +1,155 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4ld1dqn8nvs5"]
+
+[ext_resource type="Script" uid="uid://sbvhb1j8rcq2" path="res://scenes/menu/main_menu.gd" id="1_247la"]
+[ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="1_nl8w3"]
+[ext_resource type="Script" uid="uid://dnfagdgfwr3rv" path="res://scenes/menu/select_arrow_main.gd" id="2_3rkf3"]
+[ext_resource type="Texture2D" uid="uid://bqimenlaah8xq" path="res://images/menu_img.jpg" id="2_kiqgm"]
+[ext_resource type="Texture2D" uid="uid://bb7k2nuk506wy" path="res://images/menu_decorate.png" id="5_hj162"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kiqgm"]
+bg_color = Color(0.6, 0.745098, 0.886275, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.866667, 0.309804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_247la"]
+bg_color = Color(0, 0.431373, 0.6, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0.0745098, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_247la")
+
+[node name="MenuImg" type="Sprite2D" parent="."]
+position = Vector2(1511, 822.625)
+scale = Vector2(1.59688, 1.55264)
+texture = ExtResource("2_kiqgm")
+metadata/_edit_lock_ = true
+
+[node name="HighScoreLabel" type="Label" parent="."]
+offset_left = 744.0
+offset_top = 811.0
+offset_right = 1015.0
+offset_bottom = 880.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.811765, 0.988235, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "High Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTitle" type="Label" parent="."]
+offset_left = 792.0
+offset_top = 52.0
+offset_right = 1175.0
+offset_bottom = 193.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.811765, 0.988235, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "The Fairy Orion 
+1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreText" type="Label" parent="."]
+offset_left = 1065.0
+offset_top = 809.0
+offset_right = 1177.0
+offset_bottom = 878.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuComponents" type="Node2D" parent="."]
+
+[node name="BackgroundMenu" type="Panel" parent="MenuComponents"]
+offset_left = 752.0
+offset_top = 217.0
+offset_right = 1231.0
+offset_bottom = 768.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kiqgm")
+
+[node name="StartButton" type="Button" parent="MenuComponents" groups=["Buttons"]]
+offset_left = 856.0
+offset_top = 391.0
+offset_right = 1116.0
+offset_bottom = 466.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+button_mask = 0
+text = "Start Game
+"
+
+[node name="QuitButton" type="Button" parent="MenuComponents" groups=["Buttons"]]
+offset_left = 856.0
+offset_top = 493.0
+offset_right = 1116.0
+offset_bottom = 568.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+button_mask = 0
+text = "Quit Game
+"
+
+[node name="SelectArrowMain" type="TextureRect" parent="MenuComponents"]
+modulate = Color(1, 0.00784314, 0, 1)
+offset_left = 726.0
+offset_top = 326.0
+offset_right = 1750.0
+offset_bottom = 1350.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_nl8w3")
+script = ExtResource("2_3rkf3")
+
+[node name="FairySprites" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(1536, 781)
+scale = Vector2(0.242188, 0.163574)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite2" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(1545, 440)
+scale = Vector2(0.242188, 0.163574)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite3" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(520, 124)
+scale = Vector2(0.242188, 0.163574)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite4" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(1375, 133)
+scale = Vector2(0.242188, 0.163574)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite5" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(265, 516)
+scale = Vector2(0.242188, 0.163574)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite6" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(244, 805)
+scale = Vector2(0.242188, 0.163574)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite7" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(275, 282)
+scale = Vector2(0.242188, 0.163574)
+texture = ExtResource("5_hj162")

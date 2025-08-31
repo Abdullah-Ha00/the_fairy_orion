@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://eu7q4fd3o65t"]
+
+[ext_resource type="Script" uid="uid://6pn1sdvt07cd" path="res://scenes/end_game/end_game.gd" id="1_s71ug"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oq3b2"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oq3b2"]
+font_size = 28
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[node name="EndGame" type="Node2D"]
+script = ExtResource("1_s71ug")
+
+[node name="TextResult" type="Label" parent="."]
+offset_left = 466.0
+offset_top = 329.0
+offset_right = 910.0
+offset_bottom = 447.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_oq3b2")
+text = "Game Over!!!!"
+label_settings = SubResource("LabelSettings_oq3b2")
+horizontal_alignment = 1
+vertical_alignment = 1

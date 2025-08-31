@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://dej4nqk7rm6ge"]
+
+[ext_resource type="Script" uid="uid://dvupwp7n0foyw" path="res://scenes/menu/pause_menu.gd" id="1_n54lc"]
+[ext_resource type="Texture2D" uid="uid://chehur4a2ug1s" path="res://images/white_rect.png" id="2_ux7g8"]
+[ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="3_xtxec"]
+[ext_resource type="Script" uid="uid://dekpiqt4ttoqv" path="res://scenes/menu/select_arrow.gd" id="4_msl3b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_msl3b"]
+font_size = 28
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_msl3b"]
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msl3b"]
+bg_color = Color(0, 0.431373, 0.6, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0.0745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yk66"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0.0745098, 1)
+
+[node name="PauseMenu" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -252.0
+offset_right = 144.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.588235, 0.588235, 0.588235, 0)
+script = ExtResource("1_n54lc")
+
+[node name="PauseOptions" type="Node2D" parent="."]
+
+[node name="PauseLabel" type="Label" parent="PauseOptions"]
+offset_left = 63.0
+offset_top = 31.0
+offset_right = 296.0
+offset_bottom = 79.0
+text = "Game is Paused"
+label_settings = SubResource("LabelSettings_msl3b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseOptions" groups=["Buttons"]]
+offset_left = 51.0
+offset_top = 96.0
+offset_right = 311.0
+offset_bottom = 171.0
+mouse_filter = 2
+theme_override_fonts/font = SubResource("SystemFont_msl3b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_msl3b")
+button_mask = 0
+text = "Resume
+"
+
+[node name="QuitToMenuButton" type="Button" parent="PauseOptions" groups=["Buttons"]]
+offset_left = 54.0
+offset_top = 197.0
+offset_right = 314.0
+offset_bottom = 272.0
+mouse_filter = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_2yk66")
+button_mask = 0
+text = "Quit To Menu
+"
+
+[node name="QuitOptions" type="Node2D" parent="."]
+visible = false
+
+[node name="QuitLabel" type="Label" parent="QuitOptions"]
+offset_left = -72.0
+offset_top = 357.0
+offset_right = 500.0
+offset_bottom = 438.0
+text = "Are you sure?
+ (You are about to abandon your friend 😭)"
+label_settings = SubResource("LabelSettings_msl3b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YesButton" type="Button" parent="QuitOptions" groups=["Buttons"]]
+offset_left = 87.0
+offset_top = 466.0
+offset_right = 347.0
+offset_bottom = 541.0
+mouse_filter = 2
+theme_override_fonts/font = SubResource("SystemFont_msl3b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_msl3b")
+button_mask = 0
+text = "Yes
+"
+
+[node name="NoButton" type="Button" parent="QuitOptions" groups=["Buttons"]]
+offset_left = 89.0
+offset_top = 560.0
+offset_right = 349.0
+offset_bottom = 635.0
+mouse_filter = 2
+theme_override_fonts/font = SubResource("SystemFont_msl3b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_msl3b")
+button_mask = 0
+text = "No
+"
+
+[node name="PauseOverlay" type="CanvasModulate" parent="."]
+color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[node name="MenuLight" type="PointLight2D" parent="."]
+position = Vector2(196, 168)
+scale = Vector2(1.1543, 1.37207)
+energy = 0.5
+texture = ExtResource("2_ux7g8")
+texture_scale = 1.5
+metadata/_edit_lock_ = true
+
+[node name="SelectArrow" type="TextureRect" parent="."]
+modulate = Color(1, 0.00784314, 0, 1)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 69.0
+offset_right = 1029.0
+offset_bottom = 1093.0
+scale = Vector2(0.058, 0.1)
+texture = ExtResource("3_xtxec")
+script = ExtResource("4_msl3b")

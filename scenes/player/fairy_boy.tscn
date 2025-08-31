@@ -1,0 +1,184 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxt6dvahu0ip6"]
+
+[ext_resource type="Script" uid="uid://bh706o0odwr57" path="res://scenes/player/fairy_boy.gd" id="1_050w0"]
+[ext_resource type="Texture2D" uid="uid://be1bojr6u0u2e" path="res://images/fairy_boy.png" id="1_bwhf3"]
+[ext_resource type="Texture2D" uid="uid://bij86fxrrxrbm" path="res://images/sword.png" id="2_kb4bu"]
+[ext_resource type="Texture2D" uid="uid://dehvq5wsgtxoi" path="res://images/shield.png" id="3_3npiq"]
+[ext_resource type="Texture2D" uid="uid://djp6ynsc3t00t" path="res://images/sword_light.png" id="6_7yxve"]
+[ext_resource type="Script" uid="uid://cr0kegbv4gxph" path="res://scenes/player/rich_text_label.gd" id="6_40v30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_050w0"]
+size = Vector2(143.5, 164.875)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rshpe"]
+polygon = PackedVector2Array(1, -2, -2, -33, -21, -51, -51, -47, -63, -40, -70, -44, -74, -38, -77, -29, -78, -12, -74, -1, -86, -15, -107, -24, -106, -5, -102, 14, -79, 35, -104, 43, -105, 76, -96, 97, -83, 109, -67, 125, -58, 125, -38, 119, -31, 122, -12, 122, -16, 118, -26, 109, -27, 90, -14, 50, -27, 32, -12, 38, -2, 28)
+
+[sub_resource type="Animation" id="Animation_40v30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordLight:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7yxve"]
+resource_name = "sword_light"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwordLight:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.1, 1.43333, 1.7, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1.18921, 1, 1, 1, 1),
+"update": 0,
+"values": [6.95, 12.0, 24.0, 48.0, 30.0, 15.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdb6c"]
+_data = {
+&"RESET": SubResource("Animation_40v30"),
+&"sword_light": SubResource("Animation_7yxve")
+}
+
+[node name="Fairy" type="CharacterBody2D" groups=["Body"]]
+collision_mask = 63
+script = ExtResource("1_050w0")
+
+[node name="FairyImg" type="Sprite2D" parent="."]
+scale = Vector2(0.172852, 0.190918)
+texture = ExtResource("1_bwhf3")
+
+[node name="Shield" type="Sprite2D" parent="."]
+position = Vector2(-37.5001, 38.7501)
+scale = Vector2(0.0737307, 0.0905763)
+texture = ExtResource("3_3npiq")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(47.5001, 23.75)
+scale = Vector2(0.0320151, 0.0307292)
+texture = ExtResource("2_kb4bu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.25, 2.4375)
+shape = SubResource("RectangleShape2D_050w0")
+
+[node name="ShockTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CastSwordBeamTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MagicRegenTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="SwordMarkers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SwordMarkers"]
+position = Vector2(78, -5)
+
+[node name="Marker2D2" type="Marker2D" parent="SwordMarkers"]
+position = Vector2(75, 4)
+
+[node name="Marker2D3" type="Marker2D" parent="SwordMarkers"]
+position = Vector2(78, 0)
+
+[node name="SwordLight" type="PointLight2D" parent="."]
+position = Vector2(56, 16)
+rotation = 2.95833
+scale = Vector2(-2.57586, -1.56624)
+color = Color(0.85, 1, 0, 1)
+energy = 16.0
+texture = ExtResource("6_7yxve")
+texture_scale = 0.15
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(42, -37)
+occluder = SubResource("OccluderPolygon2D_rshpe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fdb6c")
+}
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 0, 0, 1)
+offset_left = -84.0
+offset_top = -124.0
+offset_right = 76.0
+offset_bottom = -111.0
+max_value = 800.0
+value = 50.0
+show_percentage = false
+metadata/_edit_group_ = true
+
+[node name="HealthNumber" type="RichTextLabel" parent="UI"]
+offset_left = -38.0
+offset_top = -140.0
+offset_right = 43.0
+offset_bottom = -97.0
+text = "8200	"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_40v30")
+
+[node name="MagicBar" type="ProgressBar" parent="UI"]
+modulate = Color(0, 0, 1, 1)
+offset_left = -84.0
+offset_top = -106.0
+offset_right = 76.0
+offset_bottom = -92.0
+max_value = 800.0
+value = 50.0
+show_percentage = false
+metadata/_edit_group_ = true
+
+[node name="MagicNumber" type="RichTextLabel" parent="UI"]
+offset_left = -64.0
+offset_top = -112.0
+offset_right = 57.0
+offset_bottom = -87.0
+text = "700"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="ShockTimer" to="." method="_on_shock_timer_timeout"]
+[connection signal="timeout" from="CastSwordBeamTimer" to="." method="_on_cast_sword_beam_timer_timeout"]
+[connection signal="timeout" from="MagicRegenTimer" to="." method="_on_magic_regen_timer_timeout"]

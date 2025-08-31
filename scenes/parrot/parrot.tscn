@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkd1il7gun27t"]
+
+[ext_resource type="Script" uid="uid://2a2dwm20a5ch" path="res://scenes/parrot/parrot.gd" id="1_h4ksm"]
+[ext_resource type="Texture2D" uid="uid://nrnq8gw6jctg" path="res://images/parrot.png" id="1_oysvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oysvk"]
+size = Vector2(133, 141)
+
+[node name="Parrot" type="CharacterBody2D" groups=["Body"]]
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("1_h4ksm")
+
+[node name="ParrotImg" type="Sprite2D" parent="."]
+position = Vector2(812, 74)
+scale = Vector2(0.160156, 0.111654)
+texture = ExtResource("1_oysvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(813.5, 78.5)
+shape = SubResource("RectangleShape2D_oysvk")
+
+[node name="TimeLeft" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+autostart = true
+
+[node name="TimerUI" type="Node2D" parent="."]
+
+[node name="TimeBar" type="ProgressBar" parent="TimerUI"]
+modulate = Color(0, 0, 1, 1)
+offset_left = 734.0
+offset_top = -25.0
+offset_right = 905.0
+offset_bottom = 2.0
+value = 10.0
+show_percentage = false
+
+[node name="SecondsLeft" type="RichTextLabel" parent="TimerUI"]
+offset_left = 787.0
+offset_top = -26.0
+offset_right = 870.0
+offset_bottom = -1.0
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="HealthUI" type="Node2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthUI"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 735.0
+offset_top = -53.0
+offset_right = 906.0
+offset_bottom = -26.0
+show_percentage = false
+
+[node name="HealthNumber" type="RichTextLabel" parent="HealthUI"]
+offset_left = 745.0
+offset_top = -58.0
+offset_right = 902.0
+offset_bottom = -18.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="TimeLeft" to="." method="_on_time_left_timeout"]
