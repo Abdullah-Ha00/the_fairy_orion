@@ -1,20 +1,31 @@
 extends Node2D
-var fairy_down_text:String = "Game Over! You couldn't resuce your friend!"
-var parrot_down_text: String = "Game Over! Your friend is \ndeaaaaaaaaaaaaad!😭"
-var monster_down_text:String = "You have deafeated the monster! Your friend is now free!"
+var fairy_down_text:String = "Game Over!\nYou have been defeated!"
+var parrot_down_text: String = "Game Over!\nYour friend is deaaaaaaaaaaaaad!😭"
+var monster_down_text:String = "You have defeated the monster! \nYour friend is  free!"
+var text_y_position = 500
+var high_score = ScoreManager.load_score()
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_up_score_values()
 	pause_game()
 	show_text()
-	await get_tree().create_timer(5).timeout
+	show_score()
+	show_high_score_label()
+	await get_tree().create_timer(16).timeout
 	go_to_main_menu()
 	
 func show_text():
+	$TextResult.global_position = Vector2(600,-100)
 	_select_text()
-	$TextResult.global_position = Vector2(750,1300)
 	var text_tweens = create_tween()
-	text_tweens.tween_property($TextResult,"visible",true,1)
-	text_tweens.tween_property($TextResult,"position:y", 500, 3)
+	text_tweens.tween_property($TextResult,"global_position:y", text_y_position, 5)
+func show_score():
+	$ScoreDisplay.global_position = Vector2(300,300)
+	await get_tree().create_timer(7).timeout
+	$TextResult.hide()
+	for text in $ScoreDisplay.get_children():
+		await get_tree().create_timer(1).timeout
+		text.visible = true
 func pause_game():
 	get_tree().paused = true
 	GlobalFunctions.can_pause_game = false
@@ -28,3 +39,14 @@ func _select_text():
 		$TextResult.text = fairy_down_text
 	elif GlobalFunctions.parrot_health <=0:
 		$TextResult.text = parrot_down_text
+	elif GlobalFunctions.monster_health <=0:
+		$TextResult.text = monster_down_text
+func show_high_score_label():
+		$NewHighScoreLabel.global_position = Vector2(600,700)
+		if GlobalFunctions.high_score < GlobalFunctions.score:
+			await get_tree().create_timer(13).timeout
+			$NewHighScoreLabel.visible = true
+			
+func set_up_score_values():
+	$ScoreDisplay/ScoreNumber.text  =str(GlobalFunctions.score)
+	$ScoreDisplay/HIghScoreNumber.text = str(GlobalFunctions.high_score)

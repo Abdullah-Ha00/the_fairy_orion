@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://eu7q4fd3o65t"]
+[gd_scene load_steps=5 format=3 uid="uid://eu7q4fd3o65t"]
 
 [ext_resource type="Script" uid="uid://6pn1sdvt07cd" path="res://scenes/end_game/end_game.gd" id="1_s71ug"]
 
@@ -9,23 +9,97 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 0, 1)
+shadow_color = Color(0.834614, 0.834614, 0.834614, 0.6)
+anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_oq3b2"]
 font_size = 28
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_c4y5j"]
+font_size = 50
+font_color = Color(1, 0.843137, 0, 1)
+outline_size = 10
+outline_color = Color(0.862745, 0.0784314, 0.235294, 1)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="EndGame" type="Node2D"]
 script = ExtResource("1_s71ug")
 
 [node name="TextResult" type="Label" parent="."]
-offset_left = 466.0
-offset_top = 329.0
-offset_right = 910.0
-offset_bottom = 447.0
+offset_left = -596.0
+offset_top = 235.0
+offset_right = 119.0
+offset_bottom = 353.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq3b2")
 text = "Game Over!!!!"
+label_settings = SubResource("LabelSettings_oq3b2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewHighScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = 302.0
+offset_top = 346.0
+offset_right = 1017.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 13
+text = "New High Score!!"
+label_settings = SubResource("LabelSettings_c4y5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreDisplay" type="Node2D" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="ScoreDisplay"]
+visible = false
+offset_left = 453.0
+offset_top = 87.0
+offset_right = 669.0
+offset_bottom = 247.0
+theme_override_font_sizes/font_size = 50
+text = "Score:
+"
+label_settings = SubResource("LabelSettings_oq3b2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreNumber" type="Label" parent="ScoreDisplay"]
+visible = false
+offset_left = 716.0
+offset_top = 70.0
+offset_right = 921.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 50
+text = "100
+"
+label_settings = SubResource("LabelSettings_oq3b2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="ScoreDisplay"]
+visible = false
+offset_left = 477.0
+offset_top = 232.0
+offset_right = 704.0
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 50
+text = "HighScore:"
+label_settings = SubResource("LabelSettings_oq3b2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HIghScoreNumber" type="Label" parent="ScoreDisplay"]
+visible = false
+offset_left = 705.0
+offset_top = 220.0
+offset_right = 921.0
+offset_bottom = 370.0
+theme_override_font_sizes/font_size = 50
+text = "200"
 label_settings = SubResource("LabelSettings_oq3b2")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -5,13 +5,14 @@ var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")
 var shock_damage = 5
 var fence_speed = 50
 var monster_half_health_reach = false
-var score = 0
-var high_score =ScoreManager.load_score()
+var monster_node:Node
+
 
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+	GlobalFunctions.high_score = ScoreManager.load_score()
+	monster_node = $Monster
 	#print(high_score)
 	
 func _on_fence_player_shocked() -> void:
@@ -27,10 +28,11 @@ func _process(_delta: float) -> void:
 	for body in get_tree().get_nodes_in_group("Body"):
 		if body.health <=0:
 			body.queue_free()
+			get_score()
 			await get_tree().create_timer(0.1).timeout
 			display_game_result()
-			get_score()
-	if $Monster.health <=$Monster.half_health and not monster_half_health_reach:
+			
+	if GlobalFunctions.monster_health <=GlobalFunctions.monster_half_health and not monster_half_health_reach:
 		increase_monster_speed()
 		monster_half_health_reach =true
 	
@@ -53,21 +55,22 @@ func _black_orb_action(pos) -> void:
 
 
 func _on_fence_move_left() -> void:
-	if $Monster.health <=$Monster.half_health and $Fence.position.x >340:
+	if  $Fence.position.x >340:
 		var fence_animation_tween=create_tween()
 		fence_animation_tween.tween_property($Fence,"position:x",$Fence.position.x-fence_speed,2)
 				#$Fence.position.x -= 50
 func increase_monster_speed():
+	if is_instance_valid(monster_node):
 		$Monster.speed = 650
 		$Fence/MoveLeft.start()
 func get_score():
 		if $Monster.health <=0:
-			score = int(($Parrot/TimeLeft. time_left *10) + ($Fairy.health * 5))
-			ScoreManager.save_score(score)
-			if high_score < score:
-				print("Score: ", score, "\nHigh Score: ", high_score, "\nNew High Score!!")
-			else:
-				print("Score: ", score, "\nHigh Score: ", high_score)
+			GlobalFunctions.score = int(($Parrot/TimeLeft. time_left *10) + ($Fairy.health * 5))
+			ScoreManager.save_score(GlobalFunctions.score)
+			#if GlobalFunctions.high_score < GlobalFunctions.score:
+				#print("Score: ", GlobalFunctions.score, "\nHigh Score: ", GlobalFunctions.high_score, "\nNew High Score!!")
+			#else:
+				#print("Score: ", GlobalFunctions.score, "\nHigh Score: ", GlobalFunctions.high_score)
 func display_game_result():
 	var end_game_instance = end_game_scene.instantiate()
 	self.add_child(end_game_instance)

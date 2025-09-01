@@ -2,7 +2,7 @@ extends Area2D
 var speed = 500
 var direction = Vector2.RIGHT
 var is_projectile = true
-@export var laser_damage = 15
+var laser_damage = 15
 func _ready() -> void:
 	$RemoveLaserTimer.start()
 	

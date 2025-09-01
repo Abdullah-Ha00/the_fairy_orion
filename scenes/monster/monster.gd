@@ -24,6 +24,7 @@ var half_health:float = health / 2.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalFunctions.monster_half_health = int(half_health)
+	GlobalFunctions.monster_health = health
 	position = monster_position
 	$OrbCoolDown.wait_time = orb_cooldown_start
 	$OrbCoolDown.start()

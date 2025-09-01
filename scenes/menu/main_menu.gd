@@ -1,7 +1,7 @@
 extends Node2D
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	print($MenuComponents/SelectArrowMain.global_position.y)
+	#print($MenuComponents/SelectArrowMain.global_position.y)
 	$HighScoreText.text = str(ScoreManager.load_score())
 	GlobalFunctions.can_pause_game = true
 	for button in get_tree().get_nodes_in_group("Buttons"):

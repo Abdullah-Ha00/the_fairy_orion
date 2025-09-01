@@ -4,6 +4,8 @@ var monster_half_health:int
 var can_pause_game:bool
 var fairy_health:int
 var parrot_health:int
+var score:int
+var high_score:int
 
 
 func check_arrow_buttons_collision(arrow:TextureRect):
