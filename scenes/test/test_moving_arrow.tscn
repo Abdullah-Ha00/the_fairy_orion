@@ -1,12 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4sj5xvk0xed2"]
 
-[ext_resource type="Script" uid="uid://c6tqemobq5iyr" path="res://scenes/test/test_moving_arrow.gd" id="1_0fsb0"]
-[ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="2_dtfm2"]
+[ext_resource type="Script" uid="uid://c8m827kis1lnc" path="res://scenes/test/dialogue_texts.gd" id="1_vbjtf"]
 
-[node name="ArrowManger" type="Sprite2D"]
-script = ExtResource("1_0fsb0")
+[sub_resource type="LabelSettings" id="LabelSettings_vbjtf"]
+font_size = 50
+font_color = Color(1, 1, 0.662745, 1)
+outline_size = 10
+outline_color = Color(1, 0.686275, 0.211765, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_dtfm2")
+[node name="Label" type="Label"]
+offset_left = 500.0
+offset_top = 290.0
+offset_right = 847.0
+offset_bottom = 402.0
+label_settings = SubResource("LabelSettings_vbjtf")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_vbjtf")
+
+[node name="CanPressSpaceTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="CanPressSpaceTimer" to="." method="_on_can_press_space_timer_timeout"]
