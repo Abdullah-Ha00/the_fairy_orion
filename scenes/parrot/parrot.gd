@@ -7,6 +7,7 @@ var _health = 20
 var health = _health:
 	set(value):
 		health = clamp(value, 0, _health)
+		GlobalFunctions.is_parrot_hit = true
 @onready var seconds_left = int($TimeLeft.time_left)
 
 

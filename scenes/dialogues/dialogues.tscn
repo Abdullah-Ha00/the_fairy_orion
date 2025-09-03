@@ -1,8 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://hnh8mnniyyal"]
 
 [ext_resource type="Script" uid="uid://br5djtjbgogak" path="res://scenes/dialogues/dialogues.gd" id="1_1gcki"]
-[ext_resource type="Texture2D" uid="uid://cqnrbwyfdurw5" path="res://images/space_bar.png" id="2_bgcd3"]
 [ext_resource type="Texture2D" uid="uid://b40qifkircejg" path="res://images/enter_button.png" id="3_1lc76"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bgcd3"]
+font_size = 18
+outline_size = 34
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lc76"]
+font_size = 18
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lc76"]
 draw_center = false
@@ -19,27 +28,25 @@ font_size = 20
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_1lc76"]
-font_size = 18
-outline_size = 15
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Dialogues" type="Node2D"]
 script = ExtResource("1_1gcki")
 
-[node name="StartGameComponents" type="Node2D" parent="."]
+[node name="DialogueScreenComponents" type="Node2D" parent="."]
 
-[node name="DialogueBar" type="Label" parent="StartGameComponents"]
-offset_left = 45.0
-offset_top = 72.0
-offset_right = 736.0
-offset_bottom = 182.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_1lc76")
-text = "
-"
-label_settings = SubResource("LabelSettings_psddv")
+[node name="ButtonsDescription" type="Node2D" parent="DialogueScreenComponents"]
+visible = false
 
-[node name="StartGameLabel" type="Label" parent="StartGameComponents"]
+[node name="EButton" type="Label" parent="DialogueScreenComponents/ButtonsDescription"]
+offset_left = 233.0
+offset_top = 271.0
+offset_right = 273.0
+offset_bottom = 297.0
+text = "E"
+label_settings = SubResource("LabelSettings_bgcd3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartGameLabel" type="Label" parent="DialogueScreenComponents/ButtonsDescription"]
 offset_left = 481.0
 offset_top = 231.0
 offset_right = 793.0
@@ -48,21 +55,14 @@ text = ":  Skip & Start "
 label_settings = SubResource("LabelSettings_1lc76")
 vertical_alignment = 1
 
-[node name="SpaceBar" type="Sprite2D" parent="StartGameComponents"]
-position = Vector2(225, 281)
-scale = Vector2(0.171466, 0.16185)
-texture = ExtResource("2_bgcd3")
-region_enabled = true
-region_rect = Rect2(168.072, 332.434, 764.437, 346.712)
-
-[node name="EnterButton" type="Sprite2D" parent="StartGameComponents"]
+[node name="EnterButton" type="Sprite2D" parent="DialogueScreenComponents/ButtonsDescription"]
 position = Vector2(439, 281)
 scale = Vector2(0.192871, 0.162354)
 texture = ExtResource("3_1lc76")
 region_enabled = true
 region_rect = Rect2(151.161, 86.9446, 684.982, 678.866)
 
-[node name="NexLineLabel" type="Label" parent="StartGameComponents"]
+[node name="NexLineLabel" type="Label" parent="DialogueScreenComponents/ButtonsDescription"]
 offset_left = 273.0
 offset_top = 232.0
 offset_right = 585.0
@@ -70,6 +70,16 @@ offset_bottom = 333.0
 text = ":  Next Line  "
 label_settings = SubResource("LabelSettings_1lc76")
 vertical_alignment = 1
+
+[node name="DialogueBar" type="Label" parent="DialogueScreenComponents"]
+offset_left = 45.0
+offset_top = 72.0
+offset_right = 736.0
+offset_bottom = 182.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1lc76")
+text = "
+"
+label_settings = SubResource("LabelSettings_psddv")
 
 [node name="CanPressSpaceTimer" type="Timer" parent="."]
 wait_time = 0.05
