@@ -52,5 +52,6 @@ func show_high_score_label():
 		$NewHighScoreLabel.visible = true
 
 func set_up_score_values():
+	GlobalFunctions.high_score = high_score
 	$ScoreDisplay/ScoreNumber.text  =str(GlobalFunctions.score)
 	$ScoreDisplay/HIghScoreNumber.text = str(GlobalFunctions.high_score)

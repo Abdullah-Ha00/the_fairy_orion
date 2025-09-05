@@ -1,7 +1,5 @@
 extends CharacterBody2D
-var monster_position: Vector2 = Vector2(1200,500)
 var speed: int = 200
-var initial_scale: float = 1
 var orb_cooldown_start:float = randi_range(1,3)
 signal black_orb(pos)
 var move_up = Vector2.UP
@@ -18,14 +16,11 @@ var health:int = _health:
 		health=clamp(value,0,_health)
 var half_health:float = health / 2.0
 
-
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalFunctions.monster_half_health = int(half_health)
 	GlobalFunctions.monster_health = health
-	position = monster_position
+	GlobalFunctions.is_monster_half_health = false
+	position = Vector2(1200,500)
 	$OrbCoolDown.wait_time = orb_cooldown_start
 	$OrbCoolDown.start()
 	#print("Start Orb Cooldown: %.1f seconds" %orb_cooldown_start)
@@ -34,19 +29,17 @@ func _ready() -> void:
 	$OrbLight.visible = false
 	$HealthBar.max_value = health
 	update_health_text()
-	
-	
-
 
 func _process(_delta: float) -> void:
 	GlobalFunctions.monster_health = health
 	move_and_slide()
+	
 func _orb_cool_down_timeout() -> void:
 	var orb_cooldown_time = randi_range(1,3)
 	var orb_marker_position = $OrbMarker.global_position
 	black_orb.emit(orb_marker_position)
 	#print("Dynamic Cooldown: %.1f seconds"%$OrbCoolDown.wait_time)
-	$OrbCoolDown.wait_time= orb_cooldown_time # Replace with function body.
+	$OrbCoolDown.wait_time= orb_cooldown_time 
 	$AnimationPlayer.play("orb_light")
 
 
@@ -54,6 +47,7 @@ func _on_change_direction_timeout() -> void:
 	direction = movement[randi() % movement.size()]
 	velocity = direction*speed
 	move_and_slide()
+	
 func update_health_text():
 		$HealthNumber.text = str(health)
 		$HealthBar.value = health

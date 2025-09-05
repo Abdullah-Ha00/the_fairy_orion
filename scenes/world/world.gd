@@ -9,10 +9,12 @@ var monster_node:Node
 
 
 func _ready() -> void:
+	GlobalFunctions.score = 0
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	GlobalFunctions.high_score = ScoreManager.load_score()
 	monster_node = $Monster
+	initialize_dialogues()
+	
 	#print(high_score)
 	
 func _on_fence_player_shocked() -> void:
@@ -75,7 +77,10 @@ func _load_dialogues_scene():
 	if not GlobalFunctions.is_game_finished: 
 		var dialogues_instance = dialogues_scene.instantiate()
 		self.add_child(dialogues_instance)
-		
+
+func initialize_dialogues():
+	GlobalFunctions.is_parrot_dialogues_finished = false
+	GlobalFunctions.is_monster_dialogues_finished = false
 		
 		
 		

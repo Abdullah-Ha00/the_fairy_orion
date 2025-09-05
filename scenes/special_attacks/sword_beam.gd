@@ -23,6 +23,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_projectile and GlobalFunctions.monster_health > GlobalFunctions.monster_half_health:
 		queue_free()
-		area.queue_free() # Replace with function body.
+		area.queue_free() 
 	else:
 		queue_free()

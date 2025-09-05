@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var fairy_position: Vector2 = Vector2.ZERO
+var fairy_position: Vector2 = Vector2(200,400)
 var speed: int =300
 var is_moving = true
 var can_cast_sword_beam = true
@@ -18,7 +18,6 @@ var magic_regen = 5
 var beam_magic_cost = 5
 
 func _ready() -> void:
-	fairy_position = Vector2(200,400)
 	position = fairy_position
 	$SwordLight.visible = false
 	$UI/HealthBar.max_value = health
@@ -27,6 +26,7 @@ func _ready() -> void:
 	update_magic_text()
 	
 func _process(_delta: float) -> void:
+	GlobalFunctions.fairy_health = health
 	var fairy_direction: Vector2= Input.get_vector("left","right","up","down")
 	if is_moving:
 		velocity =fairy_direction*speed
@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 		$AnimationPlayer.play("sword_light")
 		magic -= beam_magic_cost
 		update_magic_text()
-	GlobalFunctions.fairy_health = health
+	
 
 func _on_shock_timer_timeout() -> void:
 	is_moving= true 
@@ -51,10 +51,10 @@ func _on_cast_sword_beam_timer_timeout() -> void:
 	can_cast_sword_beam= true 
 	
 
-
 func update_health_text():
 		$UI/HealthNumber.text = str(health)
 		$UI/HealthBar.value = health
+		
 func update_magic_text():
 		$UI/MagicNumber.text = str(magic)
 		$UI/MagicBar.value = magic

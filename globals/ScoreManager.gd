@@ -1,6 +1,7 @@
 extends Node
 
 var save_file = "user://savefile.cfg"
+
 func save_score(score:int) -> void:
 	var score_config = ConfigFile.new()
 	score_config.load(save_file)

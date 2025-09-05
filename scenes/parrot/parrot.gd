@@ -1,6 +1,4 @@
 extends CharacterBody2D
-const speed = 100
-var parrot_position:Vector2= Vector2.ZERO
 var is_enemy = false
 var is_ally = true
 var _health = 20
@@ -12,8 +10,9 @@ var health = _health:
 
 
 func _ready() -> void:
-	parrot_position = Vector2(940,66)
-	position = parrot_position 
+	GlobalFunctions.is_parrot_already_hit = true
+	GlobalFunctions.is_parrot_hit = false
+	position = Vector2(940,66)
 	$HealthUI/HealthBar.max_value = health
 	$TimerUI/TimeBar.max_value = seconds_left
 	$TimerUI/SecondsLeft.text = str(seconds_left)
