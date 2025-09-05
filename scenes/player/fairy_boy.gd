@@ -22,6 +22,7 @@ func _ready() -> void:
 	$SwordLight.visible = false
 	$UI/HealthBar.max_value = health
 	$UI/MagicBar.max_value = magic
+	GlobalStats.fairy_node = self
 	update_health_text()
 	update_magic_text()
 	

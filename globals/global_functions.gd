@@ -13,10 +13,13 @@ var is_parrot_hit:bool
 var is_parrot_already_hit:bool
 var is_parrot_dialogues_finished:bool
 var is_monster_dialogues_finished:bool
+var dialogues_scene: PackedScene = preload("res://scenes/dialogues/dialogues.tscn")
 
 
 func check_arrow_buttons_collision(arrow:TextureRect):
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		if arrow.get_global_rect().has_point(button.global_position):
 			button.grab_focus()
+
+
 			

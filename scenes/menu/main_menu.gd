@@ -27,8 +27,8 @@ func connect_buttons():
 		button.pressed.connect(_on_button_pressed.bind(button))
 
 func initialize_game_state():
-	GlobalFunctions.is_game_started = true
-	GlobalFunctions.is_game_finished = false		
+	GlobalStats.selected_dialogue = GlobalStats.dialogues[1]
+	GlobalFunctions.is_game_finished = false
 
 		
 	

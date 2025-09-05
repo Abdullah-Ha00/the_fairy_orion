@@ -38,12 +38,14 @@ func go_to_main_menu():
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 	
 func _select_text():
-	if GlobalFunctions.fairy_health <=0:
-		$TextResult.text = fairy_down_text
-	elif GlobalFunctions.parrot_health <=0:
-		$TextResult.text = parrot_down_text
-	elif GlobalFunctions.monster_health <=0:
-		$TextResult.text = monster_down_text
+	match GlobalStats.dead_body:
+		GlobalStats.parrot_node:
+			$TextResult.text = parrot_down_text
+		GlobalStats.monster_node:
+			$TextResult.text = monster_down_text
+		GlobalStats.fairy_node:
+			$TextResult.text = fairy_down_text
+
 		
 func show_high_score_label():
 	$NewHighScoreLabel.global_position = Vector2(600,700)
@@ -55,3 +57,11 @@ func set_up_score_values():
 	GlobalFunctions.high_score = high_score
 	$ScoreDisplay/ScoreNumber.text  =str(GlobalFunctions.score)
 	$ScoreDisplay/HIghScoreNumber.text = str(GlobalFunctions.high_score)
+#func test_new():
+	#match GlobalStats.dead_body:
+		#GlobalStats.parrot_node:
+			#$TextResult.text = fairy_down_text
+		#GlobalStats.monster_node:
+			#$TextResult.text = monster_down_text
+		#GlobalStats.fairy_node:
+			#$TextResult.text = fairy_down_text
