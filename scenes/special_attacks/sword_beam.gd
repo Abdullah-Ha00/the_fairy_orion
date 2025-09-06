@@ -21,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_projectile and GlobalFunctions.monster_health > GlobalFunctions.monster_half_health:
+	if area.is_projectile and GlobalStats.current_game_phase =="normal":
 		queue_free()
 		area.queue_free() 
 	else:

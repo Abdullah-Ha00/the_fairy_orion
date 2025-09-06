@@ -8,7 +8,7 @@ func _ready():
 		
 func _process(_delta: float) -> void:
 	GlobalFunctions.check_arrow_buttons_collision($SelectArrow)
-	if Input.is_action_pressed("pause") and GlobalFunctions.can_press_pause:
+	if Input.is_action_pressed("pause") and GlobalStats.can_press_pause:
 		get_tree().paused = true
 		visible = true
 	if get_tree().paused:

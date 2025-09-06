@@ -21,7 +21,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if can_start or Input.is_action_pressed("accept"):
 		get_tree().paused = false
-		GlobalFunctions.can_press_pause = true
+		GlobalStats.can_press_pause = true
 		queue_free()
 		
 func _input(event: InputEvent) -> void:
@@ -57,23 +57,14 @@ func _process_letters():
 
 func pause_game():
 	get_tree().paused = true
-	GlobalFunctions.can_press_pause = false
+	GlobalStats.can_press_pause = false
 	
 func select_dialogue():
-	match GlobalStats.selected_dialogue:
+	match GlobalStats.current_dialogue:
 			"intro":
 				selected_dialogues = dialogues_intro
 				$DialogueScreenComponents/ButtonsDescription.show()
 			"second_phase":
 				selected_dialogues = dialogues_monster_half_health
-	#elif GlobalFunctions.is_parrot_hit and not GlobalFunctions.is_parrot_dialogues_finished:
-		#selected_dialogues = dialogues_monster_parrot_hit
-		#GlobalFunctions.is_parrot_dialogues_finished = true
-	#elif GlobalFunctions.is_monster_half_health and not GlobalFunctions.is_monster_dialogues_finished:
-		#selected_dialogues = dialogues_monster_half_health
-		#GlobalFunctions.is_monster_dialogues_finished = true
-	
-	reset_dialogues()
-	
-func reset_dialogues():
-	GlobalStats.selected_dialogue = GlobalStats.dialogues[0]
+			"parrot_hurt":
+				selected_dialogues = dialogues_monster_parrot_hit

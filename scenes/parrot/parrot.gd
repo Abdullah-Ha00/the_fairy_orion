@@ -13,8 +13,6 @@ var health = _health:
 
 
 func _ready() -> void:
-	#GlobalFunctions.is_parrot_already_hit = true
-	#GlobalFunctions.is_parrot_hit = false
 	GlobalStats.parrot_node = self
 	current_health = health
 	current_state = states[0]
@@ -27,10 +25,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	update_parrot_timer()
-	
-	if current_health !=health and  process:
+	if current_health !=health and process:
 		current_state = states[1]
-		print(current_state)
 		process =false
 		
 

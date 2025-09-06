@@ -1,8 +1,9 @@
 extends StaticBody2D
 signal player_shocked
 signal move_left
-#var is_enemy = false
-#var is_ally = false
+var shock_damage:int = 5
+var x_offset:int = 50
+var x_rebound:int = 50
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_shocked.emit()

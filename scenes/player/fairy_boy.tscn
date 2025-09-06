@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxt6dvahu0ip6"]
+[gd_scene load_steps=11 format=3 uid="uid://dxt6dvahu0ip6"]
 
 [ext_resource type="Script" uid="uid://bh706o0odwr57" path="res://scenes/player/fairy_boy.gd" id="1_050w0"]
 [ext_resource type="Texture2D" uid="uid://be1bojr6u0u2e" path="res://images/fairy_boy.png" id="1_bwhf3"]
 [ext_resource type="Texture2D" uid="uid://bij86fxrrxrbm" path="res://images/sword.png" id="2_kb4bu"]
-[ext_resource type="Texture2D" uid="uid://dehvq5wsgtxoi" path="res://images/shield.png" id="3_3npiq"]
 [ext_resource type="Texture2D" uid="uid://djp6ynsc3t00t" path="res://images/sword_light.png" id="6_7yxve"]
 [ext_resource type="Script" uid="uid://cr0kegbv4gxph" path="res://scenes/player/rich_text_label.gd" id="6_40v30"]
 
@@ -81,11 +80,6 @@ script = ExtResource("1_050w0")
 [node name="FairyImg" type="Sprite2D" parent="."]
 scale = Vector2(0.172852, 0.190918)
 texture = ExtResource("1_bwhf3")
-
-[node name="Shield" type="Sprite2D" parent="."]
-position = Vector2(-37.5001, 38.7501)
-scale = Vector2(0.0737307, 0.0905763)
-texture = ExtResource("3_3npiq")
 
 [node name="Sword" type="Sprite2D" parent="."]
 position = Vector2(47.5001, 23.75)

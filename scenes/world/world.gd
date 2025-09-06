@@ -3,56 +3,25 @@ var sword_beam_scene:PackedScene = preload("res://scenes/special_attacks/sword_b
 var orb_scene:PackedScene = preload("res://scenes/special_attacks/black_orb.tscn")
 var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")
 var dialogues_scene: PackedScene = preload("res://scenes/dialogues/dialogues.tscn")
-var shock_damage = 5
-var fence_speed = 50
-var monster_state:String
 var parrot_state:String
 var parrot_hit_processed = false
-var process = true
+var second_phase_processed = false
+
 
 func _ready() -> void:
-	GlobalFunctions.score = 0
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	initialize_dialogues()
-	
-	#print(high_score)
-	
-func _on_fence_player_shocked() -> void:
-	$Fairy.fairy_position.x=$Fairy.position.x -50
-	$Fairy.position.x = $Fairy.fairy_position.x
-	$Fairy.is_moving=false
-	$Fairy.can_cast_sword_beam =false
-	$Fairy.health -=shock_damage
-	$Fairy/ShockTimer.start()
 	
 
 func _process(_delta: float) -> void:
 	update_body_states()
-	for body in get_tree().get_nodes_in_group("Body"):
-		if body.health <=0:
-			GlobalFunctions.is_game_finished = true
-			GlobalStats.dead_body = body
-			body.queue_free()
-			get_score()
-			await get_tree().create_timer(0.1).timeout
-			display_game_result()
-			
-	#if GlobalFunctions.monster_health <=GlobalFunctions.monster_half_health and not GlobalFunctions.is_monster_half_health:
-		#increase_monster_speed()
-		#GlobalFunctions.is_monster_half_health =true
-		#_load_dialogues_scene()
-		
-	#if GlobalFunctions.is_parrot_hit and GlobalFunctions.is_parrot_already_hit:
-		#_load_dialogues_scene()
-		#GlobalFunctions.is_parrot_already_hit= false
-	if  monster_state== "second_phase":
-		begin_second_phase()
-		
-	if parrot_state =="hit":
-		parrot_hit()
+	check_bodies_health()
+	check_game_phase()
+	check_body_state()
 
-	 
+func _on_fence_player_shocked() -> void:
+	freeze_fairy()
+	
 func _sword_beam_action(pos) -> void:
 	var sword_beam_instance = sword_beam_scene.instantiate()
 	$SpecialAttacks.add_child(sword_beam_instance)
@@ -65,45 +34,79 @@ func _black_orb_action(pos) -> void:
 	
 func _on_fence_move_left() -> void:
 	if  $Fence.position.x >340:
-		var fence_animation_tween=create_tween()
-		fence_animation_tween.tween_property($Fence,"position:x",$Fence.position.x-fence_speed,2)
-				#$Fence.position.x -= 50
+		var tween=create_tween()
+		var fence_new_position = $Fence.position.x-$Fence.x_offset
+		tween.tween_property($Fence,"position:x",fence_new_position,2)
+				
 func begin_second_phase():
-	if is_instance_valid(GlobalStats.monster_node) and process:
-		$Monster.speed = 650
-		$Fence/MoveLeft.start()
-		GlobalStats.selected_dialogue = GlobalStats.dialogues[2]
-		_load_dialogues_scene()
-		process = false
+	if is_instance_valid(GlobalStats.monster_node) and not second_phase_processed:
+		increase_stats()
+		show_monster_dialogue()
+		second_phase_processed = true
 		
 func get_score():
 		if $Monster.health <=0:
-			GlobalFunctions.score = int(($Parrot/TimeLeft. time_left *10) + ($Fairy.health * 5))
-			ScoreManager.save_score(GlobalFunctions.score)
+			GlobalStats.score = int(($Parrot/TimeLeft. time_left *10) + ($Fairy.health * 5))
+			ScoreManager.save_score(GlobalStats.score)
 			
 func display_game_result():
 	var end_game_instance = end_game_scene.instantiate()
 	self.add_child(end_game_instance)
 	
-func _load_dialogues_scene():
-	if not GlobalFunctions.is_game_finished: 
+func load_dialogue():
+	if not GlobalStats.is_game_finished: 
 		var dialogues_instance = dialogues_scene.instantiate()
 		self.add_child(dialogues_instance)
 
-func initialize_dialogues():
-	GlobalFunctions.is_parrot_dialogues_finished = false
-	GlobalFunctions.is_monster_dialogues_finished = false
 	
 func update_body_states():
-	if is_instance_valid(GlobalStats.monster_node):
-		monster_state = GlobalStats.monster_node.current_state
 	if is_instance_valid(GlobalStats.parrot_node):
 		parrot_state = GlobalStats.parrot_node.current_state
-func parrot_hit():
+		
+func show_parrot_dialogue():
 	if not parrot_hit_processed:
-		print("tuj")
+		GlobalStats.current_dialogue = GlobalStats.dialogues["parrot"]
+		load_dialogue()
 		parrot_hit_processed = true
 		
+func freeze_fairy():
+	$Fairy.position.x-=$Fence.x_rebound
+	$Fairy.is_moving=false
+	$Fairy.can_cast_sword_beam =false
+	$Fairy.health -=$Fence.shock_damage
+	$Fairy/ShockTimer.start()
+
+func increase_stats():
+	$Monster.speed = 650
+	$Fence/MoveLeft.start()
+
+func show_monster_dialogue():
+	GlobalStats.current_dialogue = GlobalStats.dialogues["monster"]
+	load_dialogue()
+	
+func check_bodies_health():
+	for body in get_tree().get_nodes_in_group("Body"):
+		if body.health <=0:
+			GlobalStats.is_game_finished = true
+			remove_body(body)
+			get_score()
+			await get_tree().create_timer(0.1).timeout
+			display_game_result()
+			
+func remove_body(body):
+	GlobalStats.dead_body = body
+	body.queue_free()
+
+func check_game_phase():
+	if  GlobalStats.current_game_phase== "second_phase":
+		begin_second_phase()
+		
+func check_body_state():
+	if parrot_state =="hit":
+		show_parrot_dialogue()
+	
+	
+
 		
 		
 		

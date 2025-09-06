@@ -7,25 +7,9 @@ var strings = [string, srting_2, string_3, string_4]
 var number = 0
 var result_text =""
 var can_skip = false
-enum MonsterStates {NORMAL, SECONDPHASE, DEAD}
-enum FairyStates {NORMAL,SHOCK, DEAD}
-enum ParrotStates {IDLE, HIT,DEAD}
-enum WallStates {IDLE, MOVING}
-var target_dead:String
+
 
 func _ready() -> void:
-	var fairy_status = FairyStates.DEAD
-	if fairy_status ==FairyStates.DEAD:
-		target_dead = "Fairy"
-	print(target_dead)
-	match target_dead:
-		"Monster":
-			print("tuj")
-		"Fairy":
-			print("rara")
-		"Parrot":
-			print("hiai")
-	
 	await get_tree().create_timer(1).timeout
 	display_dialogue()
 

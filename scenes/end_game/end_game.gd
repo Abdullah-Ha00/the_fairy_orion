@@ -17,27 +17,25 @@ func _ready() -> void:
 	
 func show_text():
 	$TextResult.global_position = Vector2(600,-100)
-	_select_text()
+	select_text()
 	var text_tweens = create_tween()
 	text_tweens.tween_property($TextResult,"global_position:y", text_y_position, 5)
 	
 func show_score():
 	$ScoreDisplay.global_position = Vector2(300,300)
 	await get_tree().create_timer(7).timeout
-	$TextResult.hide()
-	for text in $ScoreDisplay.get_children():
-		await get_tree().create_timer(1).timeout
-		text.visible = true
-		
+	hide_text()
+	show_score_labels()
+	
 func pause_game():
 	get_tree().paused = true
-	GlobalFunctions.can_press_pause = false
+	GlobalStats.can_press_pause = false
 
 func go_to_main_menu():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 	
-func _select_text():
+func select_text():
 	match GlobalStats.dead_body:
 		GlobalStats.parrot_node:
 			$TextResult.text = parrot_down_text
@@ -46,22 +44,21 @@ func _select_text():
 		GlobalStats.fairy_node:
 			$TextResult.text = fairy_down_text
 
-		
 func show_high_score_label():
 	$NewHighScoreLabel.global_position = Vector2(600,700)
-	if GlobalFunctions.high_score < GlobalFunctions.score:
+	if GlobalStats.high_score < GlobalStats.score:
 		await get_tree().create_timer(13).timeout
 		$NewHighScoreLabel.visible = true
 
 func set_up_score_values():
-	GlobalFunctions.high_score = high_score
-	$ScoreDisplay/ScoreNumber.text  =str(GlobalFunctions.score)
-	$ScoreDisplay/HIghScoreNumber.text = str(GlobalFunctions.high_score)
-#func test_new():
-	#match GlobalStats.dead_body:
-		#GlobalStats.parrot_node:
-			#$TextResult.text = fairy_down_text
-		#GlobalStats.monster_node:
-			#$TextResult.text = monster_down_text
-		#GlobalStats.fairy_node:
-			#$TextResult.text = fairy_down_text
+	GlobalStats.high_score = high_score
+	$ScoreDisplay/ScoreNumber.text  =str(GlobalStats.score)
+	$ScoreDisplay/HIghScoreNumber.text = str(GlobalStats.high_score)
+
+func hide_text():
+	$TextResult.hide()
+
+func show_score_labels():
+	for text in $ScoreDisplay.get_children():
+		await get_tree().create_timer(1).timeout
+		text.visible = true

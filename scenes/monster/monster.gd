@@ -15,20 +15,14 @@ var health:int = _health:
 	set(value):
 		health=clamp(value,0,_health)
 var half_health:float = health / 2.0
-var states:Array = ["normal", "second_phase", "dead"]
-var current_state:String
 var process = true
 
 func _ready() -> void:
-	GlobalFunctions.monster_half_health = int(half_health)
-	GlobalFunctions.monster_health = health
-	GlobalFunctions.is_monster_half_health = false
+
 	GlobalStats.monster_node = self
-	current_state = states[0]
 	position = Vector2(1200,500)
 	$OrbCoolDown.wait_time = orb_cooldown_start
 	$OrbCoolDown.start()
-	#print("Start Orb Cooldown: %.1f seconds" %orb_cooldown_start)
 	velocity = direction *speed
 	$ChangeDirection.start()
 	$OrbLight.visible = false
@@ -36,17 +30,15 @@ func _ready() -> void:
 	update_health_text()
 
 func _process(_delta: float) -> void:
-	GlobalFunctions.monster_health = health
+	
 	move_and_slide()
 	if health <=int(half_health) and process:
-		current_state = states[1]
-		
-
+		GlobalStats.current_game_phase = GlobalStats.game_phases["monster_health_halved"]
+	
 func _orb_cool_down_timeout() -> void:
 	var orb_cooldown_time = randi_range(1,3)
 	var orb_marker_position = $OrbMarker.global_position
 	black_orb.emit(orb_marker_position)
-	#print("Dynamic Cooldown: %.1f seconds"%$OrbCoolDown.wait_time)
 	$OrbCoolDown.wait_time= orb_cooldown_time 
 	$AnimationPlayer.play("orb_light")
 

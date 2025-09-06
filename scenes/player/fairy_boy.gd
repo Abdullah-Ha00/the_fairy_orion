@@ -1,9 +1,7 @@
 extends CharacterBody2D
-var fairy_position: Vector2 = Vector2(200,400)
 var speed: int =300
 var is_moving = true
 var can_cast_sword_beam = true
-signal sword_beam(pos)
 var is_enemy = false
 var is_ally = true
 var _health = 100
@@ -16,18 +14,17 @@ var magic = _magic:
 		magic = clamp(value, 0,_magic)
 var magic_regen = 5
 var beam_magic_cost = 5
+signal sword_beam(pos)
 
 func _ready() -> void:
-	position = fairy_position
-	$SwordLight.visible = false
-	$UI/HealthBar.max_value = health
-	$UI/MagicBar.max_value = magic
-	GlobalStats.fairy_node = self
+	position = Vector2(200,400)
+	$SwordLight.hide()
+	set_up_stats_bars()
+	initialize_fairy_node()
 	update_health_text()
 	update_magic_text()
 	
 func _process(_delta: float) -> void:
-	GlobalFunctions.fairy_health = health
 	var fairy_direction: Vector2= Input.get_vector("left","right","up","down")
 	if is_moving:
 		velocity =fairy_direction*speed
@@ -42,16 +39,13 @@ func _process(_delta: float) -> void:
 		magic -= beam_magic_cost
 		update_magic_text()
 	
-
 func _on_shock_timer_timeout() -> void:
 	is_moving= true 
 	can_cast_sword_beam = true
-
-
+	
 func _on_cast_sword_beam_timer_timeout() -> void:
 	can_cast_sword_beam= true 
 	
-
 func update_health_text():
 		$UI/HealthNumber.text = str(health)
 		$UI/HealthBar.value = health
@@ -63,3 +57,10 @@ func update_magic_text():
 func _on_magic_regen_timer_timeout() -> void:
 	magic+=magic_regen
 	update_magic_text()
+	
+func set_up_stats_bars():
+	$UI/HealthBar.max_value = health
+	$UI/MagicBar.max_value = magic
+
+func initialize_fairy_node():
+	GlobalStats.fairy_node = self
