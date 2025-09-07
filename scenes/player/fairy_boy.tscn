@@ -90,27 +90,21 @@ texture = ExtResource("2_kb4bu")
 position = Vector2(6.25, 2.4375)
 shape = SubResource("RectangleShape2D_050w0")
 
-[node name="ShockTimer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="Shock" type="Timer" parent="Timers"]
 wait_time = 0.5
 one_shot = true
 
-[node name="CastSwordBeamTimer" type="Timer" parent="."]
+[node name="BeamTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="MagicRegenTimer" type="Timer" parent="."]
+[node name="MagicRegen" type="Timer" parent="Timers"]
 wait_time = 5.0
 autostart = true
 
-[node name="SwordMarkers" type="Node2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="SwordMarkers"]
-position = Vector2(78, -5)
-
-[node name="Marker2D2" type="Marker2D" parent="SwordMarkers"]
-position = Vector2(75, 4)
-
-[node name="Marker2D3" type="Marker2D" parent="SwordMarkers"]
-position = Vector2(78, 0)
+[node name="BeamMarker" type="Marker2D" parent="."]
+position = Vector2(71, 2)
 
 [node name="SwordLight" type="PointLight2D" parent="."]
 position = Vector2(56, 16)
@@ -173,6 +167,6 @@ text = "700"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="ShockTimer" to="." method="_on_shock_timer_timeout"]
-[connection signal="timeout" from="CastSwordBeamTimer" to="." method="_on_cast_sword_beam_timer_timeout"]
-[connection signal="timeout" from="MagicRegenTimer" to="." method="_on_magic_regen_timer_timeout"]
+[connection signal="timeout" from="Timers/Shock" to="." method="_on_shock_timer_timeout"]
+[connection signal="timeout" from="Timers/BeamTimer" to="." method="_on_cast_sword_beam_timer_timeout"]
+[connection signal="timeout" from="Timers/MagicRegen" to="." method="_on_magic_regen_timer_timeout"]

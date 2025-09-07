@@ -7,12 +7,10 @@ var parrot_state:String
 var parrot_hit_processed = false
 var second_phase_processed = false
 
-
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-
 func _process(_delta: float) -> void:
 	update_body_states()
 	check_bodies_health()
@@ -74,7 +72,7 @@ func freeze_fairy():
 	$Fairy.is_moving=false
 	$Fairy.can_cast_sword_beam =false
 	$Fairy.health -=$Fence.shock_damage
-	$Fairy/ShockTimer.start()
+	$Fairy/Timers/Shock.start()
 
 func increase_stats():
 	$Monster.speed = 650

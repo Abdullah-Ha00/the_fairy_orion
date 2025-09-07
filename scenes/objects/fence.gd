@@ -11,4 +11,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_move_left_timeout() -> void:
-	move_left.emit() # Replace with function body.
+	move_left.emit() 

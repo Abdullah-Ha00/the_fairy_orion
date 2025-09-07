@@ -1,19 +1,19 @@
 extends CharacterBody2D
-var speed: int =300
-var is_moving = true
-var can_cast_sword_beam = true
-var is_enemy = false
-var is_ally = true
-var _health = 100
-var health = _health:
+var speed:int = 300
+var is_moving:bool = true
+var can_cast_sword_beam:bool = true
+var is_enemy:bool = false
+var is_ally:bool = true
+var _health:int = 100
+var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
-var _magic = 50
-var magic = _magic:
+var _magic:int = 50
+var magic:int = _magic:
 	set(value):
 		magic = clamp(value, 0,_magic)
-var magic_regen = 5
-var beam_magic_cost = 5
+var magic_regen:int = 5
+var beam_magic_cost:int = 5
 signal sword_beam(pos)
 
 func _ready() -> void:
@@ -25,19 +25,8 @@ func _ready() -> void:
 	update_magic_text()
 	
 func _process(_delta: float) -> void:
-	var fairy_direction: Vector2= Input.get_vector("left","right","up","down")
-	if is_moving:
-		velocity =fairy_direction*speed
-		move_and_slide()
-	if Input.is_action_pressed("attach action") and can_cast_sword_beam and magic >=beam_magic_cost: 
-		var sword_markers = $SwordMarkers.get_children()
-		var selected_sword_marker = sword_markers[randi() % sword_markers.size()]
-		$CastSwordBeamTimer.start()
-		can_cast_sword_beam = false
-		sword_beam.emit(selected_sword_marker.global_position)
-		$AnimationPlayer.play("sword_light")
-		magic -= beam_magic_cost
-		update_magic_text()
+	update_fairy_movements()
+	check_sword_beam_event()
 	
 func _on_shock_timer_timeout() -> void:
 	is_moving= true 
@@ -64,3 +53,21 @@ func set_up_stats_bars():
 
 func initialize_fairy_node():
 	GlobalStats.fairy_node = self
+	
+func update_fairy_movements():
+	var fairy_direction: Vector2= Input.get_vector("left","right","up","down")
+	if is_moving:
+		velocity =fairy_direction*speed
+		move_and_slide()
+
+func check_sword_beam_event():
+	if Input.is_action_pressed("attach action") and can_cast_sword_beam and magic >=beam_magic_cost: 
+		emit_sword_beam()
+		magic -= beam_magic_cost
+		update_magic_text()
+#
+func emit_sword_beam():
+		$Timers/BeamTimer.start()
+		can_cast_sword_beam = false
+		sword_beam.emit($BeamMarker.global_position)
+		$AnimationPlayer.play("sword_light")

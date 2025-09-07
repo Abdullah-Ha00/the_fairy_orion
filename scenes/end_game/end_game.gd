@@ -2,8 +2,8 @@ extends Node2D
 var fairy_down_text:String = "Game Over!\nYou have been defeated!"
 var parrot_down_text: String = "Game Over!\nSelene is deaaaaaaaaaaaaad!😭"
 var monster_down_text:String = "You have defeated the monster! \nSelene's curse has been lifted!"
-var text_y_position = 500
-var high_score = ScoreManager.load_score()
+var text_y_position:int = 500
+var high_score:int = ScoreManager.load_score()
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

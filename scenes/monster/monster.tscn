@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfkkjss0a1bc5"]
+[gd_scene load_steps=9 format=3 uid="uid://cfkkjss0a1bc5"]
 
 [ext_resource type="Texture2D" uid="uid://dgfdqeul7fka4" path="res://images/monster.png" id="1_i44lo"]
 [ext_resource type="Script" uid="uid://diq8a6q06fip4" path="res://scenes/monster/monster.gd" id="1_vd1hn"]
 [ext_resource type="Texture2D" uid="uid://c0w3r0yy77p00" path="res://images/magical_rod.png" id="2_hyvb2"]
-[ext_resource type="Script" uid="uid://b45cn8djj7hk" path="res://scenes/monster/rod.gd" id="4_vd1hn"]
 [ext_resource type="Texture2D" uid="uid://dr73lggkj03gu" path="res://images/purple.png" id="5_18f66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6twl"]
@@ -88,18 +87,19 @@ position = Vector2(-104, 19)
 scale = Vector2(0.135051, 0.133442)
 skew = 0.0296706
 texture = ExtResource("2_hyvb2")
-script = ExtResource("4_vd1hn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-11, 46)
 shape = SubResource("RectangleShape2D_c6twl")
 
-[node name="OrbCoolDown" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="OrbCoolDown" type="Timer" parent="Timers"]
+
+[node name="ChangeDirection" type="Timer" parent="Timers"]
 
 [node name="OrbMarker" type="Marker2D" parent="."]
-position = Vector2(-95, -32)
-
-[node name="ChangeDirection" type="Timer" parent="."]
+position = Vector2(-101.333, -33.3333)
 
 [node name="OrbLight" type="PointLight2D" parent="."]
 position = Vector2(-103, -32)
@@ -114,7 +114,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_jpvs1")
 }
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="UI" type="Node2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
 modulate = Color(1, 0, 0, 1)
 offset_left = -101.0
 offset_top = -164.0
@@ -123,7 +125,7 @@ offset_bottom = -145.0
 show_percentage = false
 metadata/_edit_group_ = true
 
-[node name="HealthNumber" type="RichTextLabel" parent="."]
+[node name="HealthNumber" type="RichTextLabel" parent="UI"]
 offset_left = -92.0
 offset_top = -176.0
 offset_right = 99.0
@@ -134,5 +136,5 @@ text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="OrbCoolDown" to="." method="_orb_cool_down_timeout"]
-[connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]
+[connection signal="timeout" from="Timers/OrbCoolDown" to="." method="_orb_cool_down_timeout"]
+[connection signal="timeout" from="Timers/ChangeDirection" to="." method="_on_change_direction_timeout"]

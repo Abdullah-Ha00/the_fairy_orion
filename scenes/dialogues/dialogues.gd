@@ -1,8 +1,8 @@
 extends Node2D
-var displayed_words = ""
-var dialogue_number = 0
-var can_skip = false
-var can_start = false
+var displayed_words:String = ""
+var dialogue_number:int = 0
+var can_skip:bool = false
+var can_start:bool = false
 var dialogue_one = " ORION is a fairy who was born\n with strange powers."
 var dialogue_two = " He lives with his chidhood friend, \n Selene, a mystical parrot."
 var dialogue_three= " The world is not a safe place for both of them, \n as they are troubled by the furious beast, Teratos"
@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("advance_dialogue") and can_skip:
-		show_next_dialogue(selected_dialogues)
+		show_next_line(selected_dialogues)
 	
 func _on_can_press_space_timer_timeout() -> void:
 	can_skip = true 
@@ -35,14 +35,14 @@ func process_dialogue(dialogues_array:Array):
 	for letters in dialogues_array[dialogue_number]:
 		await get_tree().create_timer(0.02).timeout
 		displayed_words +=letters
-		_process_letters()
+		process_letters()
 
 func show_dialogue():
 	$DialogueScreenComponents.global_position = Vector2(600,200)
 	await get_tree().create_timer(0.03).timeout
 	process_dialogue(selected_dialogues)
 
-func show_next_dialogue(dialogues_array:Array):
+func show_next_line(dialogues_array:Array):
 	if dialogue_number <int(dialogues_array.size() - 1):
 		dialogue_number +=1
 		process_dialogue(selected_dialogues)
@@ -51,7 +51,7 @@ func show_next_dialogue(dialogues_array:Array):
 	else:
 		can_start = true
 		
-func _process_letters():
+func process_letters():
 	$DialogueScreenComponents/DialogueBar.text = displayed_words
 	$CanPressSpaceTimer.start()
 

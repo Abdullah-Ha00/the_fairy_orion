@@ -1,35 +1,28 @@
 extends CharacterBody2D
-var is_enemy = false
-var is_ally = true
+var is_enemy:bool= false
+var is_ally:bool = true
 var states:Array = ["normal", "hit"]
 var current_state:String
 var current_health:int
-var process = true
-var _health = 20
-var health = _health:
+var process:bool = true
+var _health:int = 20
+var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
-@onready var seconds_left = int($TimeLeft.time_left)
-
+@onready var seconds_left:int = int($TimeLeft.time_left)
 
 func _ready() -> void:
-	GlobalStats.parrot_node = self
-	current_health = health
-	current_state = states[0]
 	position = Vector2(940,66)
-	$HealthUI/HealthBar.max_value = health
-	$TimerUI/TimeBar.max_value = seconds_left
-	$TimerUI/SecondsLeft.text = str(seconds_left)
+	initialize_parrot_node()
+	set_up_stats_bars()
+	initialize_stats()
+	update_parrot_timer()
 	update_health_text()
 	
-
 func _process(_delta: float) -> void:
 	update_parrot_timer()
-	if current_health !=health and process:
-		current_state = states[1]
-		process =false
-		
-
+	check_parrot_health()
+	
 func _on_time_left_timeout() -> void:
 	health = 0
 	update_health_text()
@@ -42,4 +35,19 @@ func update_parrot_timer():
 func update_health_text():
 		$HealthUI/HealthNumber.text = str(health)
 		$HealthUI/HealthBar.value = health
+
+func set_up_stats_bars():
+	$HealthUI/HealthBar.max_value = health
+	$TimerUI/TimeBar.max_value = seconds_left
+
+func initialize_stats():
+	current_health = health
+	current_state = states[0]
 	
+func initialize_parrot_node():
+	GlobalStats.parrot_node = self
+
+func check_parrot_health():
+	if current_health !=health and process:
+		current_state = states[1]
+		process =false
