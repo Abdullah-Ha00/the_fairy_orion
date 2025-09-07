@@ -3,13 +3,6 @@ var displayed_words:String = ""
 var dialogue_number:int = 0
 var can_skip:bool = false
 var can_start:bool = false
-var dialogue_one = " ORION is a fairy who was born\n with strange powers."
-var dialogue_two = " He lives with his chidhood friend, \n Selene, a mystical parrot."
-var dialogue_three= " The world is not a safe place for both of them, \n as they are troubled by the furious beast, Teratos"
-var dialogues_intro:Array= [dialogue_one,dialogue_two, dialogue_three]
-var dialogues_parrot_hit: Array = ["Hello", "Tuj", "Dabla", "rara", "Mahadaasdfijsjdflk"]
-var dialogues_monster_half_health :Array = ["You damned insect!", "I will show you my real power!"]
-var dialogues_monster_parrot_hit:Array = ["YOU MORROON!!Have you already forgot your training??!!", "One more hit and I'm a goner!!", "Hahaahah!, Orion the Moron!", "Shut up, both of you!!"]
 var selected_dialogues:Array 
 
 func _ready() -> void:
@@ -52,7 +45,7 @@ func show_next_line(dialogues_array:Array):
 		can_start = true
 		
 func process_letters():
-	$DialogueScreenComponents/DialogueBar.text = displayed_words
+	$DialogueScreenComponents/DialogueBar/DialogueText.text = displayed_words
 	$CanPressSpaceTimer.start()
 
 func pause_game():
@@ -62,9 +55,9 @@ func pause_game():
 func select_dialogue():
 	match GlobalStats.current_dialogue:
 			"intro":
-				selected_dialogues = dialogues_intro
+				selected_dialogues = DialoguesPath.dialogues["intro"]
 				$DialogueScreenComponents/ButtonsDescription.show()
 			"second_phase":
-				selected_dialogues = dialogues_monster_half_health
+				selected_dialogues = DialoguesPath.dialogues["second_phase"]
 			"parrot_hurt":
-				selected_dialogues = dialogues_monster_parrot_hit
+				selected_dialogues = DialoguesPath.dialogues["parrot"]

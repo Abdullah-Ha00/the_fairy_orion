@@ -12,13 +12,11 @@ func _process(delta: float) -> void:
 func _on_remove_laser_timer_timeout() -> void:
 	queue_free()
 
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_enemy ==true or body.is_ally ==true:
 		body.health-=laser_damage
 		body.update_health_text()
 	queue_free()
-
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_projectile and GlobalStats.current_game_phase =="normal":

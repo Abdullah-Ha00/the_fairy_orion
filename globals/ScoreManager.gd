@@ -1,5 +1,4 @@
 extends Node
-
 var save_file = "user://savefile.cfg"
 
 func save_score(score:int) -> void:

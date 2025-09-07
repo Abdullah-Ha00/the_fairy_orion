@@ -1,7 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://hnh8mnniyyal"]
+[gd_scene load_steps=6 format=3 uid="uid://hnh8mnniyyal"]
 
 [ext_resource type="Script" uid="uid://br5djtjbgogak" path="res://scenes/dialogues/dialogues.gd" id="1_1gcki"]
 [ext_resource type="Texture2D" uid="uid://b40qifkircejg" path="res://images/enter_button.png" id="3_1lc76"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgcd3"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bgcd3"]
 font_size = 18
@@ -13,28 +21,34 @@ font_size = 18
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lc76"]
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 1, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_psddv"]
-line_spacing = 2.0
-paragraph_spacing = 2.0
-font_size = 20
-outline_size = 15
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Dialogues" type="Node2D"]
 script = ExtResource("1_1gcki")
 
 [node name="DialogueScreenComponents" type="Node2D" parent="."]
 
+[node name="DialogueBar" type="Panel" parent="DialogueScreenComponents"]
+offset_left = -33.0
+offset_top = 164.0
+offset_right = 975.0
+offset_bottom = 344.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bgcd3")
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueScreenComponents/DialogueBar"]
+offset_left = 58.0
+offset_top = 39.0
+offset_right = 945.0
+offset_bottom = 149.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "
+"
+horizontal_alignment = 1
+
 [node name="ButtonsDescription" type="Node2D" parent="DialogueScreenComponents"]
 visible = false
+position = Vector2(113, 165)
 
 [node name="EButton" type="Label" parent="DialogueScreenComponents/ButtonsDescription"]
 offset_left = 233.0
@@ -70,16 +84,6 @@ offset_bottom = 333.0
 text = ":  Next Line  "
 label_settings = SubResource("LabelSettings_1lc76")
 vertical_alignment = 1
-
-[node name="DialogueBar" type="Label" parent="DialogueScreenComponents"]
-offset_left = 45.0
-offset_top = 72.0
-offset_right = 736.0
-offset_bottom = 182.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_1lc76")
-text = "
-"
-label_settings = SubResource("LabelSettings_psddv")
 
 [node name="CanPressSpaceTimer" type="Timer" parent="."]
 wait_time = 0.05
