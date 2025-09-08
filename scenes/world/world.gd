@@ -74,6 +74,7 @@ func freeze_fairy():
 	$Fairy.is_moving=false
 	$Fairy.can_cast_sword_beam =false
 	$Fairy.health -=$Fence.shock_damage
+	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node)
 	$Fairy/Timers/Shock.start()
 
 func increase_stats():

@@ -15,4 +15,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_ally:
 		body.health -=orb_damage
 		body.update_health_text()
+		GlobalFunctions.change_color_on_hit(body)
 	queue_free() 
