@@ -4,7 +4,8 @@ var high_score:int
 var dialogues:Dictionary ={
 	"introduction":"intro",
 	"monster":"second_phase",
-	"parrot":"parrot_hurt"
+	"parrot":"parrot_hurt",
+	"fence":"fence_stopped"
 }
 var current_dialogue:String
 var game_phases:Dictionary= {

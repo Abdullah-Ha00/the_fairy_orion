@@ -4,8 +4,9 @@ var orb_scene:PackedScene = preload("res://scenes/special_attacks/black_orb.tscn
 var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")
 var dialogues_scene: PackedScene = preload("res://scenes/dialogues/dialogues.tscn")
 var parrot_state:String
-var parrot_hit_processed = false
-var second_phase_processed = false
+var parrot_hit_processed:bool = false
+var second_phase_processed:bool = false
+var fence_stopped:bool = false
 
 func _ready() -> void:
 	$ShootingStars.emitting = true
@@ -16,7 +17,7 @@ func _process(_delta: float) -> void:
 	check_bodies_health()
 	check_game_phase()
 	check_body_state()
-	
+	#print($Fence.position.x)
 
 func _on_fence_player_shocked() -> void:
 	freeze_fairy()
@@ -32,11 +33,11 @@ func _black_orb_action(pos) -> void:
 	orb_instance.position = pos
 	
 func _on_fence_move_left() -> void:
-	if  $Fence.position.x >340:
-		var tween=create_tween()
-		var fence_new_position = $Fence.position.x-$Fence.x_offset
-		tween.tween_property($Fence,"position:x",fence_new_position,2)
-				
+	if  $Fence.position.x >$Fence.x_offset_limit:
+		move_fence()
+	elif $Fence.position.x ==$Fence.x_at_limit and not fence_stopped:
+		stop_fence()
+
 func begin_second_phase():
 	if is_instance_valid(GlobalStats.monster_node) and not second_phase_processed:
 		increase_stats()
@@ -103,7 +104,16 @@ func check_game_phase():
 func check_body_state():
 	if parrot_state =="hit":
 		show_parrot_dialogue()
+
+func move_fence():
+	var tween=create_tween()
+	var fence_new_position = $Fence.position.x-$Fence.x_offset
+	tween.tween_property($Fence,"position:x",fence_new_position,2)
 	
+func stop_fence():
+	GlobalStats.current_dialogue = GlobalStats.dialogues["fence"]
+	load_dialogue()
+	fence_stopped = true
 	
 
 		

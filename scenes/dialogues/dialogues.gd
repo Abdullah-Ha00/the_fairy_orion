@@ -10,6 +10,7 @@ func _ready() -> void:
 	select_dialogue()
 	pause_game()
 	show_dialogue()
+	
 			
 func _process(_delta: float) -> void:
 	if can_start or Input.is_action_pressed("accept"):
@@ -26,7 +27,7 @@ func _on_can_press_space_timer_timeout() -> void:
 	
 func process_dialogue(dialogues_array:Array):
 	for letters in dialogues_array[dialogue_number]:
-		await get_tree().create_timer(0.02).timeout
+		await get_tree().create_timer(0.01).timeout
 		displayed_words +=letters
 		process_letters()
 
@@ -45,7 +46,7 @@ func show_next_line(dialogues_array:Array):
 		can_start = true
 		
 func process_letters():
-	$DialogueScreenComponents/DialogueBar/DialogueText.text = displayed_words
+	$DialogueScreenComponents/DialogueBar/DialogueText.bbcode_text = displayed_words
 	$CanPressSpaceTimer.start()
 
 func pause_game():
@@ -61,3 +62,5 @@ func select_dialogue():
 				selected_dialogues = DialoguesPath.dialogues["second_phase"]
 			"parrot_hurt":
 				selected_dialogues = DialoguesPath.dialogues["parrot"]
+			"fence_stopped":
+				selected_dialogues = DialoguesPath.dialogues["fence"]

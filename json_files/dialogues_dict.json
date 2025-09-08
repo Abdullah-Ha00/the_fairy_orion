@@ -4,7 +4,7 @@
 "Teratos: You’re under my curse now ! Your power will be mine soon!",
 "Orion: Why won’t anyone leave Selene alone for just one day??",
 "Selene: Don’t be intimidated by him, Orion!\nHe won’t notice most of your attacks! I have already weakened him!",
-"Teratos: It’s over for you, birdie!\nWithin two minutes, you’ll become part of me!!",
+"Teratos: It’s over for you, birdie!\nWithin [color=red]two minutes[/color], you’ll become part of me!!",
 "Orion: One hundred twenty seconds is more than enough for me to \nshut your mouth for good!",
 "Teratos: You’re full of yourself, insect!",
 "Selene: Get ready, Orion!",],
@@ -16,8 +16,16 @@
  "One more hit and I'll be fried wings!!",
   "Teratos: Hahaha!! Orion the Moron!!",
   "Orion: Ugh! Stupid sword!\nIt won't happen again, Selene!"
-]
-
+],
+  "fence":
+	["Teratos: Get smashed, insect!!!",
+	 "Orion: Damn you...",
+	".....",
+	"Teratos: Huh?? Why won't my barrier move??",
+	"Selene: Orion! I dispelled his barrier!\nIt won't crush you!!",
+	"Teratos: Curse you!! (Wait, he's already cursed...)",
+	"Orion: Let's end this!!"
+	]
 
   
 }
