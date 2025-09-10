@@ -45,6 +45,7 @@ func update_magic_text():
 
 func _on_magic_regen_timer_timeout() -> void:
 	magic+=magic_regen
+	change_color_on_regen(self)
 	update_magic_text()
 	
 func set_up_stats_bars():
@@ -71,3 +72,9 @@ func emit_sword_beam():
 		can_cast_sword_beam = false
 		sword_beam.emit($BeamMarker.global_position)
 		$AnimationPlayer.play("sword_light")
+
+func change_color_on_regen(body:Node):
+	if body.health>0:
+		body.modulate = Color.ROYAL_BLUE
+		await get_tree().create_timer(0.5).timeout
+		body.modulate= body.self_modulate

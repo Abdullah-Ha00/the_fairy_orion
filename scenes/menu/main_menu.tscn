@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4ld1dqn8nvs5"]
+[gd_scene load_steps=10 format=3 uid="uid://d4ld1dqn8nvs5"]
 
 [ext_resource type="Script" uid="uid://sbvhb1j8rcq2" path="res://scenes/menu/main_menu.gd" id="1_247la"]
 [ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="1_nl8w3"]
 [ext_resource type="Script" uid="uid://dnfagdgfwr3rv" path="res://scenes/menu/select_arrow_main.gd" id="2_3rkf3"]
 [ext_resource type="Texture2D" uid="uid://bqimenlaah8xq" path="res://images/menu_img.jpg" id="2_kiqgm"]
 [ext_resource type="Texture2D" uid="uid://bb7k2nuk506wy" path="res://images/menu_decorate.png" id="5_hj162"]
+[ext_resource type="AudioStream" uid="uid://d3q318mvciyy6" path="res://audio/music/lost-fairy-land-109017.mp3" id="6_xn6kt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kiqgm"]
 bg_color = Color(0.6, 0.745098, 0.886275, 1)
@@ -15,13 +16,15 @@ border_width_bottom = 3
 border_color = Color(0.8, 0.866667, 0.309804, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_247la"]
-bg_color = Color(0, 0.431373, 0.6, 1)
 draw_center = false
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 0.0745098, 1)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xn6kt"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_247la")
@@ -83,7 +86,22 @@ offset_right = 1231.0
 offset_bottom = 768.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kiqgm")
 
-[node name="StartButton" type="Button" parent="MenuComponents" groups=["Buttons"]]
+[node name="MainButtons" type="Node2D" parent="MenuComponents"]
+unique_name_in_owner = true
+
+[node name="Start" type="Button" parent="MenuComponents/MainButtons" groups=["Buttons"]]
+offset_left = 856.0
+offset_top = 291.0
+offset_right = 1116.0
+offset_bottom = 366.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+button_mask = 0
+text = "Start Game
+"
+
+[node name="Quit" type="Button" parent="MenuComponents/MainButtons" groups=["Buttons"]]
 offset_left = 856.0
 offset_top = 391.0
 offset_right = 1116.0
@@ -92,27 +110,67 @@ mouse_filter = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
 button_mask = 0
-text = "Start Game
+text = "Quit Game
 "
 
-[node name="QuitButton" type="Button" parent="MenuComponents" groups=["Buttons"]]
+[node name="Options" type="Button" parent="MenuComponents/MainButtons" groups=["Buttons"]]
 offset_left = 856.0
-offset_top = 493.0
+offset_top = 491.0
 offset_right = 1116.0
-offset_bottom = 568.0
+offset_bottom = 566.0
 mouse_filter = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
 button_mask = 0
-text = "Quit Game
+text = "Options
 "
 
+[node name="OptionButtons" type="Node2D" parent="MenuComponents"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sound" type="Button" parent="MenuComponents/OptionButtons" groups=["Buttons"]]
+offset_left = 856.0
+offset_top = 691.0
+offset_right = 1116.0
+offset_bottom = 766.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+button_mask = 0
+text = "Sound"
+
+[node name="Music" type="Button" parent="MenuComponents/OptionButtons" groups=["Buttons"]]
+unique_name_in_owner = true
+offset_left = 856.0
+offset_top = 591.0
+offset_right = 1116.0
+offset_bottom = 666.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xn6kt")
+button_mask = 0
+text = "Music: ON"
+
+[node name="Back" type="Button" parent="MenuComponents/OptionButtons" groups=["Buttons"]]
+offset_left = 856.0
+offset_top = 791.0
+offset_right = 1116.0
+offset_bottom = 866.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+button_mask = 0
+text = "Back"
+
 [node name="SelectArrowMain" type="TextureRect" parent="MenuComponents"]
+unique_name_in_owner = true
 modulate = Color(1, 0.00784314, 0, 1)
 offset_left = 726.0
-offset_top = 326.0
+offset_top = 226.0
 offset_right = 1750.0
-offset_bottom = 1350.0
+offset_bottom = 1250.0
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_nl8w3")
 script = ExtResource("2_3rkf3")
@@ -153,3 +211,11 @@ texture = ExtResource("5_hj162")
 position = Vector2(275, 282)
 scale = Vector2(0.242188, 0.163574)
 texture = ExtResource("5_hj162")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_xn6kt")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

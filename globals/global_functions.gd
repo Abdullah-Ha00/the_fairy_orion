@@ -1,5 +1,6 @@
 extends Node
 
+
 func check_arrow_buttons_collision(arrow:TextureRect):
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		if arrow.get_global_rect().has_point(button.global_position):
@@ -10,3 +11,8 @@ func change_color_on_hit(body:Node):
 		body.modulate = Color.RED
 		await get_tree().create_timer(0.5).timeout
 		body.modulate= body.self_modulate
+		
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_music"):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"),
+		not AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")))
