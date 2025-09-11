@@ -29,7 +29,6 @@ func show_score():
 	
 func pause_game():
 	get_tree().paused = true
-	GlobalStats.can_press_pause = false
 
 func go_to_main_menu():
 	get_tree().paused = false

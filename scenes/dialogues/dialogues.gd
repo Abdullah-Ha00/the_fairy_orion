@@ -11,11 +11,9 @@ func _ready() -> void:
 	pause_game()
 	show_dialogue()
 	
-			
 func _process(_delta: float) -> void:
 	if can_start or Input.is_action_pressed("accept"):
 		get_tree().paused = false
-		GlobalStats.can_press_pause = true
 		queue_free()
 		
 func _input(event: InputEvent) -> void:
@@ -51,7 +49,6 @@ func process_letters():
 
 func pause_game():
 	get_tree().paused = true
-	GlobalStats.can_press_pause = false
 	
 func select_dialogue():
 	match GlobalStats.current_dialogue:

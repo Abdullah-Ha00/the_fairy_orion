@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=18 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Texture2D" uid="uid://wqf7ae6sw0af" path="res://images/world.png" id="1_3rhlx"]
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dabmrgnaub2en" path="res://images/clouds.png" id="7_bq33v"]
 [ext_resource type="Script" uid="uid://bh18gwu5grctn" path="res://scenes/world/tile_map_layer.gd" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://hnh8mnniyyal" path="res://scenes/dialogues/dialogues.tscn" id="12_dlabj"]
-[ext_resource type="PackedScene" uid="uid://dej4nqk7rm6ge" path="res://scenes/menu/pause_menu.tscn" id="13_srmg5"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
 offsets = PackedFloat32Array(0.109091, 0.227273, 0.236364, 0.318182, 0.345455, 0.763636, 1)
@@ -250,9 +249,6 @@ position = Vector2(958, 15)
 position = Vector2(92, 14)
 
 [node name="SpecialAttacks" type="Node2D" parent="."]
-
-[node name="PauseMenu" parent="." instance=ExtResource("13_srmg5")]
-visible = false
 
 [node name="Dialogues" parent="." instance=ExtResource("12_dlabj")]
 

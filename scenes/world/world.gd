@@ -3,6 +3,7 @@ var sword_beam_scene:PackedScene = preload("res://scenes/special_attacks/sword_b
 var orb_scene:PackedScene = preload("res://scenes/special_attacks/black_orb.tscn")
 var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")
 var dialogues_scene: PackedScene = preload("res://scenes/dialogues/dialogues.tscn")
+var pause_scene: PackedScene = preload("res://scenes/menu/pause_menu.tscn")
 var parrot_state:String
 var parrot_hit_processed:bool = false
 var second_phase_processed:bool = false
@@ -12,12 +13,16 @@ func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		pause_game()
+		
 func _process(_delta: float) -> void:
 	update_body_states()
 	check_bodies_health()
 	check_game_phase()
 	check_body_state()
-	#print($Fence.position.x)
+	
 
 func _on_fence_player_shocked() -> void:
 	freeze_fairy()
@@ -115,6 +120,10 @@ func stop_fence():
 	GlobalStats.current_dialogue = GlobalStats.dialogues["fence"]
 	load_dialogue()
 	fence_stopped = true
+	
+func  pause_game():
+	var pause_menu = pause_scene.instantiate()
+	self.add_child(pause_menu)
 	
 
 		

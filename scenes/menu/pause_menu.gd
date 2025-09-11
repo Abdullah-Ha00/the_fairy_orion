@@ -1,6 +1,7 @@
 extends ColorRect
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
 	position = Vector2(750,350)
 	$QuitOptions.global_position = Vector2(0,0)
 	for button in get_tree().get_nodes_in_group("Buttons"):
@@ -8,17 +9,12 @@ func _ready():
 		
 func _process(_delta: float) -> void:
 	GlobalFunctions.check_arrow_buttons_collision($SelectArrow)
-	if Input.is_action_pressed("pause") and GlobalStats.can_press_pause:
-		get_tree().paused = true
-		visible = true
-	if get_tree().paused:
-		$SelectArrow.check_arrow_events()
-
+	
 func _on_button_pressed(button:Button):
 	match button.name:
 		"ResumeButton":
-			get_tree().paused =false
-			visible=false
+			get_tree().paused = false
+			queue_free()
 		"QuitToMenuButton":
 			show_quit_option()
 		"YesButton":
