@@ -51,8 +51,11 @@ func begin_second_phase():
 		
 func get_score():
 		if $Monster.health <=0:
+			GlobalStats.current_game_phase =GlobalStats.game_phases["monster_health_zero"]
 			GlobalStats.score = int(($Parrot/TimeLeft. time_left *10) + ($Fairy.health * 5))
 			ScoreManager.save_score(GlobalStats.score)
+		else:
+			GlobalStats.current_game_phase = GlobalStats.game_phases["self_ally_defeated"]
 			
 func display_game_result():
 	var end_game_instance = end_game_scene.instantiate()
@@ -104,9 +107,18 @@ func remove_body(body):
 	body.queue_free()
 
 func check_game_phase():
-	if  GlobalStats.current_game_phase== "second_phase":
-		begin_second_phase()
+	match GlobalStats.current_game_phase:
+		"second_phase":
+			begin_second_phase()
+			$Audio/MainMusic.pitch_scale = 1.5
+		"win":
+			$Audio/MainMusic.stop()
+			$Audio/WinMusic.play()
+		"lose":
+			$Audio/MainMusic.stop()
+			$Audio/LoseMusic.play()
 		
+	
 func check_body_state():
 	if parrot_state =="hit":
 		show_parrot_dialogue()

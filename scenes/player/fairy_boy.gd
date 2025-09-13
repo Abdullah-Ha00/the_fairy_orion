@@ -44,10 +44,11 @@ func update_magic_text():
 		$UI/MagicBar.value = magic
 
 func _on_magic_regen_timer_timeout() -> void:
-	magic+=magic_regen
-	change_color_on_regen(self)
-	update_magic_text()
-	
+	if magic<_magic:
+		magic+=magic_regen
+		change_color_on_regen(self)
+		update_magic_text()
+		
 func set_up_stats_bars():
 	$UI/HealthBar.max_value = health
 	$UI/MagicBar.max_value = magic

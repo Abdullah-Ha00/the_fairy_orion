@@ -11,6 +11,8 @@ var current_dialogue:String
 var game_phases:Dictionary= {
 	"begin":"normal",
 	"monster_health_halved":"second_phase",
+	"monster_health_zero": "win",
+	"self_ally_defeated":"lose"
 	
 }
 var current_game_phase:String

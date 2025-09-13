@@ -215,6 +215,5 @@ texture = ExtResource("5_hj162")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_xn6kt")
-volume_db = -10.0
 autoplay = true
 bus = &"Music"

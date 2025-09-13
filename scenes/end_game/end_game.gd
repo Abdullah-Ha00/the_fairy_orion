@@ -12,7 +12,7 @@ func _ready() -> void:
 	show_text()
 	show_score()
 	show_high_score_label()
-	await get_tree().create_timer(16).timeout
+	await get_tree().create_timer(18).timeout
 	go_to_main_menu()
 	
 func show_text():

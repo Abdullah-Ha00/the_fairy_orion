@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=22 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Texture2D" uid="uid://wqf7ae6sw0af" path="res://images/world.png" id="1_3rhlx"]
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dabmrgnaub2en" path="res://images/clouds.png" id="7_bq33v"]
 [ext_resource type="Script" uid="uid://bh18gwu5grctn" path="res://scenes/world/tile_map_layer.gd" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://hnh8mnniyyal" path="res://scenes/dialogues/dialogues.tscn" id="12_dlabj"]
+[ext_resource type="Script" uid="uid://codw6x8lhl4re" path="res://scenes/world/audio.gd" id="12_umvgx"]
+[ext_resource type="AudioStream" uid="uid://ccckcfblptrlp" path="res://audio/music/17 - Decisive Battle 2 - The Calamity.mp3" id="13_srmg5"]
+[ext_resource type="AudioStream" uid="uid://ctc74qboelaww" path="res://audio/music/victory-gold-star-award-267259.mp3" id="14_umvgx"]
+[ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
 offsets = PackedFloat32Array(0.109091, 0.227273, 0.236364, 0.318182, 0.345455, 0.763636, 1)
@@ -251,6 +255,21 @@ position = Vector2(92, 14)
 [node name="SpecialAttacks" type="Node2D" parent="."]
 
 [node name="Dialogues" parent="." instance=ExtResource("12_dlabj")]
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("12_umvgx")
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_srmg5")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="WinMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("14_umvgx")
+
+[node name="LoseMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_mxkvs")
 
 [connection signal="move_left" from="Fence" to="." method="_on_fence_move_left"]
 [connection signal="player_shocked" from="Fence" to="." method="_on_fence_player_shocked"]

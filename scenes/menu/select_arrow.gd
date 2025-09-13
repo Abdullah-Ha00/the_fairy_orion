@@ -19,7 +19,7 @@ func _input(event: InputEvent) -> void:
 func play_sound():
 	var cursor_sound = AudioStreamPlayer.new()
 	cursor_sound.bus = "SFX"
-	cursor_sound.volume_db = -20
+	cursor_sound.volume_db = -10
 	cursor_sound.stream = load("res://audio/sfx/90s-game-ui-10-185103.mp3")
 	get_tree().root.add_child(cursor_sound)
 	cursor_sound.play()
