@@ -8,6 +8,7 @@ var _health:int = 100
 var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
+		$Audio/HitSfx.play()
 var _magic:int = 50
 var magic:int = _magic:
 	set(value):
@@ -46,6 +47,7 @@ func update_magic_text():
 func _on_magic_regen_timer_timeout() -> void:
 	if magic<_magic:
 		magic+=magic_regen
+		$Audio/MagicRegen.play()
 		change_color_on_regen(self)
 		update_magic_text()
 		

@@ -83,10 +83,11 @@ func freeze_fairy():
 	$Fairy.can_cast_sword_beam =false
 	$Fairy.health -=$Fence.shock_damage
 	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node)
+	$Audio/Sfx/Shock.play()
 	$Fairy/Timers/Shock.start()
 
 func increase_stats():
-	$Monster.speed = 650
+	$Monster.speed *= 2
 	$Fence/MoveLeft.start()
 
 func show_monster_dialogue():
@@ -110,13 +111,13 @@ func check_game_phase():
 	match GlobalStats.current_game_phase:
 		"second_phase":
 			begin_second_phase()
-			$Audio/MainMusic.pitch_scale = 1.5
+			$Audio/Music/Main.pitch_scale = 1.5
 		"win":
-			$Audio/MainMusic.stop()
-			$Audio/WinMusic.play()
+			$Audio/Music/Main.stop()
+			$Audio/Music/Win.play()
 		"lose":
-			$Audio/MainMusic.stop()
-			$Audio/LoseMusic.play()
+			$Audio/Music/Main.stop()
+			$Audio/Music/Lose.play()
 		
 	
 func check_body_state():

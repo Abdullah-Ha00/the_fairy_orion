@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cimdp7kay83pg"]
+[gd_scene load_steps=5 format=3 uid="uid://cimdp7kay83pg"]
 
 [ext_resource type="Texture2D" uid="uid://dh4273ho65gtt" path="res://images/black_orb.png" id="1_iyhic"]
 [ext_resource type="Script" uid="uid://b1c6ftr3ht2s8" path="res://scenes/special_attacks/black_orb.gd" id="1_m4ibi"]
+[ext_resource type="AudioStream" uid="uid://htkr26180ati" path="res://audio/sfx/magical-whoosh-148459.mp3" id="3_hdpxp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m4ibi"]
 radius = 70.1783
@@ -24,6 +25,10 @@ shape = SubResource("CircleShape2D_m4ibi")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(9, -11)
 scale = Vector2(5.5, 3.9)
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hdpxp")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

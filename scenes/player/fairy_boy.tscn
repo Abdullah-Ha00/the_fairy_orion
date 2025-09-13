@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxt6dvahu0ip6"]
+[gd_scene load_steps=13 format=3 uid="uid://dxt6dvahu0ip6"]
 
 [ext_resource type="Script" uid="uid://bh706o0odwr57" path="res://scenes/player/fairy_boy.gd" id="1_050w0"]
 [ext_resource type="Texture2D" uid="uid://be1bojr6u0u2e" path="res://images/fairy_boy.png" id="1_bwhf3"]
 [ext_resource type="Texture2D" uid="uid://bij86fxrrxrbm" path="res://images/sword.png" id="2_kb4bu"]
 [ext_resource type="Texture2D" uid="uid://djp6ynsc3t00t" path="res://images/sword_light.png" id="6_7yxve"]
 [ext_resource type="Script" uid="uid://cr0kegbv4gxph" path="res://scenes/player/rich_text_label.gd" id="6_40v30"]
+[ext_resource type="AudioStream" uid="uid://sba4ki0f1j4p" path="res://audio/sfx/sound-effect-twinklesparkle-115095.mp3" id="6_buy15"]
+[ext_resource type="AudioStream" uid="uid://cxxgp5pghf6pd" path="res://audio/sfx/sparkling_star_02-99659.mp3" id="7_daq66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_050w0"]
 size = Vector2(143.5, 164.875)
@@ -166,6 +168,18 @@ offset_bottom = -87.0
 text = "700"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="MagicRegen" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_buy15")
+bus = &"SFX"
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_daq66")
+volume_db = -10.0
+pitch_scale = 2.0
+bus = &"SFX"
 
 [connection signal="timeout" from="Timers/Shock" to="." method="_on_shock_timer_timeout"]
 [connection signal="timeout" from="Timers/BeamTimer" to="." method="_on_cast_sword_beam_timer_timeout"]

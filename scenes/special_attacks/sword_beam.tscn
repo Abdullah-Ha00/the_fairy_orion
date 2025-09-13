@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d276dlns0t06y"]
+[gd_scene load_steps=5 format=3 uid="uid://d276dlns0t06y"]
 
 [ext_resource type="Script" uid="uid://bf35r0bxg26i0" path="res://scenes/special_attacks/sword_beam.gd" id="1_4wmux"]
 [ext_resource type="Texture2D" uid="uid://bbsp3uxw1js7b" path="res://images/sword_beam.png" id="1_bk8qp"]
+[ext_resource type="AudioStream" uid="uid://dh8gvlfd62oqf" path="res://audio/sfx/sword-schwing-40520.mp3" id="3_5w6kd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wmux"]
 size = Vector2(155.25, 222.5)
@@ -24,6 +25,11 @@ shape = SubResource("RectangleShape2D_4wmux")
 [node name="RemoveLaserTimer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5w6kd")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

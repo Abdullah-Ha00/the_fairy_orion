@@ -4,6 +4,8 @@ var direction:Vector2 = Vector2.LEFT
 var orb_damage:int= 15
 var is_projectile:bool = true
 
+func _ready() -> void:
+	$sfx.play()
 func _process(delta: float) -> void:
 	position += speed*direction*delta
 
