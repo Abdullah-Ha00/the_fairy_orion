@@ -9,6 +9,7 @@ var _health:int = 20
 var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
+		$Audio/HitSfx.play()
 @onready var seconds_left:int = int($TimeLeft.time_left)
 
 func _ready() -> void:

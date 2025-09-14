@@ -3,9 +3,10 @@ var speed:int = 500
 var direction:Vector2 = Vector2.RIGHT
 var is_projectile:bool = true
 var laser_damage:int = 15
+var collision_sound:String = "res://audio/sfx/explosion-36210.mp3"
 func _ready() -> void:
 	$RemoveLaserTimer.start()
-	$sfx.play()
+	$Audio/Sfx.play()
 	
 func _process(delta: float) -> void:
 	position += speed*direction*delta
@@ -22,7 +23,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_projectile and GlobalStats.current_game_phase =="normal":
+		GlobalFunctions.play_sound(collision_sound,0)
 		queue_free()
 		area.queue_free() 
+		
 	else:
 		queue_free()

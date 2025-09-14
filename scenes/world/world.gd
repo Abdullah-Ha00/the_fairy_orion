@@ -4,10 +4,12 @@ var orb_scene:PackedScene = preload("res://scenes/special_attacks/black_orb.tscn
 var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")
 var dialogues_scene: PackedScene = preload("res://scenes/dialogues/dialogues.tscn")
 var pause_scene: PackedScene = preload("res://scenes/menu/pause_menu.tscn")
+var parrot_sound:String = "res://audio/sfx/macaw-sound-382721.mp3"
 var parrot_state:String
 var parrot_hit_processed:bool = false
 var second_phase_processed:bool = false
 var fence_stopped:bool = false
+
 
 func _ready() -> void:
 	$ShootingStars.emitting = true
@@ -125,6 +127,7 @@ func check_body_state():
 		show_parrot_dialogue()
 
 func move_fence():
+	$Audio/Sfx/FenceMoving.play(2)
 	var tween=create_tween()
 	var fence_new_position = $Fence.position.x-$Fence.x_offset
 	tween.tween_property($Fence,"position:x",fence_new_position,2)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkd1il7gun27t"]
+[gd_scene load_steps=6 format=3 uid="uid://bkd1il7gun27t"]
 
 [ext_resource type="Script" uid="uid://2a2dwm20a5ch" path="res://scenes/parrot/parrot.gd" id="1_h4ksm"]
 [ext_resource type="Texture2D" uid="uid://nrnq8gw6jctg" path="res://images/parrot.png" id="1_oysvk"]
+[ext_resource type="AudioStream" uid="uid://ckh0nfi1xhf5i" path="res://audio/sfx/macaw-sound-382721.mp3" id="3_3mqut"]
+[ext_resource type="Script" uid="uid://cxulcgnbpnd8b" path="res://Scenes/parrot/audio.gd" id="3_ajnbt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oysvk"]
 size = Vector2(133, 141)
@@ -64,5 +66,13 @@ offset_bottom = -18.0
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("3_ajnbt")
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_3mqut")
+pitch_scale = 0.75
+bus = &"SFX"
 
 [connection signal="timeout" from="TimeLeft" to="." method="_on_time_left_timeout"]

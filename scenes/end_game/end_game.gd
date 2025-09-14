@@ -61,3 +61,4 @@ func show_score_labels():
 	for text in $ScoreDisplay.get_children():
 		await get_tree().create_timer(1).timeout
 		text.visible = true
+		$Audio/ScoreDisp.play()

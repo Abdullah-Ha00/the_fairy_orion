@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dej4nqk7rm6ge"]
+[gd_scene load_steps=11 format=3 uid="uid://dej4nqk7rm6ge"]
 
 [ext_resource type="Script" uid="uid://dvupwp7n0foyw" path="res://scenes/menu/pause_menu.gd" id="1_n54lc"]
 [ext_resource type="Texture2D" uid="uid://chehur4a2ug1s" path="res://images/white_rect.png" id="2_ux7g8"]
 [ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="3_xtxec"]
 [ext_resource type="Script" uid="uid://dekpiqt4ttoqv" path="res://scenes/menu/select_arrow.gd" id="4_msl3b"]
+[ext_resource type="AudioStream" uid="uid://crxad70sd1cdl" path="res://audio/sfx/accepter-1-394922.mp3" id="5_2yk66"]
+[ext_resource type="AudioStream" uid="uid://b00gxaord072l" path="res://audio/sfx/pause-piano-sound-40579.mp3" id="6_mb26x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_msl3b"]
 font_size = 28
@@ -139,3 +141,13 @@ offset_bottom = 1093.0
 scale = Vector2(0.058, 0.1)
 texture = ExtResource("3_xtxec")
 script = ExtResource("4_msl3b")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Accept" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_2yk66")
+bus = &"SFX"
+
+[node name="Pause" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_mb26x")
+bus = &"SFX"

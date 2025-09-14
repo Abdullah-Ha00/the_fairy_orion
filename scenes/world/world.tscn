@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=24 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Texture2D" uid="uid://wqf7ae6sw0af" path="res://images/world.png" id="1_3rhlx"]
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://ctc74qboelaww" path="res://audio/music/victory-gold-star-award-267259.mp3" id="14_umvgx"]
 [ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 [ext_resource type="AudioStream" uid="uid://biv5lh7da1k13" path="res://audio/sfx/electric-discharge-386160.mp3" id="16_m114p"]
+[ext_resource type="AudioStream" uid="uid://s5oxl3gmdyb3" path="res://audio/sfx/electrical-current-outdoor-electric-box-102763.mp3" id="17_71ii3"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
 offsets = PackedFloat32Array(0.109091, 0.227273, 0.236364, 0.318182, 0.345455, 0.763636, 1)
@@ -270,10 +271,12 @@ bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio/Music"]
 stream = ExtResource("14_umvgx")
+volume_db = -10.0
 bus = &"Music"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Audio/Music"]
 stream = ExtResource("15_mxkvs")
+volume_db = -10.0
 bus = &"Music"
 
 [node name="Sfx" type="Node" parent="Audio"]
@@ -281,6 +284,12 @@ bus = &"Music"
 [node name="Shock" type="AudioStreamPlayer" parent="Audio/Sfx"]
 stream = ExtResource("16_m114p")
 pitch_scale = 1.5
+
+[node name="FenceMoving" type="AudioStreamPlayer" parent="Audio/Sfx"]
+stream = ExtResource("17_71ii3")
+volume_db = 10.0
+pitch_scale = 1.5
+bus = &"SFX"
 
 [connection signal="move_left" from="Fence" to="." method="_on_fence_move_left"]
 [connection signal="player_shocked" from="Fence" to="." method="_on_fence_player_shocked"]

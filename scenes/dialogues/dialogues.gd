@@ -5,8 +5,10 @@ var can_skip:bool = false
 var can_start:bool = false
 var selected_dialogues:Array 
 
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	select_dialogue()
 	pause_game()
 	show_dialogue()
@@ -55,6 +57,7 @@ func select_dialogue():
 			"intro":
 				selected_dialogues = DialoguesPath.dialogues["intro"]
 				$DialogueScreenComponents/ButtonsDescription.show()
+				$Audio/ParrotSound.play()
 			"second_phase":
 				selected_dialogues = DialoguesPath.dialogues["second_phase"]
 			"parrot_hurt":

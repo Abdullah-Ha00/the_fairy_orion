@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfkkjss0a1bc5"]
+[gd_scene load_steps=10 format=3 uid="uid://cfkkjss0a1bc5"]
 
 [ext_resource type="Texture2D" uid="uid://dgfdqeul7fka4" path="res://images/monster.png" id="1_i44lo"]
 [ext_resource type="Script" uid="uid://diq8a6q06fip4" path="res://scenes/monster/monster.gd" id="1_vd1hn"]
 [ext_resource type="Texture2D" uid="uid://c0w3r0yy77p00" path="res://images/magical_rod.png" id="2_hyvb2"]
 [ext_resource type="Texture2D" uid="uid://dr73lggkj03gu" path="res://images/purple.png" id="5_18f66"]
+[ext_resource type="AudioStream" uid="uid://dn1qi5f7cmerx" path="res://audio/sfx/monster-growl-390285.mp3" id="5_jpvs1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6twl"]
 size = Vector2(266, 268)
@@ -135,6 +136,14 @@ theme_override_font_sizes/normal_font_size = 20
 text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_jpvs1")
+volume_db = -10.0
+pitch_scale = 1.5
+bus = &"SFX"
 
 [connection signal="timeout" from="Timers/OrbCoolDown" to="." method="_orb_cool_down_timeout"]
 [connection signal="timeout" from="Timers/ChangeDirection" to="." method="_on_change_direction_timeout"]

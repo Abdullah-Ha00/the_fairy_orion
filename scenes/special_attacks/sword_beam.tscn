@@ -26,7 +26,9 @@ shape = SubResource("RectangleShape2D_4wmux")
 wait_time = 2.5
 one_shot = true
 
-[node name="sfx" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="Sfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_5w6kd")
 volume_db = -10.0
 bus = &"SFX"

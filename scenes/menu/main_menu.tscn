@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4ld1dqn8nvs5"]
+[gd_scene load_steps=10 format=3 uid="uid://d4ld1dqn8nvs5"]
 
 [ext_resource type="Script" uid="uid://sbvhb1j8rcq2" path="res://scenes/menu/main_menu.gd" id="1_247la"]
 [ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="1_nl8w3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqimenlaah8xq" path="res://images/menu_img.jpg" id="2_kiqgm"]
 [ext_resource type="Texture2D" uid="uid://bb7k2nuk506wy" path="res://images/menu_decorate.png" id="5_hj162"]
 [ext_resource type="AudioStream" uid="uid://d3q318mvciyy6" path="res://audio/music/lost-fairy-land-109017.mp3" id="6_xn6kt"]
+[ext_resource type="AudioStream" uid="uid://crxad70sd1cdl" path="res://audio/sfx/accepter-1-394922.mp3" id="7_isoef"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kiqgm"]
 bg_color = Color(0.6, 0.745098, 0.886275, 1)
@@ -217,3 +218,6 @@ texture = ExtResource("5_hj162")
 stream = ExtResource("6_xn6kt")
 autoplay = true
 bus = &"Music"
+
+[node name="Accept" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_isoef")

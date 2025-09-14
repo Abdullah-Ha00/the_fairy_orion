@@ -9,6 +9,7 @@ var _health:int = 200
 var health:int = _health:
 	set(value):
 		health=clamp(value,0,_health)
+		$Audio/HitSfx.play()
 var half_health:float = health / 2.0
 var process:bool = true
 signal black_orb(pos)

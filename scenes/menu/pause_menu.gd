@@ -1,11 +1,9 @@
 extends ColorRect
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	get_tree().paused = true
-	position = Vector2(750,350)
-	$QuitOptions.global_position = Vector2(0,0)
-	for button in get_tree().get_nodes_in_group("Buttons"):
-		button.pressed.connect(_on_button_pressed.bind(button))
+	$Audio/Pause.play()
+	set_up_menu()
+	connect_buttons()
 		
 func _process(_delta: float) -> void:
 	GlobalFunctions.check_arrow_buttons_collision($SelectArrow)
@@ -34,3 +32,16 @@ func show_pause_menu():
 	$QuitOptions.global_position = Vector2(0,0)
 	$PauseOptions.global_position = Vector2(750,350)
 	$PauseOptions.visible = true
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("accept"):
+		$Audio/Accept.play()
+		
+func connect_buttons():
+	for button in get_tree().get_nodes_in_group("Buttons"):
+		button.pressed.connect(_on_button_pressed.bind(button))
+
+func set_up_menu():
+	get_tree().paused = true
+	position = Vector2(750,350)
+	$QuitOptions.global_position = Vector2(0,0)
