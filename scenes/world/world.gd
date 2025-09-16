@@ -4,16 +4,18 @@ var orb_scene:PackedScene = preload("res://scenes/special_attacks/black_orb.tscn
 var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")
 var dialogues_scene: PackedScene = preload("res://scenes/dialogues/dialogues.tscn")
 var pause_scene: PackedScene = preload("res://scenes/menu/pause_menu.tscn")
-var parrot_sound:String = "res://audio/sfx/macaw-sound-382721.mp3"
 var parrot_state:String
 var parrot_hit_processed:bool = false
 var second_phase_processed:bool = false
 var fence_stopped:bool = false
+var high_score:int = ScoreManager.load_score()
 
 
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	GlobalStats.high_score = high_score
+
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -54,7 +56,7 @@ func begin_second_phase():
 func get_score():
 		if $Monster.health <=0:
 			GlobalStats.current_game_phase =GlobalStats.game_phases["monster_health_zero"]
-			GlobalStats.score = int(($Parrot/TimeLeft. time_left *10) + ($Fairy.health * 5))
+			GlobalStats.score = int(($Parrot/Timers/TimeLeft. time_left *10) + ($Fairy.health * 5))
 			ScoreManager.save_score(GlobalStats.score)
 		else:
 			GlobalStats.current_game_phase = GlobalStats.game_phases["self_ally_defeated"]
@@ -108,6 +110,7 @@ func check_bodies_health():
 func remove_body(body):
 	GlobalStats.dead_body = body
 	body.queue_free()
+	
 
 func check_game_phase():
 	match GlobalStats.current_game_phase:
@@ -140,6 +143,8 @@ func stop_fence():
 func  pause_game():
 	var pause_menu = pause_scene.instantiate()
 	self.add_child(pause_menu)
+
+
 	
 
 		

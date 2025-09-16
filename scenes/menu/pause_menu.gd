@@ -1,7 +1,7 @@
 extends ColorRect
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	$Audio/Pause.play()
+	$Audio/Pause.play(0.1)
 	set_up_menu()
 	connect_buttons()
 		

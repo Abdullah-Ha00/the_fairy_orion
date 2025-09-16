@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://eu7q4fd3o65t"]
+[gd_scene load_steps=7 format=3 uid="uid://eu7q4fd3o65t"]
 
 [ext_resource type="Script" uid="uid://6pn1sdvt07cd" path="res://scenes/end_game/end_game.gd" id="1_s71ug"]
 [ext_resource type="AudioStream" uid="uid://bpdvo8plk2vaj" path="res://audio/sfx/90s-game-ui-10-185103.mp3" id="2_616qu"]
+[ext_resource type="AudioStream" uid="uid://cnqjiqx28s8ux" path="res://audio/sfx/arcade-ui-18-229517.mp3" id="3_8m0ph"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oq3b2"]
 draw_center = false
@@ -88,7 +89,7 @@ offset_top = 232.0
 offset_right = 704.0
 offset_bottom = 350.0
 theme_override_font_sizes/font_size = 50
-text = "HighScore:"
+text = "High Score:"
 label_settings = SubResource("LabelSettings_oq3b2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -110,4 +111,8 @@ vertical_alignment = 1
 [node name="ScoreDisp" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_616qu")
 volume_db = -10.0
+bus = &"SFX"
+
+[node name="HighScoreDisp" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_8m0ph")
 bus = &"SFX"

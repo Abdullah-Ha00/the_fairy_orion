@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkd1il7gun27t"]
+[gd_scene load_steps=7 format=3 uid="uid://bkd1il7gun27t"]
 
 [ext_resource type="Script" uid="uid://2a2dwm20a5ch" path="res://scenes/parrot/parrot.gd" id="1_h4ksm"]
 [ext_resource type="Texture2D" uid="uid://nrnq8gw6jctg" path="res://images/parrot.png" id="1_oysvk"]
 [ext_resource type="AudioStream" uid="uid://ckh0nfi1xhf5i" path="res://audio/sfx/macaw-sound-382721.mp3" id="3_3mqut"]
-[ext_resource type="Script" uid="uid://cxulcgnbpnd8b" path="res://Scenes/parrot/audio.gd" id="3_ajnbt"]
+[ext_resource type="Script" uid="uid://cxulcgnbpnd8b" path="res://scenes/parrot/audio.gd" id="3_ajnbt"]
+[ext_resource type="AudioStream" uid="uid://bwr220q2dutop" path="res://audio/sfx/tick-sound-effect-1-336779.mp3" id="5_r8s7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oysvk"]
 size = Vector2(133, 141)
@@ -22,10 +23,18 @@ texture = ExtResource("1_oysvk")
 position = Vector2(813.5, 78.5)
 shape = SubResource("RectangleShape2D_oysvk")
 
-[node name="TimeLeft" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="TimeLeft" type="Timer" parent="Timers"]
 wait_time = 120.0
 one_shot = true
 autostart = true
+
+[node name="Tick" type="Timer" parent="Timers"]
+autostart = true
+
+[node name="HighTick" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="TimerUI" type="Node2D" parent="."]
 
@@ -75,4 +84,12 @@ stream = ExtResource("3_3mqut")
 pitch_scale = 0.75
 bus = &"SFX"
 
-[connection signal="timeout" from="TimeLeft" to="." method="_on_time_left_timeout"]
+[node name="TickSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_r8s7u")
+volume_db = -10.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[connection signal="timeout" from="Timers/TimeLeft" to="." method="_on_time_left_timeout"]
+[connection signal="timeout" from="Timers/Tick" to="." method="_on_tick_timeout"]
+[connection signal="timeout" from="Timers/HighTick" to="." method="_on_high_tick_timeout"]

@@ -271,12 +271,10 @@ bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio/Music"]
 stream = ExtResource("14_umvgx")
-volume_db = -10.0
 bus = &"Music"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Audio/Music"]
 stream = ExtResource("15_mxkvs")
-volume_db = -10.0
 bus = &"Music"
 
 [node name="Sfx" type="Node" parent="Audio"]

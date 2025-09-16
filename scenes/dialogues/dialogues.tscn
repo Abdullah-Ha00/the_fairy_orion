@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://hnh8mnniyyal"]
+[gd_scene load_steps=11 format=3 uid="uid://hnh8mnniyyal"]
 
 [ext_resource type="Script" uid="uid://br5djtjbgogak" path="res://scenes/dialogues/dialogues.gd" id="1_1gcki"]
 [ext_resource type="Texture2D" uid="uid://b40qifkircejg" path="res://images/enter_button.png" id="3_1lc76"]
 [ext_resource type="Script" uid="uid://d4lggok5qb5qr" path="res://scenes/dialogues/audio_intro.gd" id="3_psddv"]
 [ext_resource type="AudioStream" uid="uid://ckh0nfi1xhf5i" path="res://audio/sfx/macaw-sound-382721.mp3" id="4_2ykps"]
+[ext_resource type="AudioStream" uid="uid://c4tg68vobgwlc" path="res://audio/sfx/bllrr-text-loop-82399.mp3" id="5_0h1ty"]
+[ext_resource type="AudioStream" uid="uid://dn1qi5f7cmerx" path="res://audio/sfx/monster-growl-390285.mp3" id="6_jovaq"]
+[ext_resource type="AudioStream" uid="uid://dcg8p3k32ecd5" path="res://audio/sfx/diabolic-laugh-202978.mp3" id="7_xex2w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgcd3"]
 draw_center = false
@@ -95,8 +98,22 @@ one_shot = true
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("3_psddv")
 
-[node name="ParrotSound" type="AudioStreamPlayer" parent="Audio"]
+[node name="Parrot" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_2ykps")
+bus = &"SFX"
+
+[node name="Text" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_0h1ty")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="MonsterHit" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_jovaq")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="MonsterLaugh" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_xex2w")
 bus = &"SFX"
 
 [connection signal="timeout" from="CanPressSpaceTimer" to="." method="_on_can_press_space_timer_timeout"]

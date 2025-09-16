@@ -28,6 +28,7 @@ func _on_can_press_space_timer_timeout() -> void:
 func process_dialogue(dialogues_array:Array):
 	for letters in dialogues_array[dialogue_number]:
 		await get_tree().create_timer(0.01).timeout
+		play_text_sound()
 		displayed_words +=letters
 		process_letters()
 
@@ -57,10 +58,17 @@ func select_dialogue():
 			"intro":
 				selected_dialogues = DialoguesPath.dialogues["intro"]
 				$DialogueScreenComponents/ButtonsDescription.show()
-				$Audio/ParrotSound.play()
+				$Audio/Parrot.play()
 			"second_phase":
 				selected_dialogues = DialoguesPath.dialogues["second_phase"]
+				$Audio/MonsterHit.play()
 			"parrot_hurt":
 				selected_dialogues = DialoguesPath.dialogues["parrot"]
 			"fence_stopped":
 				selected_dialogues = DialoguesPath.dialogues["fence"]
+				$Audio/MonsterLaugh.play()
+
+func play_text_sound():
+	$Audio/Text.play()
+	await get_tree().create_timer(0.08).timeout
+	$Audio/Text.stop()

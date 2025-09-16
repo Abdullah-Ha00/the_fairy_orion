@@ -9,6 +9,7 @@ var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
 		$Audio/HitSfx.play()
+		
 var _magic:int = 50
 var magic:int = _magic:
 	set(value):

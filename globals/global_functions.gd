@@ -9,8 +9,9 @@ func check_arrow_buttons_collision(arrow:TextureRect):
 func change_color_on_hit(body:Node):
 	if body.health>0 and is_instance_valid(body):
 		body.modulate = Color.RED
-		await get_tree().create_timer(0.5).timeout
-		body.modulate= body.self_modulate
+		await get_tree().create_timer(0.1).timeout
+		if is_instance_valid(body):
+			body.modulate= body.self_modulate
 		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_music"):
