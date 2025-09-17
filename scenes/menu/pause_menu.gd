@@ -1,17 +1,16 @@
 extends ColorRect
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_up_mouse()
 	$Audio/Pause.play(0.1)
 	set_up_menu()
 	connect_buttons()
-		
-func _process(_delta: float) -> void:
-	GlobalFunctions.check_arrow_buttons_collision($SelectArrow)
 	
 func _on_button_pressed(button:Button):
 	match button.name:
 		"ResumeButton":
 			get_tree().paused = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			queue_free()
 		"QuitToMenuButton":
 			show_quit_option()
@@ -20,6 +19,7 @@ func _on_button_pressed(button:Button):
 			get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 		"NoButton":
 			show_pause_menu()	
+	update_button_color()
 	
 func show_quit_option():
 	$QuitOptions.visible= true
@@ -45,3 +45,10 @@ func set_up_menu():
 	get_tree().paused = true
 	position = Vector2(750,350)
 	$QuitOptions.global_position = Vector2(0,0)
+
+func update_button_color():
+		GlobalFunctions.check_arrow_buttons_collision($SelectArrow)
+
+func set_up_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	DisplayServer.warp_mouse(Vector2(1000,500))

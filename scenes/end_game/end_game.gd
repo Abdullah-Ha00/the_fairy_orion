@@ -31,7 +31,7 @@ func pause_game():
 
 func go_to_main_menu():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
+	get_tree().call_deferred("change_scene_to_file","res://scenes/menu/main_menu.tscn")
 	
 func select_text():
 	match GlobalStats.dead_body:

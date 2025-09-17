@@ -1,5 +1,9 @@
 extends Node
 
+func _ready() -> void:
+	var cursor = load("res://images/mouse_cursor.png")
+	Input.set_custom_mouse_cursor(cursor,Input.CURSOR_ARROW,Vector2(16,16))
+	
 
 func check_arrow_buttons_collision(arrow:TextureRect):
 	for button in get_tree().get_nodes_in_group("Buttons"):
