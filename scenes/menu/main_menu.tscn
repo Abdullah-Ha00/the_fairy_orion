@@ -178,3 +178,5 @@ bus = &"Music"
 
 [node name="Accept" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_isoef")
+volume_db = 10.0
+bus = &"SFX"

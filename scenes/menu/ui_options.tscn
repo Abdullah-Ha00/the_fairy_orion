@@ -1,21 +1,94 @@
-[gd_scene load_steps=3 format=3 uid="uid://i2rnkfn8v0w1"]
+[gd_scene load_steps=8 format=3 uid="uid://i2rnkfn8v0w1"]
 
 [ext_resource type="Script" uid="uid://dblrdoj5r1nwt" path="res://scenes/menu/ui_options.gd" id="1_barar"]
+[ext_resource type="AudioStream" uid="uid://d3q318mvciyy6" path="res://audio/music/lost-fairy-land-109017.mp3" id="2_c4n06"]
+[ext_resource type="AudioStream" uid="uid://cxxgp5pghf6pd" path="res://audio/sfx/sparkling_star_02-99659.mp3" id="3_44knn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fxfdo"]
 font_size = 28
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44knn"]
+bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4n06"]
+bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_barar"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0.0745098, 1)
+corner_detail = 20
+
 [node name="UIOptions" type="Node2D"]
 script = ExtResource("1_barar")
 
-[node name="PauseLabel" type="Label" parent="."]
+[node name="Music" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Music"]
 offset_left = 63.0
 offset_top = 31.0
 offset_right = 296.0
 offset_bottom = 79.0
-text = "Game is Paused"
+text = "Music"
 label_settings = SubResource("LabelSettings_fxfdo")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Music"]
+offset_left = 273.0
+offset_top = 46.0
+offset_right = 783.0
+offset_bottom = 62.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_44knn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_c4n06")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Sfx" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Sfx"]
+offset_left = 63.0
+offset_top = 137.0
+offset_right = 296.0
+offset_bottom = 185.0
+text = "SFX"
+label_settings = SubResource("LabelSettings_fxfdo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Sfx"]
+offset_left = 277.0
+offset_top = 154.0
+offset_right = 787.0
+offset_bottom = 170.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Back" type="Button" parent="." groups=["Buttons"]]
+offset_left = 387.0
+offset_top = 252.0
+offset_right = 647.0
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_barar")
+text = "Back
+"
+
+[node name="AudioMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_c4n06")
+bus = &"Music"
+
+[node name="AudioSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_44knn")
+bus = &"SFX"
+
+[connection signal="value_changed" from="Music/Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Sfx/Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
