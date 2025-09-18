@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/lost-fairy-land-109017.mp3-d3cbfc8f0570bacc94
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

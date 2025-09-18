@@ -1,5 +1,4 @@
 extends Node2D
-
 func _ready() -> void:
 	await get_tree().process_frame
 	call_deferred("set_up_mouse")
@@ -8,8 +7,12 @@ func _ready() -> void:
 	initialize_game_state()
 	update_button_color()
 	
+	
+	
 func _process(_delta: float) -> void:
 	rotate_fairies()
+	check_arrow()
+	
 	
 func _on_button_pressed(button:Button):
 	match button.name:
@@ -18,7 +21,9 @@ func _on_button_pressed(button:Button):
 		"Quit":
 			get_tree().quit()
 		"Options":
+			disable_buttons()
 			load_options_menu()
+		
 	update_button_color()
 			
 func show_high_score():
@@ -37,7 +42,7 @@ func initialize_game_state():
 
 func update_button_color():
 	GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain)
-	#
+	
 func rotate_fairies():
 	for fairy in get_tree().get_nodes_in_group("Fairies"):
 		fairy.rotation_degrees += 2.5
@@ -50,9 +55,30 @@ func _input(event: InputEvent) -> void:
 func load_options_menu():
 	var options_scene = preload("res://scenes/menu/ui_options.tscn")
 	var options_instance = options_scene.instantiate()
-	add_child(options_instance)
+	%OptionComponents.add_child(options_instance)
+	change_arrow_settings()
 
 func set_up_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	DisplayServer.warp_mouse(Vector2(1000,350))
+	
+func disable_buttons():
+	for button in get_tree().get_nodes_in_group("Buttons"):
+		button.disabled = true
+
+func change_arrow_settings():
+	$%SelectArrowMain.position = Vector2(750,560)
+	$%SelectArrowMain.min_y_pos = 560
+	$%SelectArrowMain.max_y_pos= 560
+ 
+func reset_arrow_settings():
+	$%SelectArrowMain.position = Vector2(726,226)
+	%SelectArrowMain.min_y_pos = 226
+	%SelectArrowMain.max_y_pos = 426
+
+func check_arrow():
+	if GlobalStats.arrow_reset:
+		reset_arrow_settings()
+		update_button_color()
+		GlobalStats.arrow_reset = false
 	

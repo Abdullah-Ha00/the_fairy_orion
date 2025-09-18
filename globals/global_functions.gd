@@ -16,11 +16,7 @@ func change_color_on_hit(body:Node):
 		await get_tree().create_timer(0.1).timeout
 		if is_instance_valid(body):
 			body.modulate= body.self_modulate
-		
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_music"):
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"),
-		not AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")))
+
 
 func play_sound(file:String, volume:int):
 	var sound = AudioStreamPlayer.new()

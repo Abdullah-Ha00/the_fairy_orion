@@ -20,5 +20,7 @@ var dead_body: Node
 var parrot_node:Node
 var fairy_node:Node
 var monster_node:Node
+var arrow_node:Node
 var is_game_started:bool
 var is_game_finished:bool
+var arrow_reset:bool
