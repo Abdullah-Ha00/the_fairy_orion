@@ -91,7 +91,7 @@ text = ":  Next Line  "
 label_settings = SubResource("LabelSettings_1lc76")
 vertical_alignment = 1
 
-[node name="CanPressSpaceTimer" type="Timer" parent="."]
+[node name="NexLineTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
 
@@ -116,4 +116,4 @@ bus = &"SFX"
 stream = ExtResource("7_xex2w")
 bus = &"SFX"
 
-[connection signal="timeout" from="CanPressSpaceTimer" to="." method="_on_can_press_space_timer_timeout"]
+[connection signal="timeout" from="NexLineTimer" to="." method="_on_nex_line_timer_timeout"]

@@ -6,9 +6,9 @@ var is_projectile:bool = true
 
 func _ready() -> void:
 	$sfx.play()
+	
 func _process(delta: float) -> void:
 	position += speed*direction*delta
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free() 

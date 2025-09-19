@@ -281,6 +281,7 @@ bus = &"Music"
 [node name="Shock" type="AudioStreamPlayer" parent="Audio/Sfx"]
 stream = ExtResource("16_m114p")
 pitch_scale = 1.5
+bus = &"SFX"
 
 [node name="FenceMoving" type="AudioStreamPlayer" parent="Audio/Sfx"]
 stream = ExtResource("17_71ii3")

@@ -5,10 +5,8 @@ var can_skip:bool = false
 var can_start:bool = false
 var selected_dialogues:Array 
 
-
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
 	select_dialogue()
 	pause_game()
 	show_dialogue()
@@ -22,12 +20,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("advance_dialogue") and can_skip:
 		show_next_line(selected_dialogues)
 	
-func _on_can_press_space_timer_timeout() -> void:
-	can_skip = true 
+func _on_nex_line_timer_timeout() -> void:
+	can_skip = true
 	
 func process_dialogue(dialogues_array:Array):
 	for letters in dialogues_array[dialogue_number]:
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.015).timeout
 		play_text_sound()
 		displayed_words +=letters
 		process_letters()
@@ -48,7 +46,7 @@ func show_next_line(dialogues_array:Array):
 		
 func process_letters():
 	$DialogueScreenComponents/DialogueBar/DialogueText.bbcode_text = displayed_words
-	$CanPressSpaceTimer.start()
+	$NexLineTimer.start()
 
 func pause_game():
 	get_tree().paused = true

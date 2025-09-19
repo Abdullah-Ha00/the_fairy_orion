@@ -1,7 +1,9 @@
 extends Node2D
+
 func _ready() -> void:
 	global_position = Vector2(380,182)
-
+	set_sliders_values()
+	
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),linear_to_db(value))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"),value<0.05)
@@ -28,6 +30,11 @@ func enable_buttons():
 	GlobalStats.arrow_reset = true
 	
 func save_volume_settings():
-	var sfx_volume:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
-	var music_volume:float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
-	print(sfx_volume, music_volume)
+	var sfx_volume:float = $Sfx/Slider.value
+	var music_volume:float = $Music/Slider.value
+	Settings.save_audio_volume(music_volume,sfx_volume)
+
+func set_sliders_values():
+	$Music/Slider.value = Settings.load_music_volume()
+	$Sfx/Slider.value = Settings.load_sfx_volume()
+	

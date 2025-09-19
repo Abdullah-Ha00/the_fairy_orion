@@ -1,12 +1,14 @@
 extends Node2D
+@onready var music_level:float = linear_to_db(Settings.load_music_volume())
+@onready var sfx_level:float = linear_to_db(Settings.load_sfx_volume())
 func _ready() -> void:
 	await get_tree().process_frame
 	call_deferred("set_up_mouse")
 	show_high_score()
 	connect_buttons()
 	initialize_game_state()
+	initialize_audio()
 	update_button_color()
-	
 	
 	
 func _process(_delta: float) -> void:
@@ -81,4 +83,7 @@ func check_arrow():
 		reset_arrow_settings()
 		update_button_color()
 		GlobalStats.arrow_reset = false
-	
+
+func initialize_audio():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),music_level)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),sfx_level)

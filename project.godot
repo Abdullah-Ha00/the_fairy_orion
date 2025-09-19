@@ -21,6 +21,7 @@ GlobalFunctions="*res://globals/global_functions.gd"
 ScoreManager="*res://globals/ScoreManager.gd"
 GlobalStats="*res://globals/global_stats.gd"
 DialoguesPath="*res://globals/dialogues_path.gd"
+Settings="*res://globals/settings.gd"
 
 [display]
 
