@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=27 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Texture2D" uid="uid://wqf7ae6sw0af" path="res://images/world.png" id="1_3rhlx"]
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 [ext_resource type="AudioStream" uid="uid://biv5lh7da1k13" path="res://audio/sfx/electric-discharge-386160.mp3" id="16_m114p"]
 [ext_resource type="AudioStream" uid="uid://s5oxl3gmdyb3" path="res://audio/sfx/electrical-current-outdoor-electric-box-102763.mp3" id="17_71ii3"]
+[ext_resource type="Texture2D" uid="uid://57l0c6m44ryj" path="res://images/cloud.png" id="18_bt7bg"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
 offsets = PackedFloat32Array(0.109091, 0.227273, 0.236364, 0.318182, 0.345455, 0.763636, 1)
@@ -54,12 +55,23 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 3
 sources/14 = SubResource("TileSetAtlasSource_bq33v")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt7bg"]
+texture = ExtResource("18_bt7bg")
+texture_region_size = Vector2i(300, 200)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wbwoo"]
+tile_size = Vector2i(19, 16)
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_bt7bg")
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_vadfg")
 
 [node name="WorldImg" type="Sprite2D" parent="."]
 modulate = Color(1, 0.92, 0.92, 1)
-position = Vector2(1859, 1146)
+position = Vector2(1847, 1042)
 scale = Vector2(1.89115, 2.3098)
 texture = ExtResource("1_3rhlx")
 
@@ -241,9 +253,14 @@ position = Vector2(876, 552)
 texture_repeat = 2
 position = Vector2(1966, 886)
 scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AADs//P/DgAAAAAAAADt//P/DgAAAAAAAADu//P/DgAAAAAAAADv//P/DgAAAAAAAADw//P/DgAAAAAAAADx//P/DgAAAAAAAADy//P/DgAAAAAAAADz//P/DgAAAAAAAAD0//P/DgAAAAAAAAD1//P/DgAAAAAAAAD2//P/DgAAAAAAAAD3//P/DgAAAAAAAAD4//P/DgAAAAAAAAD5//P/DgAAAAAAAAD6//P/DgAAAAAAAAD7//P/DgAAAAAAAAD8//P/DgAAAAAAAAD9//P/DgAAAAAAAAD+//P/DgAAAAAAAAD///P/DgAAAAAAAAAAAPP/DgAAAAAAAAD///T/DgAAAAAAAAD///X/DgAAAAAAAAD///b/DgAAAAAAAAD///f/DgAAAAAAAAD///j/DgAAAAAAAAD///n/DgAAAAAAAAD///r/DgAAAAAAAAD///v/DgAAAAAAAAD///z/DgAAAAAAAAD///3/DgAAAAAAAAD///7/DgAAAAAAAAD/////DgAAAAAAAAD//wAADgAAAAAAAAD//wEADgAAAAAAAAD//wIADgAAAAAAAAD//wMADgAAAAAAAADs/wIADgAAAAAAAADt/wIADgAAAAAAAADu/wIADgAAAAAAAADv/wIADgAAAAAAAADw/wIADgAAAAAAAADx/wIADgAAAAAAAADy/wIADgAAAAAAAADz/wIADgAAAAAAAAD0/wIADgAAAAAAAAD1/wIADgAAAAAAAAD2/wIADgAAAAAAAAD3/wIADgAAAAAAAAD4/wIADgAAAAAAAAD5/wIADgAAAAAAAAD6/wIADgAAAAAAAAD7/wIADgAAAAAAAAD8/wIADgAAAAAAAAD9/wIADgAAAAAAAAD+/wIADgAAAAAAAADs//T/DgAAAAAAAADs//X/DgAAAAAAAADs//b/DgAAAAAAAADs//f/DgAAAAAAAADs//j/DgAAAAAAAADs//n/DgAAAAAAAADs//r/DgAAAAAAAADs//v/DgAAAAAAAADs//z/DgAAAAAAAADs//3/DgAAAAAAAADs//7/DgAAAAAAAADs////DgAAAAAAAADs/wAADgAAAAAAAADs/wEADgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADs//P/DgAAAAAAAADt//P/DgAAAAAAAADu//P/DgAAAAAAAADv//P/DgAAAAAAAADw//P/DgAAAAAAAADx//P/DgAAAAAAAADy//P/DgAAAAAAAADz//P/DgAAAAAAAAD0//P/DgAAAAAAAAD1//P/DgAAAAAAAAD2//P/DgAAAAAAAAD3//P/DgAAAAAAAAD4//P/DgAAAAAAAAD5//P/DgAAAAAAAAD6//P/DgAAAAAAAAD7//P/DgAAAAAAAAD8//P/DgAAAAAAAAD9//P/DgAAAAAAAAD+//P/DgAAAAAAAAD///P/DgAAAAAAAAAAAPP/DgAAAAAAAAD///T/DgAAAAAAAAD///X/DgAAAAAAAAD///b/DgAAAAAAAAD///f/DgAAAAAAAAD///j/DgAAAAAAAAD///n/DgAAAAAAAAD///r/DgAAAAAAAAD///v/DgAAAAAAAAD///z/DgAAAAAAAAD///3/DgAAAAAAAAD///7/DgAAAAAAAAD/////DgAAAAAAAAD//wAADgAAAAAAAAD//wEADgAAAAAAAAD//wIADgAAAAAAAAD//wMADgAAAAAAAADs/wIADgAAAAAAAADt/wIADgAAAAAAAADu/wIADgAAAAAAAADv/wIADgAAAAAAAADw/wIADgAAAAAAAADx/wIADgAAAAAAAADy/wIADgAAAAAAAADz/wIADgAAAAAAAAD0/wIADgAAAAAAAAD1/wIADgAAAAAAAAD2/wIADgAAAAAAAAD3/wIADgAAAAAAAAD4/wIADgAAAAAAAAD5/wIADgAAAAAAAAD6/wIADgAAAAAAAAD7/wIADgAAAAAAAAD8/wIADgAAAAAAAAD9/wIADgAAAAAAAAD+/wIADgAAAAAAAADs//T/DgAAAAAAAADs//X/DgAAAAAAAADs//b/DgAAAAAAAADs//f/DgAAAAAAAADs//j/DgAAAAAAAADs//n/DgAAAAAAAADs//r/DgAAAAAAAADs//v/DgAAAAAAAADs//z/DgAAAAAAAADs//3/DgAAAAAAAADs//7/DgAAAAAAAADs/wAADgAAAAAAAADs/wEADgAAAAAAAADs////DgAAAAAAAAA=")
 tile_set = SubResource("TileSet_1yooq")
 script = ExtResource("9_1yooq")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+position = Vector2(-3, 146)
+tile_map_data = PackedByteArray("AAAcABUAAAAAAAAAAAAeAB4AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wbwoo")
 
 [node name="Fairy" parent="." instance=ExtResource("3_l1hd3")]
 position = Vector2(-95, 328)

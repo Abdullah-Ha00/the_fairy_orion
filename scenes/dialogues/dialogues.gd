@@ -70,3 +70,4 @@ func play_text_sound():
 	$Audio/Text.play()
 	await get_tree().create_timer(0.08).timeout
 	$Audio/Text.stop()
+	
