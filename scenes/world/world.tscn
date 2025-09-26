@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=23 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Texture2D" uid="uid://wqf7ae6sw0af" path="res://images/world.png" id="1_3rhlx"]
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bo2w7wucxrnst" path="res://images/star.png" id="4_gb53w"]
 [ext_resource type="PackedScene" uid="uid://cghpnqrvmfvrq" path="res://scenes/objects/fence.tscn" id="5_l1hd3"]
 [ext_resource type="PackedScene" uid="uid://bkd1il7gun27t" path="res://scenes/parrot/parrot.tscn" id="6_adcqc"]
-[ext_resource type="Texture2D" uid="uid://dabmrgnaub2en" path="res://images/clouds.png" id="7_bq33v"]
-[ext_resource type="Script" uid="uid://bh18gwu5grctn" path="res://scenes/world/tile_map_layer.gd" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://hnh8mnniyyal" path="res://scenes/dialogues/dialogues.tscn" id="12_dlabj"]
 [ext_resource type="Script" uid="uid://codw6x8lhl4re" path="res://scenes/world/audio.gd" id="12_umvgx"]
 [ext_resource type="AudioStream" uid="uid://ccckcfblptrlp" path="res://audio/music/17 - Decisive Battle 2 - The Calamity.mp3" id="13_srmg5"]
@@ -17,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 [ext_resource type="AudioStream" uid="uid://biv5lh7da1k13" path="res://audio/sfx/electric-discharge-386160.mp3" id="16_m114p"]
 [ext_resource type="AudioStream" uid="uid://s5oxl3gmdyb3" path="res://audio/sfx/electrical-current-outdoor-electric-box-102763.mp3" id="17_71ii3"]
-[ext_resource type="Texture2D" uid="uid://57l0c6m44ryj" path="res://images/cloud.png" id="18_bt7bg"]
+[ext_resource type="Texture2D" uid="uid://b6g3bchkolc48" path="res://images/cloud.png" id="18_bt7bg"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
 offsets = PackedFloat32Array(0.109091, 0.227273, 0.236364, 0.318182, 0.345455, 0.763636, 1)
@@ -43,36 +41,25 @@ gravity = Vector3(100, 100, 0)
 scale_min = 0.1
 scale_max = 0.1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bq33v"]
-texture = ExtResource("7_bq33v")
-texture_region_size = Vector2i(300, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-127.106, 6.27686, -74.5, -22, -7.5, -61, 44.5, -61, 72.5, -27, 109.5, -20, 142.611, 23.0303, 147.925, 58.4615, 114.5, 88, -85.5, 80, -100.5, 79)
-
-[sub_resource type="TileSet" id="TileSet_1yooq"]
-tile_size = Vector2i(200, 140)
-physics_layer_0/collision_layer = 8
-physics_layer_0/collision_mask = 3
-sources/14 = SubResource("TileSetAtlasSource_bq33v")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt7bg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m114p"]
 texture = ExtResource("18_bt7bg")
-texture_region_size = Vector2i(300, 200)
+texture_region_size = Vector2i(170, 150)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(19, -30.5, -3.5, -31.5, -3.5, -26.5, -15, -25, -17.5, -18.5, -33.5, -20, -40, -16, -40, -8, -47.5, -4.5, -47, 10, -40, 12, -40, 19, 57.5, 18.5, 57.5, 12, 66.5, 11.5, 65.5, -5.5, 58, -10, 52.5, -12, 52, -18.5, 40, -19, 31, -24.5, 25, -24.5)
 
-[sub_resource type="TileSet" id="TileSet_wbwoo"]
-tile_size = Vector2i(19, 16)
+[sub_resource type="TileSet" id="TileSet_71ii3"]
+tile_size = Vector2i(80, 58)
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 3
-sources/0 = SubResource("TileSetAtlasSource_bt7bg")
+sources/3 = SubResource("TileSetAtlasSource_m114p")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_vadfg")
 
 [node name="WorldImg" type="Sprite2D" parent="."]
 modulate = Color(1, 0.92, 0.92, 1)
-position = Vector2(1847, 1042)
-scale = Vector2(1.89115, 2.3098)
+position = Vector2(1800.25, 1042)
+scale = Vector2(1.93985, 2.3098)
 texture = ExtResource("1_3rhlx")
 
 [node name="Stars" type="Node2D" parent="."]
@@ -249,21 +236,13 @@ process_material = SubResource("ParticleProcessMaterial_bq33v")
 [node name="Fence" parent="." instance=ExtResource("5_l1hd3")]
 position = Vector2(876, 552)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-texture_repeat = 2
-position = Vector2(1966, 886)
-scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AADs//P/DgAAAAAAAADt//P/DgAAAAAAAADu//P/DgAAAAAAAADv//P/DgAAAAAAAADw//P/DgAAAAAAAADx//P/DgAAAAAAAADy//P/DgAAAAAAAADz//P/DgAAAAAAAAD0//P/DgAAAAAAAAD1//P/DgAAAAAAAAD2//P/DgAAAAAAAAD3//P/DgAAAAAAAAD4//P/DgAAAAAAAAD5//P/DgAAAAAAAAD6//P/DgAAAAAAAAD7//P/DgAAAAAAAAD8//P/DgAAAAAAAAD9//P/DgAAAAAAAAD+//P/DgAAAAAAAAD///P/DgAAAAAAAAAAAPP/DgAAAAAAAAD///T/DgAAAAAAAAD///X/DgAAAAAAAAD///b/DgAAAAAAAAD///f/DgAAAAAAAAD///j/DgAAAAAAAAD///n/DgAAAAAAAAD///r/DgAAAAAAAAD///v/DgAAAAAAAAD///z/DgAAAAAAAAD///3/DgAAAAAAAAD///7/DgAAAAAAAAD/////DgAAAAAAAAD//wAADgAAAAAAAAD//wEADgAAAAAAAAD//wIADgAAAAAAAAD//wMADgAAAAAAAADs/wIADgAAAAAAAADt/wIADgAAAAAAAADu/wIADgAAAAAAAADv/wIADgAAAAAAAADw/wIADgAAAAAAAADx/wIADgAAAAAAAADy/wIADgAAAAAAAADz/wIADgAAAAAAAAD0/wIADgAAAAAAAAD1/wIADgAAAAAAAAD2/wIADgAAAAAAAAD3/wIADgAAAAAAAAD4/wIADgAAAAAAAAD5/wIADgAAAAAAAAD6/wIADgAAAAAAAAD7/wIADgAAAAAAAAD8/wIADgAAAAAAAAD9/wIADgAAAAAAAAD+/wIADgAAAAAAAADs//T/DgAAAAAAAADs//X/DgAAAAAAAADs//b/DgAAAAAAAADs//f/DgAAAAAAAADs//j/DgAAAAAAAADs//n/DgAAAAAAAADs//r/DgAAAAAAAADs//v/DgAAAAAAAADs//z/DgAAAAAAAADs//3/DgAAAAAAAADs//7/DgAAAAAAAADs/wAADgAAAAAAAADs/wEADgAAAAAAAADs////DgAAAAAAAAA=")
-tile_set = SubResource("TileSet_1yooq")
-script = ExtResource("9_1yooq")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
-position = Vector2(-3, 146)
-tile_map_data = PackedByteArray("AAAcABUAAAAAAAAAAAAeAB4AAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wbwoo")
+[node name="Clouds" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAA0AAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAwAAwAAAAAAAAAXAA0AAwAAAAAAAAAXAAwAAwAAAAAAAAAXAAsAAwAAAAAAAAAXAAoAAwAAAAAAAAAXAAkAAwAAAAAAAAAXAAgAAwAAAAAAAAAXAAcAAwAAAAAAAAAXAAYAAwAAAAAAAAAXAAUAAwAAAAAAAAAXAAQAAwAAAAAAAAAXAAMAAwAAAAAAAAAXAAIAAwAAAAAAAAAXAAEAAwAAAAAAAAAXAAAAAwAAAAAAAAAWAAAAAwAAAAAAAAAVAAAAAwAAAAAAAAAUAAAAAwAAAAAAAAATAAAAAwAAAAAAAAASAAAAAwAAAAAAAAARAAAAAwAAAAAAAAAQAAAAAwAAAAAAAAAPAAAAAwAAAAAAAAAOAAAAAwAAAAAAAAANAAAAAwAAAAAAAAAMAAAAAwAAAAAAAAALAAAAAwAAAAAAAAAKAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAJAAAAAwAAAAAAAAAIAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAADAAAAAwAAAAAAAAACAAAAAwAAAAAAAAABAAAAAwAAAAAAAAAAAA4AAwAAAAAAAAAAAA8AAwAAAAAAAAAAABAAAwAAAAAAAAAAABEAAwAAAAAAAAAAABIAAwAAAAAAAAABABIAAwAAAAAAAAACABIAAwAAAAAAAAADABIAAwAAAAAAAAAEABIAAwAAAAAAAAAFABIAAwAAAAAAAAAGABIAAwAAAAAAAAAHABIAAwAAAAAAAAAIABIAAwAAAAAAAAAJABIAAwAAAAAAAAAKABIAAwAAAAAAAAALABIAAwAAAAAAAAAMABIAAwAAAAAAAAANABIAAwAAAAAAAAAOABIAAwAAAAAAAAAPABIAAwAAAAAAAAAQABIAAwAAAAAAAAARABIAAwAAAAAAAAASABIAAwAAAAAAAAATABIAAwAAAAAAAAAUABIAAwAAAAAAAAAVABIAAwAAAAAAAAAWABIAAwAAAAAAAAAXABIAAwAAAAAAAAAXAA4AAwAAAAAAAAAXAA8AAwAAAAAAAAAXABAAAwAAAAAAAAAXABEAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_71ii3")
 
 [node name="Fairy" parent="." instance=ExtResource("3_l1hd3")]
 position = Vector2(-95, 328)
+scale = Vector2(0.8, 0.8)
 
 [node name="Parrot" parent="." instance=ExtResource("6_adcqc")]
 position = Vector2(958, 15)
