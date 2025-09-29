@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqf7ae6sw0af"
-path="res://.godot/imported/world.png-aab61d0c30d561bb5042073b029b8793.ctex"
+uid="uid://b3y0vpfqor6f6"
+path="res://.godot/imported/shock_circle.png-8cf6fdadcd08857c73207bc94369ddc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/world.png"
-dest_files=["res://.godot/imported/world.png-aab61d0c30d561bb5042073b029b8793.ctex"]
+source_file="res://images/shock_circle.png"
+dest_files=["res://.godot/imported/shock_circle.png-8cf6fdadcd08857c73207bc94369ddc3.ctex"]
 
 [params]
 

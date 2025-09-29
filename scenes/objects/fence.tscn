@@ -1,13 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://cghpnqrvmfvrq"]
+[gd_scene load_steps=9 format=3 uid="uid://cghpnqrvmfvrq"]
 
 [ext_resource type="Script" uid="uid://cbj7ahaufejld" path="res://scenes/objects/fence.gd" id="1_woogs"]
-[ext_resource type="Texture2D" uid="uid://cfyn2cqaj7jdd" path="res://images/barrier.png" id="2_ijy3e"]
+[ext_resource type="Texture2D" uid="uid://doib0ty5qee7a" path="res://images/barrier_spell.png" id="2_ijy3e"]
+[ext_resource type="Texture2D" uid="uid://b3y0vpfqor6f6" path="res://images/shock_circle.png" id="3_qoggp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vuvy"]
-size = Vector2(1177, 223.003)
+size = Vector2(1001, 276.996)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mn8mn"]
-size = Vector2(91, 1175)
+size = Vector2(51, 992)
+
+[sub_resource type="Gradient" id="Gradient_qoggp"]
+offsets = PackedFloat32Array(0, 0.0363636, 0.527273, 0.736364, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12549, 0.72549, 0.85098, 1, 0.570995, 0.865335, 0.926896, 1, 0.0235294, 0.054902, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nwxkd"]
+gradient = SubResource("Gradient_qoggp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwxkd"]
+particle_flag_disable_z = true
+gravity = Vector3(-1, -1, 0)
+scale_min = 0.2
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_nwxkd")
 
 [node name="Fence" type="StaticBody2D"]
 collision_layer = 8
@@ -17,13 +32,11 @@ script = ExtResource("1_woogs")
 [node name="FenceImg" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(68.592, 19.3621)
-rotation = 1.5708
-scale = Vector2(1.69079, 0.545582)
 texture = ExtResource("2_ijy3e")
 region_rect = Rect2(444.742, -89.1382, 552.364, 1113.14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(124.501, 98.5)
+position = Vector2(92.5, 29.4997)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_3vuvy")
 
@@ -32,11 +45,109 @@ collision_layer = 8
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-40.5, 82.5)
+position = Vector2(-66.5, 33)
 shape = SubResource("RectangleShape2D_mn8mn")
 
 [node name="MoveLeft" type="Timer" parent="."]
 wait_time = 6.0
+
+[node name="ElectricParticles" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, -440)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, -376)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, -55)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, -253)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, -121)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-78, 521)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D7" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 454)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D8" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 264)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D9" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, -312)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D10" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 194)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D11" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 1)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D12" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 329)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D13" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, -185)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D14" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 392)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D15" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 136)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
+
+[node name="GPUParticles2D16" type="GPUParticles2D" parent="ElectricParticles"]
+position = Vector2(-80, 69)
+amount = 1
+texture = ExtResource("3_qoggp")
+process_material = SubResource("ParticleProcessMaterial_nwxkd")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MoveLeft" to="." method="_on_move_left_timeout"]

@@ -236,7 +236,7 @@ lifetime = 10.0
 process_material = SubResource("ParticleProcessMaterial_bq33v")
 
 [node name="Fence" parent="." instance=ExtResource("5_l1hd3")]
-position = Vector2(876, 552)
+position = Vector2(880, 533)
 
 [node name="Clouds" type="TileMapLayer" parent="."]
 texture_filter = 1
