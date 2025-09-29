@@ -106,7 +106,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="BeamMarker" type="Marker2D" parent="."]
-position = Vector2(71, 2)
+position = Vector2(61, 11)
 
 [node name="SwordLight" type="PointLight2D" parent="."]
 position = Vector2(56, 16)
