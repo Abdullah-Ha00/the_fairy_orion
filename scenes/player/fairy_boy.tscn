@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bh706o0odwr57" path="res://scenes/player/fairy_boy.gd" id="1_050w0"]
 [ext_resource type="Texture2D" uid="uid://c30tmbsxpjufv" path="res://images/fairy.png" id="2_40v30"]
-[ext_resource type="Texture2D" uid="uid://bij86fxrrxrbm" path="res://images/sword.png" id="2_kb4bu"]
 [ext_resource type="Texture2D" uid="uid://did2o657yhgmi" path="res://images/fairy_2.png" id="3_fdb6c"]
+[ext_resource type="Texture2D" uid="uid://bwmdn4we6ljsc" path="res://images/sword.png" id="4_fdb6c"]
 [ext_resource type="Texture2D" uid="uid://djp6ynsc3t00t" path="res://images/sword_light.png" id="6_7yxve"]
 [ext_resource type="Script" uid="uid://cr0kegbv4gxph" path="res://scenes/player/rich_text_label.gd" id="6_40v30"]
 [ext_resource type="AudioStream" uid="uid://sba4ki0f1j4p" path="res://audio/sfx/sound-effect-twinklesparkle-115095.mp3" id="6_buy15"]
@@ -95,12 +95,12 @@ script = ExtResource("1_050w0")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_v5v8c")
 autoplay = "default"
-frame_progress = 0.862048
+frame_progress = 0.908058
 
 [node name="Sword" type="Sprite2D" parent="."]
-position = Vector2(119, 13)
-scale = Vector2(0.0320151, 0.0307292)
-texture = ExtResource("2_kb4bu")
+position = Vector2(92, 0)
+scale = Vector2(0.516, 0.5)
+texture = ExtResource("4_fdb6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.25, 2.4375)
@@ -120,10 +120,10 @@ wait_time = 5.0
 autostart = true
 
 [node name="BeamMarker" type="Marker2D" parent="."]
-position = Vector2(61, 11)
+position = Vector2(99, -11)
 
 [node name="SwordLight" type="PointLight2D" parent="."]
-position = Vector2(128, 9)
+position = Vector2(102, -13)
 rotation = 2.95833
 scale = Vector2(-2.57586, -1.56624)
 color = Color(0.85, 1, 0, 1)
