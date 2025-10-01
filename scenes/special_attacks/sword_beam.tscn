@@ -1,25 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://d276dlns0t06y"]
 
 [ext_resource type="Script" uid="uid://bf35r0bxg26i0" path="res://scenes/special_attacks/sword_beam.gd" id="1_4wmux"]
-[ext_resource type="Texture2D" uid="uid://bbsp3uxw1js7b" path="res://images/sword_beam.png" id="1_bk8qp"]
+[ext_resource type="Texture2D" uid="uid://t26glc8i1ft8" path="res://images/sword_beam.png" id="2_6prjc"]
 [ext_resource type="AudioStream" uid="uid://dh8gvlfd62oqf" path="res://audio/sfx/sword-schwing-40520.mp3" id="3_5w6kd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wmux"]
-size = Vector2(155.25, 222.5)
+size = Vector2(24.9063, 22)
 
 [node name="SwordBeam" type="Area2D"]
-scale = Vector2(0.2, 0.2)
 collision_layer = 16
 collision_mask = 22
 script = ExtResource("1_4wmux")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7, -7)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_bk8qp")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6prjc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(112.375, -76.25)
+position = Vector2(28.5469, 1.19209e-07)
 shape = SubResource("RectangleShape2D_4wmux")
 
 [node name="RemoveLaserTimer" type="Timer" parent="."]

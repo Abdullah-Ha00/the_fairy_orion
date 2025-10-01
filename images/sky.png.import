@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh4273ho65gtt"
-path="res://.godot/imported/black_orb.png-3645ac53fceb6d76aa52c94b965615b5.ctex"
+uid="uid://db1wk1vkx7g5q"
+path="res://.godot/imported/sky.png-08ac01b276b8d7ae698a9aae0f1a275b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/black_orb.png"
-dest_files=["res://.godot/imported/black_orb.png-3645ac53fceb6d76aa52c94b965615b5.ctex"]
+source_file="res://images/sky.png"
+dest_files=["res://.godot/imported/sky.png-08ac01b276b8d7ae698a9aae0f1a275b.ctex"]
 
 [params]
 

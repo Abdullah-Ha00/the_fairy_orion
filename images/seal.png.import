@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be1bojr6u0u2e"
-path="res://.godot/imported/fairy_boy.png-a3238b40b3a7862b5efdb7a0f839d9a2.ctex"
+uid="uid://c8k81vhp72dhu"
+path="res://.godot/imported/seal.png-70d59d2aef03a6e293185ce8c254e6bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/fairy_boy.png"
-dest_files=["res://.godot/imported/fairy_boy.png-a3238b40b3a7862b5efdb7a0f839d9a2.ctex"]
+source_file="res://images/seal.png"
+dest_files=["res://.godot/imported/seal.png-70d59d2aef03a6e293185ce8c254e6bd.ctex"]
 
 [params]
 

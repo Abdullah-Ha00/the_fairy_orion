@@ -11,11 +11,13 @@ var fence_stopped:bool = false
 var high_score:int = ScoreManager.load_score()
 
 
+
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalStats.high_score = high_score
-
+	
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		pause_game()
@@ -102,6 +104,7 @@ func check_bodies_health():
 		if body.health <=0:
 			GlobalStats.is_game_finished = true
 			remove_body(body)
+			remove_seal(body)
 			get_score()
 			await get_tree().create_timer(0.1).timeout
 			display_game_result()
@@ -109,6 +112,7 @@ func check_bodies_health():
 func remove_body(body):
 	GlobalStats.dead_body = body
 	body.queue_free()
+	
 	
 
 func check_game_phase():
@@ -143,6 +147,10 @@ func  pause_game():
 	var pause_menu = pause_scene.instantiate()
 	self.add_child(pause_menu)
 
+func remove_seal(body):
+	var dead_body_script = body.get_script()
+	if dead_body_script == $Parrot.get_script() or dead_body_script == $Monster.get_script():
+		$Seal.queue_free()
 
 	
 

@@ -1,15 +1,13 @@
-[gd_scene load_steps=27 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=24 format=4 uid="uid://d4c0adjb3688m"]
 
-[ext_resource type="Texture2D" uid="uid://wqf7ae6sw0af" path="res://images/world.png" id="1_3rhlx"]
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
+[ext_resource type="Texture2D" uid="uid://db1wk1vkx7g5q" path="res://images/sky.png" id="2_m114p"]
 [ext_resource type="PackedScene" uid="uid://cfkkjss0a1bc5" path="res://scenes/monster/monster.tscn" id="2_vadfg"]
-[ext_resource type="Texture2D" uid="uid://cvowx3jkjgloi" path="res://images/shooting_star.png" id="3_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://dxt6dvahu0ip6" path="res://scenes/player/fairy_boy.tscn" id="3_l1hd3"]
 [ext_resource type="Texture2D" uid="uid://bo2w7wucxrnst" path="res://images/star.png" id="4_gb53w"]
+[ext_resource type="Texture2D" uid="uid://bx25ncgydkmoq" path="res://images/shooting_star.png" id="4_m114p"]
 [ext_resource type="PackedScene" uid="uid://cghpnqrvmfvrq" path="res://scenes/objects/fence.tscn" id="5_l1hd3"]
 [ext_resource type="PackedScene" uid="uid://bkd1il7gun27t" path="res://scenes/parrot/parrot.tscn" id="6_adcqc"]
-[ext_resource type="Texture2D" uid="uid://dabmrgnaub2en" path="res://images/clouds.png" id="7_bq33v"]
-[ext_resource type="Script" uid="uid://bh18gwu5grctn" path="res://scenes/world/tile_map_layer.gd" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://hnh8mnniyyal" path="res://scenes/dialogues/dialogues.tscn" id="12_dlabj"]
 [ext_resource type="Script" uid="uid://codw6x8lhl4re" path="res://scenes/world/audio.gd" id="12_umvgx"]
 [ext_resource type="AudioStream" uid="uid://ccckcfblptrlp" path="res://audio/music/17 - Decisive Battle 2 - The Calamity.mp3" id="13_srmg5"]
@@ -17,7 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 [ext_resource type="AudioStream" uid="uid://biv5lh7da1k13" path="res://audio/sfx/electric-discharge-386160.mp3" id="16_m114p"]
 [ext_resource type="AudioStream" uid="uid://s5oxl3gmdyb3" path="res://audio/sfx/electrical-current-outdoor-electric-box-102763.mp3" id="17_71ii3"]
-[ext_resource type="Texture2D" uid="uid://57l0c6m44ryj" path="res://images/cloud.png" id="18_bt7bg"]
+[ext_resource type="Texture2D" uid="uid://c8k81vhp72dhu" path="res://images/seal.png" id="17_bt7bg"]
+[ext_resource type="Texture2D" uid="uid://bfub181wrsmiu" path="res://images/cloud.png" id="18_bt7bg"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
 offsets = PackedFloat32Array(0.109091, 0.227273, 0.236364, 0.318182, 0.345455, 0.763636, 1)
@@ -43,37 +42,28 @@ gravity = Vector3(100, 100, 0)
 scale_min = 0.1
 scale_max = 0.1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bq33v"]
-texture = ExtResource("7_bq33v")
-texture_region_size = Vector2i(300, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-127.106, 6.27686, -74.5, -22, -7.5, -61, 44.5, -61, 72.5, -27, 109.5, -20, 142.611, 23.0303, 147.925, 58.4615, 114.5, 88, -85.5, 80, -100.5, 79)
-
-[sub_resource type="TileSet" id="TileSet_1yooq"]
-tile_size = Vector2i(200, 140)
-physics_layer_0/collision_layer = 8
-physics_layer_0/collision_mask = 3
-sources/14 = SubResource("TileSetAtlasSource_bq33v")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt7bg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m114p"]
 texture = ExtResource("18_bt7bg")
-texture_region_size = Vector2i(300, 200)
+texture_region_size = Vector2i(200, 150)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -18.5, 4.5, -18.5, 5, -13, -12.5, -11.5, -11.5, -3, -35, -4.5, -34.5, 0.5, -40, 4, -40, 9.5, -50, 11.5, -52.5, 32.5, -45.5, 35, -43, 43, 83.5, 44, 80.5, 38.5, 92, 34.5, 91, 16.5, 84, 15, 84, 5.5, 78.5, 5.5, 77, -2.5, 55, -2.5, 50, -9, 40, -10)
 
-[sub_resource type="TileSet" id="TileSet_wbwoo"]
-tile_size = Vector2i(19, 16)
+[sub_resource type="TileSet" id="TileSet_71ii3"]
+tile_size = Vector2i(52, 60)
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 3
-sources/0 = SubResource("TileSetAtlasSource_bt7bg")
+sources/0 = SubResource("TileSetAtlasSource_m114p")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_vadfg")
 
 [node name="WorldImg" type="Sprite2D" parent="."]
-modulate = Color(1, 0.92, 0.92, 1)
-position = Vector2(1847, 1042)
-scale = Vector2(1.89115, 2.3098)
-texture = ExtResource("1_3rhlx")
+modulate = Color(0.337255, 0, 0.980392, 1)
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1070.5, 510.255)
+scale = Vector2(9.23047, 4.43949)
+texture = ExtResource("2_m114p")
 
 [node name="Stars" type="Node2D" parent="."]
 
@@ -242,28 +232,27 @@ metadata/_edit_group_ = true
 position = Vector2(33, 304)
 emitting = false
 amount = 30
-texture = ExtResource("3_j2gmx")
+texture = ExtResource("4_m114p")
 lifetime = 10.0
 process_material = SubResource("ParticleProcessMaterial_bq33v")
 
 [node name="Fence" parent="." instance=ExtResource("5_l1hd3")]
-position = Vector2(876, 552)
+position = Vector2(880, 533)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-texture_repeat = 2
-position = Vector2(1966, 886)
-scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AADs//P/DgAAAAAAAADt//P/DgAAAAAAAADu//P/DgAAAAAAAADv//P/DgAAAAAAAADw//P/DgAAAAAAAADx//P/DgAAAAAAAADy//P/DgAAAAAAAADz//P/DgAAAAAAAAD0//P/DgAAAAAAAAD1//P/DgAAAAAAAAD2//P/DgAAAAAAAAD3//P/DgAAAAAAAAD4//P/DgAAAAAAAAD5//P/DgAAAAAAAAD6//P/DgAAAAAAAAD7//P/DgAAAAAAAAD8//P/DgAAAAAAAAD9//P/DgAAAAAAAAD+//P/DgAAAAAAAAD///P/DgAAAAAAAAAAAPP/DgAAAAAAAAD///T/DgAAAAAAAAD///X/DgAAAAAAAAD///b/DgAAAAAAAAD///f/DgAAAAAAAAD///j/DgAAAAAAAAD///n/DgAAAAAAAAD///r/DgAAAAAAAAD///v/DgAAAAAAAAD///z/DgAAAAAAAAD///3/DgAAAAAAAAD///7/DgAAAAAAAAD/////DgAAAAAAAAD//wAADgAAAAAAAAD//wEADgAAAAAAAAD//wIADgAAAAAAAAD//wMADgAAAAAAAADs/wIADgAAAAAAAADt/wIADgAAAAAAAADu/wIADgAAAAAAAADv/wIADgAAAAAAAADw/wIADgAAAAAAAADx/wIADgAAAAAAAADy/wIADgAAAAAAAADz/wIADgAAAAAAAAD0/wIADgAAAAAAAAD1/wIADgAAAAAAAAD2/wIADgAAAAAAAAD3/wIADgAAAAAAAAD4/wIADgAAAAAAAAD5/wIADgAAAAAAAAD6/wIADgAAAAAAAAD7/wIADgAAAAAAAAD8/wIADgAAAAAAAAD9/wIADgAAAAAAAAD+/wIADgAAAAAAAADs//T/DgAAAAAAAADs//X/DgAAAAAAAADs//b/DgAAAAAAAADs//f/DgAAAAAAAADs//j/DgAAAAAAAADs//n/DgAAAAAAAADs//r/DgAAAAAAAADs//v/DgAAAAAAAADs//z/DgAAAAAAAADs//3/DgAAAAAAAADs//7/DgAAAAAAAADs/wAADgAAAAAAAADs/wEADgAAAAAAAADs////DgAAAAAAAAA=")
-tile_set = SubResource("TileSet_1yooq")
-script = ExtResource("9_1yooq")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
-position = Vector2(-3, 146)
-tile_map_data = PackedByteArray("AAAcABUAAAAAAAAAAAAeAB4AAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_wbwoo")
+[node name="Clouds" type="TileMapLayer" parent="."]
+texture_filter = 1
+texture_repeat = 1
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAjAAMAAAAAAAAAAAAjAAQAAAAAAAAAAAAjAAUAAAAAAAAAAAAjAAYAAAAAAAAAAAAjAAcAAAAAAAAAAAAjAAgAAAAAAAAAAAAjAAkAAAAAAAAAAAAjAAoAAAAAAAAAAAAjAAsAAAAAAAAAAAAjAAwAAAAAAAAAAAAjAA0AAAAAAAAAAAAjAA4AAAAAAAAAAAAjAA8AAAAAAAAAAAAjABAAAAAAAAAAAAAjABEAAAAAAAAAAAAhABEAAAAAAAAAAAAeABEAAAAAAAAAAAAcABEAAAAAAAAAAAAaABEAAAAAAAAAAAAYABEAAAAAAAAAAAAWABEAAAAAAAAAAAAUABEAAAAAAAAAAAASABEAAAAAAAAAAAAQABEAAAAAAAAAAAAOABEAAAAAAAAAAAAMABEAAAAAAAAAAAAKABEAAAAAAAAAAAAIABEAAAAAAAAAAAAGABEAAAAAAAAAAAAEABEAAAAAAAAAAAACABEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_71ii3")
 
 [node name="Fairy" parent="." instance=ExtResource("3_l1hd3")]
-position = Vector2(-95, 328)
+position = Vector2(-116, 323)
+scale = Vector2(0.8, 0.8)
+
+[node name="Seal" type="Sprite2D" parent="."]
+position = Vector2(1857, 132)
+scale = Vector2(0.826, 0.826)
+texture = ExtResource("17_bt7bg")
 
 [node name="Parrot" parent="." instance=ExtResource("6_adcqc")]
 position = Vector2(958, 15)

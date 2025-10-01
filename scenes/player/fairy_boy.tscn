@@ -1,18 +1,30 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxt6dvahu0ip6"]
+[gd_scene load_steps=14 format=3 uid="uid://dxt6dvahu0ip6"]
 
 [ext_resource type="Script" uid="uid://bh706o0odwr57" path="res://scenes/player/fairy_boy.gd" id="1_050w0"]
-[ext_resource type="Texture2D" uid="uid://be1bojr6u0u2e" path="res://images/fairy_boy.png" id="1_bwhf3"]
-[ext_resource type="Texture2D" uid="uid://bij86fxrrxrbm" path="res://images/sword.png" id="2_kb4bu"]
+[ext_resource type="Texture2D" uid="uid://c30tmbsxpjufv" path="res://images/fairy.png" id="2_40v30"]
+[ext_resource type="Texture2D" uid="uid://did2o657yhgmi" path="res://images/fairy_2.png" id="3_fdb6c"]
+[ext_resource type="Texture2D" uid="uid://bwmdn4we6ljsc" path="res://images/sword.png" id="4_fdb6c"]
 [ext_resource type="Texture2D" uid="uid://djp6ynsc3t00t" path="res://images/sword_light.png" id="6_7yxve"]
 [ext_resource type="Script" uid="uid://cr0kegbv4gxph" path="res://scenes/player/rich_text_label.gd" id="6_40v30"]
 [ext_resource type="AudioStream" uid="uid://sba4ki0f1j4p" path="res://audio/sfx/sound-effect-twinklesparkle-115095.mp3" id="6_buy15"]
 [ext_resource type="AudioStream" uid="uid://cxxgp5pghf6pd" path="res://audio/sfx/sparkling_star_02-99659.mp3" id="7_daq66"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5v8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_40v30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fdb6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_050w0"]
 size = Vector2(143.5, 164.875)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rshpe"]
-polygon = PackedVector2Array(1, -2, -2, -33, -21, -51, -51, -47, -63, -40, -70, -44, -74, -38, -77, -29, -78, -12, -74, -1, -86, -15, -107, -24, -106, -5, -102, 14, -79, 35, -104, 43, -105, 76, -96, 97, -83, 109, -67, 125, -58, 125, -38, 119, -31, 122, -12, 122, -16, 118, -26, 109, -27, 90, -14, 50, -27, 32, -12, 38, -2, 28)
 
 [sub_resource type="Animation" id="Animation_40v30"]
 length = 0.001
@@ -79,14 +91,16 @@ _data = {
 collision_mask = 63
 script = ExtResource("1_050w0")
 
-[node name="FairyImg" type="Sprite2D" parent="."]
-scale = Vector2(0.172852, 0.190918)
-texture = ExtResource("1_bwhf3")
+[node name="FairyImg" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_v5v8c")
+autoplay = "default"
+frame_progress = 0.908058
 
 [node name="Sword" type="Sprite2D" parent="."]
-position = Vector2(47.5001, 23.75)
-scale = Vector2(0.0320151, 0.0307292)
-texture = ExtResource("2_kb4bu")
+position = Vector2(92, 0)
+scale = Vector2(0.516, 0.5)
+texture = ExtResource("4_fdb6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.25, 2.4375)
@@ -106,20 +120,16 @@ wait_time = 5.0
 autostart = true
 
 [node name="BeamMarker" type="Marker2D" parent="."]
-position = Vector2(71, 2)
+position = Vector2(99, -11)
 
 [node name="SwordLight" type="PointLight2D" parent="."]
-position = Vector2(56, 16)
+position = Vector2(102, -13)
 rotation = 2.95833
 scale = Vector2(-2.57586, -1.56624)
 color = Color(0.85, 1, 0, 1)
 energy = 16.0
 texture = ExtResource("6_7yxve")
 texture_scale = 0.15
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(42, -37)
-occluder = SubResource("OccluderPolygon2D_rshpe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

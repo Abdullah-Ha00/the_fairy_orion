@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8el5sfk1skn8"
-path="res://.godot/imported/cloud_tiles.png-7a0ee4da8a6452f0cb462c255d350388.ctex"
+uid="uid://7bt1obpd6jci"
+path="res://.godot/imported/parrot_2.png-086aa738ba03b72a951d11e3cccc6418.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/cloud_tiles.png"
-dest_files=["res://.godot/imported/cloud_tiles.png-7a0ee4da8a6452f0cb462c255d350388.ctex"]
+source_file="res://images/parrot_2.png"
+dest_files=["res://.godot/imported/parrot_2.png-086aa738ba03b72a951d11e3cccc6418.ctex"]
 
 [params]
 

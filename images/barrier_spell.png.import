@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dehvq5wsgtxoi"
-path="res://.godot/imported/shield.png-d983c5b1a0484ccffd631bf4fa580ea0.ctex"
+uid="uid://doib0ty5qee7a"
+path="res://.godot/imported/barrier_spell.png-8eee7fafeb956a9f41f8a2e327f86b6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/shield.png"
-dest_files=["res://.godot/imported/shield.png-d983c5b1a0484ccffd631bf4fa580ea0.ctex"]
+source_file="res://images/barrier_spell.png"
+dest_files=["res://.godot/imported/barrier_spell.png-8eee7fafeb956a9f41f8a2e327f86b6c.ctex"]
 
 [params]
 

@@ -1,26 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkd1il7gun27t"]
+[gd_scene load_steps=9 format=3 uid="uid://bkd1il7gun27t"]
 
 [ext_resource type="Script" uid="uid://2a2dwm20a5ch" path="res://scenes/parrot/parrot.gd" id="1_h4ksm"]
-[ext_resource type="Texture2D" uid="uid://nrnq8gw6jctg" path="res://images/parrot.png" id="1_oysvk"]
+[ext_resource type="Texture2D" uid="uid://c7b06emn4wqt4" path="res://images/parrot.png" id="2_r8s7u"]
 [ext_resource type="AudioStream" uid="uid://ckh0nfi1xhf5i" path="res://audio/sfx/macaw-sound-382721.mp3" id="3_3mqut"]
 [ext_resource type="Script" uid="uid://cxulcgnbpnd8b" path="res://scenes/parrot/audio.gd" id="3_ajnbt"]
+[ext_resource type="Texture2D" uid="uid://7bt1obpd6jci" path="res://images/parrot_2.png" id="3_v0cip"]
 [ext_resource type="AudioStream" uid="uid://bwr220q2dutop" path="res://audio/sfx/tick-sound-effect-1-336779.mp3" id="5_r8s7u"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hmjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r8s7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v0cip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oysvk"]
-size = Vector2(133, 141)
+size = Vector2(134, 124)
 
 [node name="Parrot" type="CharacterBody2D" groups=["Body"]]
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_h4ksm")
 
-[node name="ParrotImg" type="Sprite2D" parent="."]
+[node name="ParrotImg" type="AnimatedSprite2D" parent="."]
 position = Vector2(812, 74)
-scale = Vector2(0.160156, 0.111654)
-texture = ExtResource("1_oysvk")
+scale = Vector2(0.715, 0.5)
+sprite_frames = SubResource("SpriteFrames_5hmjh")
+autoplay = "default"
+frame_progress = 0.245824
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(813.5, 78.5)
+position = Vector2(816, 77)
 shape = SubResource("RectangleShape2D_oysvk")
 
 [node name="Timers" type="Node" parent="."]
