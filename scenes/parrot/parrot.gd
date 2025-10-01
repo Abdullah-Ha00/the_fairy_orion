@@ -14,7 +14,7 @@ var health:int = _health:
 @onready var high_tick_wait_time:float = seconds_left* 3/4
 
 func _ready() -> void:
-	position = Vector2(940,66)
+	position = Vector2(1020,50)
 	initialize_high_tick_timer()
 	initialize_parrot_node()
 	set_up_stats_bars()
