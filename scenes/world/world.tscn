@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=24 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
 [ext_resource type="Texture2D" uid="uid://db1wk1vkx7g5q" path="res://images/sky.png" id="2_m114p"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 [ext_resource type="AudioStream" uid="uid://biv5lh7da1k13" path="res://audio/sfx/electric-discharge-386160.mp3" id="16_m114p"]
 [ext_resource type="AudioStream" uid="uid://s5oxl3gmdyb3" path="res://audio/sfx/electrical-current-outdoor-electric-box-102763.mp3" id="17_71ii3"]
+[ext_resource type="Texture2D" uid="uid://c8k81vhp72dhu" path="res://images/seal.png" id="17_bt7bg"]
 [ext_resource type="Texture2D" uid="uid://bfub181wrsmiu" path="res://images/cloud.png" id="18_bt7bg"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
@@ -247,6 +248,11 @@ tile_set = SubResource("TileSet_71ii3")
 [node name="Fairy" parent="." instance=ExtResource("3_l1hd3")]
 position = Vector2(-116, 323)
 scale = Vector2(0.8, 0.8)
+
+[node name="Seal" type="Sprite2D" parent="."]
+position = Vector2(1857, 132)
+scale = Vector2(0.826, 0.826)
+texture = ExtResource("17_bt7bg")
 
 [node name="Parrot" parent="." instance=ExtResource("6_adcqc")]
 position = Vector2(958, 15)
