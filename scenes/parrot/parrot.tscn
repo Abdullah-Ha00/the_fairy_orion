@@ -22,7 +22,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oysvk"]
-size = Vector2(134, 124)
+size = Vector2(89, 76)
 
 [node name="Parrot" type="CharacterBody2D" groups=["Body"]]
 collision_layer = 4
@@ -31,13 +31,13 @@ script = ExtResource("1_h4ksm")
 
 [node name="ParrotImg" type="AnimatedSprite2D" parent="."]
 position = Vector2(812, 74)
-scale = Vector2(0.715, 0.5)
+scale = Vector2(0.5, 0.35)
 sprite_frames = SubResource("SpriteFrames_5hmjh")
 autoplay = "default"
 frame_progress = 0.245824
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(816, 77)
+position = Vector2(816.5, 74)
 shape = SubResource("RectangleShape2D_oysvk")
 
 [node name="Timers" type="Node" parent="."]

@@ -257,10 +257,10 @@ texture = ExtResource("17_bt7bg")
 [node name="Parrot" parent="." instance=ExtResource("6_adcqc")]
 position = Vector2(958, 15)
 
+[node name="SpecialAttacks" type="Node2D" parent="."]
+
 [node name="Monster" parent="." instance=ExtResource("2_vadfg")]
 position = Vector2(92, 14)
-
-[node name="SpecialAttacks" type="Node2D" parent="."]
 
 [node name="Dialogues" parent="." instance=ExtResource("12_dlabj")]
 

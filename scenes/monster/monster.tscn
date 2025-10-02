@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfkkjss0a1bc5"]
+[gd_scene load_steps=8 format=3 uid="uid://cfkkjss0a1bc5"]
 
-[ext_resource type="Texture2D" uid="uid://dgfdqeul7fka4" path="res://images/monster.png" id="1_i44lo"]
 [ext_resource type="Script" uid="uid://diq8a6q06fip4" path="res://scenes/monster/monster.gd" id="1_vd1hn"]
-[ext_resource type="Texture2D" uid="uid://c0w3r0yy77p00" path="res://images/magical_rod.png" id="2_hyvb2"]
+[ext_resource type="Texture2D" uid="uid://bpkucdx4feiek" path="res://images/monster_test.png" id="2_c6twl"]
 [ext_resource type="Texture2D" uid="uid://dr73lggkj03gu" path="res://images/purple.png" id="5_18f66"]
 [ext_resource type="AudioStream" uid="uid://dn1qi5f7cmerx" path="res://audio/sfx/monster-growl-390285.mp3" id="5_jpvs1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6twl"]
-size = Vector2(266, 268)
 
 [sub_resource type="Animation" id="Animation_jpvs1"]
 length = 0.001
@@ -77,21 +73,12 @@ collision_mask = 63
 script = ExtResource("1_vd1hn")
 
 [node name="MonsterImg" type="Sprite2D" parent="."]
-position = Vector2(-2, 25)
-scale = Vector2(0.31559, 0.343306)
-skew = 0.0296706
-texture = ExtResource("1_i44lo")
-flip_h = true
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_c6twl")
 
-[node name="Rod" type="Sprite2D" parent="."]
-position = Vector2(-104, 19)
-scale = Vector2(0.135051, 0.133442)
-skew = 0.0296706
-texture = ExtResource("2_hyvb2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11, 46)
-shape = SubResource("RectangleShape2D_c6twl")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-4, -1.33333)
+polygon = PackedVector2Array(-1.33333, -146.667, -10.6667, -149.333, -10.6667, -145.333, -18.6667, -144, -18.6667, -138.667, -22.6667, -138.667, -25.3333, -134.667, -28, -130.667, -30.6667, -126.667, -36, -124, -40, -120, -48, -118.667, -48, -110.667, -48, -101.333, -53.3333, -100, -57.3333, -92, -61.3333, -77.3333, -66.6667, -49.3333, -68, 18.6667, -62.6667, 22.6667, -64, 42.6667, -60, 44, -58.6667, 57.3333, -54.6667, 66.6667, -49.3333, 66.6667, -49.3333, 77.3333, -42.6667, 78.6667, -45.3333, 86.6667, -38.6667, 88, -38.6667, 94.6667, -30.6667, 96, -29.3333, 101.333, -25.3333, 101.333, -25.3333, 106.667, -20, 108, -18.6667, 112, -10.6667, 109.333, -10.6667, 114.667, 17.3333, 114.667, 16, 110.667, 17.3333, 106.667, 26.6667, 108, 28, 102.667, 30.6667, 101.333, 32, 97.3333, 36, 97.3333, 38.6667, 89.3333, 41.3333, 89.3333, 42.6667, 84, 45.3333, 85.3333, 46.6667, 77.3333, 50.6667, 78.6667, 52, 70.6667, 58.6667, 69.3333, 56, 61.3333, 68, 60, 62.6667, 45.3333, 66.6667, 41.3333, 70.6667, 18.6667, 74.6667, 18.6667, 73.3333, -52, 68, -52, 68, -76, 61.3333, -76, 62.6667, -88, 61.3333, -90.6667, 57.3333, -90.6667, 57.3333, -98.6667, 53.3333, -100, 53.3333, -108, 48, -110.667, 48, -118.667, 44, -118.667, 42.6667, -122.667, 40, -124, 38.6667, -128, 34.6667, -128, 33.3333, -132, 29.3333, -132, 28, -138.667, 20, -138.667, 20, -141.333, 18.6667, -146.667)
 
 [node name="Timers" type="Node" parent="."]
 
@@ -100,15 +87,16 @@ shape = SubResource("RectangleShape2D_c6twl")
 [node name="ChangeDirection" type="Timer" parent="Timers"]
 
 [node name="OrbMarker" type="Marker2D" parent="."]
-position = Vector2(-101.333, -33.3333)
+position = Vector2(-12, 3.8147e-06)
 
 [node name="OrbLight" type="PointLight2D" parent="."]
-position = Vector2(-103, -32)
+position = Vector2(-12, -1.33333)
 scale = Vector2(0.0497664, -0.0641936)
 color = Color(0.99, 0.8712, 0.87318, 1)
 energy = 100.0
 texture = ExtResource("5_18f66")
 texture_scale = 2.86
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -116,6 +104,7 @@ libraries = {
 }
 
 [node name="UI" type="Node2D" parent="."]
+position = Vector2(-12, 0)
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
 modulate = Color(1, 0, 0, 1)
