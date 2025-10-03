@@ -10,13 +10,10 @@ var second_phase_processed:bool = false
 var fence_stopped:bool = false
 var high_score:int = ScoreManager.load_score()
 
-
-
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalStats.high_score = high_score
-	
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -27,7 +24,6 @@ func _process(_delta: float) -> void:
 	check_bodies_health()
 	check_game_phase()
 	check_body_state()
-	
 
 func _on_fence_player_shocked() -> void:
 	freeze_fairy()
@@ -92,6 +88,7 @@ func freeze_fairy():
 	$Fairy/Timers/Shock.start()
 
 func increase_stats():
+	$Monster/MonsterImg.speed_scale = 2
 	$Monster.speed *= 2
 	$Fence/MoveLeft.start()
 
