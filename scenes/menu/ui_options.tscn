@@ -1,15 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://i2rnkfn8v0w1"]
+[gd_scene load_steps=11 format=3 uid="uid://i2rnkfn8v0w1"]
 
 [ext_resource type="Script" uid="uid://dblrdoj5r1nwt" path="res://scenes/menu/ui_options.gd" id="1_barar"]
 [ext_resource type="Texture2D" uid="uid://df0o6fucwcg1a" path="res://images/slider_grabber.png" id="2_08pky"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scd2y"]
-bg_color = Color(0.6, 0.745098, 0.886275, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.8, 0.866667, 0.309804, 1)
+bg_color = Color(0.47451, 0, 0.87451, 1)
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fxfdo"]
 font_size = 28
@@ -29,13 +28,21 @@ bg_color = Color(0.980392, 0.980392, 0, 1)
 bg_color = Color(0.980392, 0.980392, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_barar"]
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 0.0745098, 1)
+bg_color = Color(0.0352941, 0.376471, 0.764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.972549, 0.243137, 1)
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kab1w"]
+bg_color = Color(0.0352941, 0.376471, 0.764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.972549, 0.243137, 1)
 
 [node name="UIOptions" type="Node2D"]
 script = ExtResource("1_barar")
@@ -109,6 +116,7 @@ offset_right = 760.0
 offset_bottom = 518.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_barar")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kab1w")
 text = "Save Settings
 "
 

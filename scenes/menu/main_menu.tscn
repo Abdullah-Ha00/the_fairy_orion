@@ -1,43 +1,111 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4ld1dqn8nvs5"]
+[gd_scene load_steps=14 format=3 uid="uid://d4ld1dqn8nvs5"]
 
 [ext_resource type="Script" uid="uid://sbvhb1j8rcq2" path="res://scenes/menu/main_menu.gd" id="1_247la"]
 [ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="1_nl8w3"]
 [ext_resource type="Script" uid="uid://dnfagdgfwr3rv" path="res://scenes/menu/select_arrow_main.gd" id="2_3rkf3"]
-[ext_resource type="Texture2D" uid="uid://bqimenlaah8xq" path="res://images/menu_img.jpg" id="2_kiqgm"]
+[ext_resource type="Texture2D" uid="uid://c8jitllysa4sq" path="res://images/background.png" id="2_isoef"]
 [ext_resource type="Texture2D" uid="uid://bb7k2nuk506wy" path="res://images/menu_decorate.png" id="5_hj162"]
 [ext_resource type="AudioStream" uid="uid://d3q318mvciyy6" path="res://audio/music/lost-fairy-land-109017.mp3" id="6_xn6kt"]
 [ext_resource type="AudioStream" uid="uid://crxad70sd1cdl" path="res://audio/sfx/accepter-1-394922.mp3" id="7_isoef"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kiqgm"]
-bg_color = Color(0.6, 0.745098, 0.886275, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.8, 0.866667, 0.309804, 1)
+bg_color = Color(0.47451, 0, 0.87451, 1)
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_247la"]
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 0.0745098, 1)
+bg_color = Color(0.0352941, 0.376471, 0.764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.972549, 0.243137, 1)
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isoef"]
+bg_color = Color(0.0352941, 0.376471, 0.764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.972549, 0.243137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k4da"]
+bg_color = Color(0.533333, 0, 0.121569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.129412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgo02"]
+bg_color = Color(0.533333, 0, 0.121569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.129412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vovv2"]
+bg_color = Color(0.0352941, 0.376471, 0.764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.972549, 0.243137, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_247la")
 
 [node name="MenuImg" type="Sprite2D" parent="."]
-position = Vector2(1511, 822.625)
-scale = Vector2(1.59688, 1.55264)
-texture = ExtResource("2_kiqgm")
+position = Vector2(903, 326)
+scale = Vector2(2.03, 1.55264)
+texture = ExtResource("2_isoef")
 metadata/_edit_lock_ = true
 
+[node name="FairySprites" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(1536, 781)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite2" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(1545, 440)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite3" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(520, 124)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite4" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(1375, 133)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite5" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(265, 516)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite6" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(244, 805)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite7" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(275, 282)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
 [node name="HighScoreLabel" type="Label" parent="."]
-offset_left = 744.0
+offset_left = 781.0
 offset_top = 811.0
-offset_right = 1015.0
+offset_right = 1052.0
 offset_bottom = 880.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 0, 1)
@@ -56,7 +124,6 @@ offset_bottom = 193.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.811765, 0.988235, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "The Fairy Orion 
 1.0"
@@ -64,9 +131,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HighScoreText" type="Label" parent="."]
-offset_left = 1065.0
+offset_left = 1091.0
 offset_top = 809.0
-offset_right = 1177.0
+offset_right = 1203.0
 offset_bottom = 878.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
@@ -96,6 +163,7 @@ offset_right = 1116.0
 offset_bottom = 366.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+theme_override_styles/hover = SubResource("StyleBoxFlat_isoef")
 text = "Start Game
 "
 
@@ -105,7 +173,8 @@ offset_top = 391.0
 offset_right = 1116.0
 offset_bottom = 466.0
 theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1k4da")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qgo02")
 text = "Quit Game
 "
 
@@ -117,6 +186,7 @@ offset_right = 1116.0
 offset_bottom = 566.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_247la")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vovv2")
 text = "Options
 "
 
@@ -134,43 +204,6 @@ scale = Vector2(0.15, 0.15)
 mouse_filter = 2
 texture = ExtResource("1_nl8w3")
 script = ExtResource("2_3rkf3")
-
-[node name="FairySprites" type="Node2D" parent="."]
-
-[node name="Sprite" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(1536, 781)
-scale = Vector2(0.242188, 0.163574)
-texture = ExtResource("5_hj162")
-
-[node name="Sprite2" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(1545, 440)
-scale = Vector2(0.242188, 0.163574)
-texture = ExtResource("5_hj162")
-
-[node name="Sprite3" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(520, 124)
-scale = Vector2(0.242188, 0.163574)
-texture = ExtResource("5_hj162")
-
-[node name="Sprite4" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(1375, 133)
-scale = Vector2(0.242188, 0.163574)
-texture = ExtResource("5_hj162")
-
-[node name="Sprite5" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(265, 516)
-scale = Vector2(0.242188, 0.163574)
-texture = ExtResource("5_hj162")
-
-[node name="Sprite6" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(244, 805)
-scale = Vector2(0.242188, 0.163574)
-texture = ExtResource("5_hj162")
-
-[node name="Sprite7" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(275, 282)
-scale = Vector2(0.242188, 0.163574)
-texture = ExtResource("5_hj162")
 
 [node name="Audio" type="Node" parent="."]
 

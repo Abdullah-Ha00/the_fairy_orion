@@ -1,6 +1,7 @@
 extends Node2D
 @onready var music_level:float = linear_to_db(Settings.load_music_volume())
 @onready var sfx_level:float = linear_to_db(Settings.load_sfx_volume())
+
 func _ready() -> void:
 	await get_tree().process_frame
 	call_deferred("set_up_mouse")
@@ -10,11 +11,9 @@ func _ready() -> void:
 	initialize_audio()
 	update_button_color()
 	
-	
 func _process(_delta: float) -> void:
 	rotate_fairies()
 	check_arrow()
-	
 	
 func _on_button_pressed(button:Button):
 	match button.name:
@@ -48,7 +47,6 @@ func update_button_color():
 func rotate_fairies():
 	for fairy in get_tree().get_nodes_in_group("Fairies"):
 		fairy.rotation_degrees += 2.5
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("accept"):
