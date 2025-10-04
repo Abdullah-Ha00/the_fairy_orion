@@ -1,18 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4ld1dqn8nvs5"]
+[gd_scene load_steps=17 format=3 uid="uid://d4ld1dqn8nvs5"]
 
 [ext_resource type="Script" uid="uid://sbvhb1j8rcq2" path="res://scenes/menu/main_menu.gd" id="1_247la"]
 [ext_resource type="Texture2D" uid="uid://dwxpe8226f8pp" path="res://images/select_arrow.png" id="1_nl8w3"]
 [ext_resource type="Script" uid="uid://dnfagdgfwr3rv" path="res://scenes/menu/select_arrow_main.gd" id="2_3rkf3"]
 [ext_resource type="Texture2D" uid="uid://c8jitllysa4sq" path="res://images/background.png" id="2_isoef"]
+[ext_resource type="Texture2D" uid="uid://bwp40xn4mn2bm" path="res://images/white_cloud.png" id="4_vovv2"]
 [ext_resource type="Texture2D" uid="uid://bb7k2nuk506wy" path="res://images/menu_decorate.png" id="5_hj162"]
 [ext_resource type="AudioStream" uid="uid://d3q318mvciyy6" path="res://audio/music/lost-fairy-land-109017.mp3" id="6_xn6kt"]
 [ext_resource type="AudioStream" uid="uid://crxad70sd1cdl" path="res://audio/sfx/accepter-1-394922.mp3" id="7_isoef"]
+[ext_resource type="Texture2D" uid="uid://brrv502ehh55r" path="res://images/sun.png" id="8_qgo02"]
+[ext_resource type="Texture2D" uid="uid://ij0kgoockuot" path="res://images/test.png" id="10_1k4da"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kiqgm"]
 bg_color = Color(0.47451, 0, 0.87451, 1)
-border_width_left = 11
-border_width_top = 11
-border_width_right = 11
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_247la"]
@@ -59,46 +59,74 @@ border_color = Color(0.172549, 0.972549, 0.243137, 1)
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_247la")
 
-[node name="MenuImg" type="Sprite2D" parent="."]
+[node name="Images" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Images"]
 position = Vector2(903, 326)
 scale = Vector2(2.03, 1.55264)
 texture = ExtResource("2_isoef")
 metadata/_edit_lock_ = true
 
+[node name="Sun" type="Sprite2D" parent="Images"]
+position = Vector2(1716, 120)
+texture = ExtResource("8_qgo02")
+
+[node name="WhiteCloud" type="Sprite2D" parent="Images"]
+position = Vector2(372, 128)
+texture = ExtResource("4_vovv2")
+
+[node name="WhiteCloud2" type="Sprite2D" parent="Images"]
+position = Vector2(1499, 104)
+texture = ExtResource("4_vovv2")
+
+[node name="WhiteCloud4" type="Sprite2D" parent="Images"]
+position = Vector2(101, 137)
+texture = ExtResource("4_vovv2")
+
+[node name="Test" type="Sprite2D" parent="Images"]
+position = Vector2(1007, 410)
+scale = Vector2(1, 1.01)
+texture = ExtResource("10_1k4da")
+
 [node name="FairySprites" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(1536, 781)
+position = Vector2(1454, 646)
 scale = Vector2(0.148, 0.1)
 texture = ExtResource("5_hj162")
 
 [node name="Sprite2" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(1545, 440)
+position = Vector2(1459, 425)
 scale = Vector2(0.148, 0.1)
 texture = ExtResource("5_hj162")
 
 [node name="Sprite3" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(520, 124)
+position = Vector2(599, 194)
 scale = Vector2(0.148, 0.1)
 texture = ExtResource("5_hj162")
 
 [node name="Sprite4" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(1375, 133)
+position = Vector2(1446, 254)
 scale = Vector2(0.148, 0.1)
 texture = ExtResource("5_hj162")
 
 [node name="Sprite5" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(265, 516)
+position = Vector2(529, 615)
 scale = Vector2(0.148, 0.1)
 texture = ExtResource("5_hj162")
 
 [node name="Sprite6" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(244, 805)
+position = Vector2(543, 879)
 scale = Vector2(0.148, 0.1)
 texture = ExtResource("5_hj162")
 
 [node name="Sprite7" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
-position = Vector2(275, 282)
+position = Vector2(556, 358)
+scale = Vector2(0.148, 0.1)
+texture = ExtResource("5_hj162")
+
+[node name="Sprite8" type="Sprite2D" parent="FairySprites" groups=["Fairies"]]
+position = Vector2(1467, 872)
 scale = Vector2(0.148, 0.1)
 texture = ExtResource("5_hj162")
 
@@ -108,9 +136,7 @@ offset_top = 811.0
 offset_right = 1052.0
 offset_bottom = 880.0
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.811765, 0.988235, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "High Score:"
 horizontal_alignment = 1
@@ -123,7 +149,7 @@ offset_right = 1175.0
 offset_bottom = 193.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.0156863, 0.258824, 1)
 theme_override_font_sizes/font_size = 50
 text = "The Fairy Orion 
 1.0"
@@ -131,13 +157,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HighScoreText" type="Label" parent="."]
-offset_left = 1091.0
+offset_left = 1060.0
 offset_top = 809.0
-offset_right = 1203.0
+offset_right = 1172.0
 offset_bottom = 878.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "100"
 horizontal_alignment = 1
@@ -146,12 +171,13 @@ vertical_alignment = 1
 [node name="MenuComponents" type="Node2D" parent="."]
 
 [node name="BackgroundMenu" type="Panel" parent="MenuComponents"]
-offset_left = 752.0
+offset_left = 757.0
 offset_top = 217.0
-offset_right = 1231.0
-offset_bottom = 768.0
+offset_right = 1217.0
+offset_bottom = 757.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kiqgm")
+metadata/_edit_lock_ = true
 
 [node name="MainButtons" type="Node2D" parent="MenuComponents"]
 unique_name_in_owner = true

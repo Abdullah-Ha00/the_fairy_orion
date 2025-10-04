@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
-	global_position = Vector2(380,182)
+	global_position = Vector2(385,182)
 	set_sliders_values()
 	
 func _on_music_slider_value_changed(value: float) -> void:
