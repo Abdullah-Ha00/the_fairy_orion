@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkd1il7gun27t"]
+[gd_scene load_steps=10 format=3 uid="uid://bkd1il7gun27t"]
 
 [ext_resource type="Script" uid="uid://2a2dwm20a5ch" path="res://scenes/parrot/parrot.gd" id="1_h4ksm"]
 [ext_resource type="Texture2D" uid="uid://c7b06emn4wqt4" path="res://images/parrot.png" id="2_r8s7u"]
 [ext_resource type="AudioStream" uid="uid://ckh0nfi1xhf5i" path="res://audio/sfx/macaw-sound-382721.mp3" id="3_3mqut"]
 [ext_resource type="Script" uid="uid://cxulcgnbpnd8b" path="res://scenes/parrot/audio.gd" id="3_ajnbt"]
 [ext_resource type="Texture2D" uid="uid://7bt1obpd6jci" path="res://images/parrot_2.png" id="3_v0cip"]
+[ext_resource type="FontFile" uid="uid://c73fwy1j4066b" path="res://fonts/PixeloidSans-Bold.ttf" id="4_5hmjh"]
 [ext_resource type="AudioStream" uid="uid://bwr220q2dutop" path="res://audio/sfx/tick-sound-effect-1-336779.mp3" id="5_r8s7u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5hmjh"]
@@ -59,16 +60,17 @@ one_shot = true
 modulate = Color(0, 0, 1, 1)
 offset_left = 734.0
 offset_top = -25.0
-offset_right = 905.0
+offset_right = 894.0
 offset_bottom = 2.0
 value = 10.0
 show_percentage = false
 
 [node name="SecondsLeft" type="RichTextLabel" parent="TimerUI"]
-offset_left = 787.0
-offset_top = -26.0
-offset_right = 870.0
-offset_bottom = -1.0
+offset_left = 771.0
+offset_top = -25.0
+offset_right = 854.0
+theme_override_fonts/normal_font = ExtResource("4_5hmjh")
+theme_override_font_sizes/normal_font_size = 19
 text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -80,15 +82,17 @@ metadata/_edit_group_ = true
 modulate = Color(1, 0, 0, 1)
 offset_left = 735.0
 offset_top = -53.0
-offset_right = 906.0
+offset_right = 895.0
 offset_bottom = -26.0
 show_percentage = false
 
 [node name="HealthNumber" type="RichTextLabel" parent="HealthUI"]
-offset_left = 745.0
+offset_left = 731.0
 offset_top = -58.0
-offset_right = 902.0
+offset_right = 888.0
 offset_bottom = -18.0
+theme_override_fonts/normal_font = ExtResource("4_5hmjh")
+theme_override_font_sizes/normal_font_size = 19
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -103,7 +107,7 @@ bus = &"SFX"
 
 [node name="TickSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_r8s7u")
-volume_db = -10.0
+volume_db = -7.0
 pitch_scale = 2.0
 bus = &"SFX"
 

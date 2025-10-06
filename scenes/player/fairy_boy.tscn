@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxt6dvahu0ip6"]
+[gd_scene load_steps=15 format=3 uid="uid://dxt6dvahu0ip6"]
 
 [ext_resource type="Script" uid="uid://bh706o0odwr57" path="res://scenes/player/fairy_boy.gd" id="1_050w0"]
 [ext_resource type="Texture2D" uid="uid://c30tmbsxpjufv" path="res://images/fairy.png" id="2_40v30"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://djp6ynsc3t00t" path="res://images/sword_light.png" id="6_7yxve"]
 [ext_resource type="Script" uid="uid://cr0kegbv4gxph" path="res://scenes/player/rich_text_label.gd" id="6_40v30"]
 [ext_resource type="AudioStream" uid="uid://sba4ki0f1j4p" path="res://audio/sfx/sound-effect-twinklesparkle-115095.mp3" id="6_buy15"]
+[ext_resource type="FontFile" uid="uid://c73fwy1j4066b" path="res://fonts/PixeloidSans-Bold.ttf" id="6_v5v8c"]
 [ext_resource type="AudioStream" uid="uid://cxxgp5pghf6pd" path="res://audio/sfx/sparkling_star_02-99659.mp3" id="7_daq66"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v5v8c"]
@@ -141,7 +142,7 @@ libraries = {
 [node name="HealthBar" type="ProgressBar" parent="UI"]
 modulate = Color(1, 0, 0, 1)
 offset_left = -84.0
-offset_top = -124.0
+offset_top = -138.0
 offset_right = 76.0
 offset_bottom = -111.0
 max_value = 800.0
@@ -150,10 +151,12 @@ show_percentage = false
 metadata/_edit_group_ = true
 
 [node name="HealthNumber" type="RichTextLabel" parent="UI"]
-offset_left = -38.0
-offset_top = -140.0
-offset_right = 43.0
-offset_bottom = -97.0
+offset_left = -82.0
+offset_top = -137.0
+offset_right = 78.0
+offset_bottom = -110.0
+theme_override_fonts/normal_font = ExtResource("6_v5v8c")
+theme_override_font_sizes/normal_font_size = 19
 text = "8200	"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -162,19 +165,21 @@ script = ExtResource("6_40v30")
 [node name="MagicBar" type="ProgressBar" parent="UI"]
 modulate = Color(0, 0, 1, 1)
 offset_left = -84.0
-offset_top = -106.0
+offset_top = -107.0
 offset_right = 76.0
-offset_bottom = -92.0
+offset_bottom = -80.0
 max_value = 800.0
 value = 50.0
 show_percentage = false
 metadata/_edit_group_ = true
 
 [node name="MagicNumber" type="RichTextLabel" parent="UI"]
-offset_left = -64.0
-offset_top = -112.0
-offset_right = 57.0
-offset_bottom = -87.0
+offset_left = -77.0
+offset_top = -109.0
+offset_right = 83.0
+offset_bottom = -82.0
+theme_override_fonts/normal_font = ExtResource("6_v5v8c")
+theme_override_font_sizes/normal_font_size = 19
 text = "700"
 horizontal_alignment = 1
 vertical_alignment = 1
