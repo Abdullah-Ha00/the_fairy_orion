@@ -104,6 +104,7 @@ bus = &"SFX"
 
 [node name="Text" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_0h1ty")
+volume_db = -7.0
 pitch_scale = 2.0
 bus = &"SFX"
 

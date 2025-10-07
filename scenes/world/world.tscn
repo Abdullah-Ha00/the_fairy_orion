@@ -272,6 +272,7 @@ script = ExtResource("12_umvgx")
 
 [node name="Main" type="AudioStreamPlayer" parent="Audio/Music"]
 stream = ExtResource("13_srmg5")
+volume_db = -7.0
 autoplay = true
 bus = &"Music"
 

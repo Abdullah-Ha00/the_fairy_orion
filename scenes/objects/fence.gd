@@ -5,7 +5,7 @@ var shock_damage:int = 5
 var x_offset:int = 50
 var x_rebound:int = 50
 var x_offset_limit:int = 340
-var x_at_limit:int = 326
+var x_at_limit:int = 330
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_shocked.emit()
