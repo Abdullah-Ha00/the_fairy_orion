@@ -1,5 +1,4 @@
 extends CharacterBody2D
-var is_ally:bool = false
 var direction:Vector2
 var speed:int = 250
 
@@ -25,5 +24,5 @@ func decrease_fairy_magic():
 	GlobalStats.fairy_node.magic -= 3
 	GlobalStats.fairy_node.update_magic_text()
 
-
-	
+func _on_remove_timeout() -> void:
+	queue_free()

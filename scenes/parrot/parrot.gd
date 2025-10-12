@@ -1,6 +1,4 @@
 extends CharacterBody2D
-var is_enemy:bool= false
-var is_ally:bool = true
 var states:Array = ["normal", "hit"]
 var current_state:String
 var current_health:int

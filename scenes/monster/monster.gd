@@ -4,8 +4,6 @@ var speed: int = 200
 var orb_cooldown:float = randi_range(1,3)
 var movement:Array = [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
 var direction:Vector2= movement[randi() % movement.size()]
-var is_enemy:bool=true
-var is_ally:bool =false
 var _health:int = 200
 var health:int = _health:
 	set(value):

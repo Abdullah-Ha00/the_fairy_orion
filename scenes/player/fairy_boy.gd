@@ -2,14 +2,11 @@ extends CharacterBody2D
 var speed:int = 300
 var is_moving:bool = true
 var can_cast_sword_beam:bool = true
-var is_enemy:bool = false
-var is_ally:bool = true
 var _health:int = 100
 var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
 		$Audio/HitSfx.play()
-		
 var _magic:int = 50
 var magic:int = _magic:
 	set(value):

@@ -5,22 +5,23 @@
 [ext_resource type="PackedScene" uid="uid://bk5byrghqgn6d" path="res://scenes/monster/bug.tscn" id="3_kcfs8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
-size = Vector2(2017.33, 273.333)
+size = Vector2(2504, 432)
 
 [node name="World" instance=ExtResource("1_bxg58")]
 
 [node name="Monster" parent="." index="9"]
-position = Vector2(1406, 214)
+position = Vector2(1720, 265)
 script = ExtResource("2_71eeo")
 
 [node name="AttackRange" type="Area2D" parent="Monster" index="8"]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/AttackRange" index="0"]
-position = Vector2(-1052.67, -22)
+position = Vector2(-1274.67, 34.6667)
 shape = SubResource("RectangleShape2D_71eeo")
 
 [node name="Bug" parent="." index="12" instance=ExtResource("3_kcfs8")]
-position = Vector2(672, 461)
+position = Vector2(968, 573)
 
 [connection signal="body_entered" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_exited"]

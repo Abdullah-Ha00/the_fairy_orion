@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dh8gvlfd62oqf" path="res://audio/sfx/sword-schwing-40520.mp3" id="3_5w6kd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wmux"]
-size = Vector2(24.9063, 22)
+size = Vector2(25.9063, 26)
 
 [node name="SwordBeam" type="Area2D"]
 collision_layer = 16
@@ -18,7 +18,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_6prjc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(28.5469, 1.19209e-07)
+position = Vector2(29.0469, 2)
 shape = SubResource("RectangleShape2D_4wmux")
 
 [node name="RemoveLaserTimer" type="Timer" parent="."]
