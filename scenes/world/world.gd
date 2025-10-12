@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 	check_bodies_health()
 	check_game_phase()
 	check_body_state()
-
+	
 func _on_fence_player_shocked() -> void:
 	freeze_fairy()
 	
