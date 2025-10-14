@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bk5byrghqgn6d"]
 
 [ext_resource type="Script" uid="uid://dhqyxempbujtu" path="res://scenes/monster/bug.gd" id="1_6u27b"]
-[ext_resource type="Texture2D" uid="uid://cu126kkijw3xh" path="res://images/bug.png" id="1_210qq"]
+[ext_resource type="Texture2D" uid="uid://ygkq6qgx3ti8" path="res://images/cursed_bug.png" id="2_6u27b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6u27b"]
 size = Vector2(30, 29)
@@ -12,7 +12,7 @@ collision_mask = 55
 script = ExtResource("1_6u27b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_210qq")
+texture = ExtResource("2_6u27b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5.5)

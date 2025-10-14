@@ -1,4 +1,5 @@
 extends Node2D
+class_name MainScene
 var sword_beam_scene:PackedScene = preload("res://scenes/special_attacks/sword_beam.tscn")
 var orb_scene:PackedScene = preload("res://scenes/special_attacks/black_orb.tscn")
 var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")

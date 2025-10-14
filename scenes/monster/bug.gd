@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var direction:Vector2
-var speed:int = 250
+var speed:int = 200
 
 func _ready() -> void:
 	pass
@@ -10,9 +10,10 @@ func  _process(delta: float) -> void:
 	collide_fairy()
 	
 func update_velocity(delta:float):
-		look_at(GlobalStats.fairy_node.position)
-		direction= (GlobalStats.fairy_node.position - position).normalized()
-		velocity = direction * speed *delta
+		if is_instance_valid(GlobalStats.fairy_node):
+			look_at(GlobalStats.fairy_node.position)
+			direction= (GlobalStats.fairy_node.position - position).normalized()
+			velocity = direction * speed *delta
 		
 func collide_fairy():
 	var collision = move_and_collide(velocity)

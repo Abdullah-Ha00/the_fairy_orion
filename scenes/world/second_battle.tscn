@@ -2,12 +2,31 @@
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
-[ext_resource type="PackedScene" uid="uid://bk5byrghqgn6d" path="res://scenes/monster/bug.tscn" id="3_kcfs8"]
+[ext_resource type="Script" uid="uid://co63rxveasp7i" path="res://scenes/world/second_battle.gd" id="2_nut8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
 size = Vector2(2504, 432)
 
 [node name="World" instance=ExtResource("1_bxg58")]
+script = ExtResource("2_nut8x")
+
+[node name="BugsSpawnPositions" type="Node2D" parent="Fence" index="5"]
+position = Vector2(-880, -533)
+
+[node name="Marker2D" type="Marker2D" parent="Fence/BugsSpawnPositions" index="0"]
+position = Vector2(892, 822)
+
+[node name="Marker2D5" type="Marker2D" parent="Fence/BugsSpawnPositions" index="1"]
+position = Vector2(968, 563)
+
+[node name="Marker2D4" type="Marker2D" parent="Fence/BugsSpawnPositions" index="2"]
+position = Vector2(898, 284)
+
+[node name="Marker2D3" type="Marker2D" parent="Fence/BugsSpawnPositions" index="3"]
+position = Vector2(930, 433)
+
+[node name="Marker2D2" type="Marker2D" parent="Fence/BugsSpawnPositions" index="4"]
+position = Vector2(939, 707)
 
 [node name="Monster" parent="." index="9"]
 position = Vector2(1720, 265)
@@ -20,8 +39,12 @@ collision_layer = 8
 position = Vector2(-1274.67, 34.6667)
 shape = SubResource("RectangleShape2D_71eeo")
 
-[node name="Bug" parent="." index="12" instance=ExtResource("3_kcfs8")]
-position = Vector2(968, 573)
+[node name="Timers" type="Node" parent="." index="12"]
+
+[node name="SummonBugs" type="Timer" parent="Timers" index="0"]
+wait_time = 5.0
+autostart = true
 
 [connection signal="body_entered" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="Timers/SummonBugs" to="." method="_on_summon_bugs_timeout"]
