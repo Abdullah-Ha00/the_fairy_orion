@@ -10,4 +10,10 @@ func _on_summon_bugs_timeout() -> void:
 
 func set_bug_random_position(bug_instance):
 	var positions:Array = $Fence/BugsSpawnPositions.get_children()
-	bug_instance.position = positions[randi() % positions.size()].global_position
+	var summon_position:Vector2 = positions[randi() % positions.size()].global_position
+	set_summon_light(summon_position)
+	bug_instance.position = summon_position
+
+func set_summon_light(pos:Vector2):
+	$SummonLight.position = pos
+	$AnimationPlayer.play("bug_summon_light")
