@@ -13,7 +13,7 @@ func check_arrow_buttons_collision(arrow:TextureRect):
 func change_color_on_hit(body:Node, color:Color):
 	if body.health>0 and is_instance_valid(body):
 		body.modulate = color
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.2).timeout
 		if is_instance_valid(body):
 			body.modulate= body.self_modulate
 

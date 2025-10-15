@@ -1,7 +1,6 @@
 extends Area2D
 var speed:int = 500
 var direction:Vector2 = Vector2.RIGHT
-var laser_damage:int = 15
 var collision_sound:String = "res://audio/sfx/explosion-36210.mp3"
 func _ready() -> void:
 	$RemoveLaserTimer.start()
@@ -17,7 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Bugs"):
 		body.queue_free()
 	else:
-		body.health-=laser_damage
+		body.health-=GlobalStats.fairy_node.beam_damage
 		body.update_health_text()
 		GlobalFunctions.change_color_on_hit(body, Color.RED)
 	queue_free()

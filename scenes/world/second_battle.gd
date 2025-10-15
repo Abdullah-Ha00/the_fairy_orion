@@ -1,7 +1,8 @@
 extends MainScene
 var magic_bug_scene:PackedScene = preload("res://scenes/monster/bug.tscn")
 var health_bug_scene: PackedScene = preload("res://scenes/monster/bug_health.tscn")
-var bug_scenes:Array = [magic_bug_scene, health_bug_scene]
+var damage_bug_scene: PackedScene = preload("res://scenes/monster/bug_damage.tscn")
+var bug_scenes:Array = [magic_bug_scene, health_bug_scene, damage_bug_scene]
 
 func _on_summon_bugs_timeout() -> void:
 	var bug_instance = bug_scenes[randi() % bug_scenes.size()].instantiate()

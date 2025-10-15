@@ -25,6 +25,7 @@ func collide_fairy():
 func decrease_fairy_stats():
 	GlobalStats.fairy_node.magic -= 3
 	GlobalStats.fairy_node.update_magic_text()
+	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node, Color.BLUE_VIOLET)
 
 func _on_remove_timeout() -> void:
 	queue_free()
