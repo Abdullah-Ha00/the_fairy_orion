@@ -16,5 +16,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if is_instance_valid(body):
 		body.health -=orb_damage
 		body.update_health_text()
-		GlobalFunctions.change_color_on_hit(body)
+		GlobalFunctions.change_color_on_hit(body, Color.RED)
 	queue_free() 

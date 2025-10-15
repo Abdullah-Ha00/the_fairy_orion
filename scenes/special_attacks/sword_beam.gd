@@ -19,7 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 	else:
 		body.health-=laser_damage
 		body.update_health_text()
-		GlobalFunctions.change_color_on_hit(body)
+		GlobalFunctions.change_color_on_hit(body, Color.RED)
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:

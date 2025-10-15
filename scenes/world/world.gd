@@ -84,7 +84,7 @@ func freeze_fairy():
 	$Fairy.is_moving=false
 	$Fairy.can_cast_sword_beam =false
 	$Fairy.health -=$Fence.shock_damage
-	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node)
+	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node, Color.RED)
 	$Audio/Sfx/Shock.play()
 	$Fairy/Timers/Shock.start()
 
