@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Bug
 var direction:Vector2
 var speed:int = 200
 
@@ -18,10 +19,10 @@ func update_velocity(delta:float):
 func collide_fairy():
 	var collision = move_and_collide(velocity)
 	if collision:
-		decrease_fairy_magic()
+		decrease_fairy_stats()
 		queue_free()
 		
-func decrease_fairy_magic():
+func decrease_fairy_stats():
 	GlobalStats.fairy_node.magic -= 3
 	GlobalStats.fairy_node.update_magic_text()
 

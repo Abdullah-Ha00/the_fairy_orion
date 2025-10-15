@@ -1,9 +1,10 @@
 extends MainScene
-var bug_scene:PackedScene = preload("res://scenes/monster/bug.tscn")
-
+var magic_bug_scene:PackedScene = preload("res://scenes/monster/bug.tscn")
+var health_bug_scene: PackedScene = preload("res://scenes/monster/bug_health.tscn")
+var bug_scenes:Array = [magic_bug_scene, health_bug_scene]
 
 func _on_summon_bugs_timeout() -> void:
-	var bug_instance = bug_scene.instantiate()
+	var bug_instance = bug_scenes[randi() % bug_scenes.size()].instantiate()
 	set_bug_random_position(bug_instance)
 	self.add_child(bug_instance)
 	$Timers/SummonBugs.wait_time = randi_range(5,7)

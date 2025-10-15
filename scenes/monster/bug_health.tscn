@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://uisnlbe65fc"]
+
+[ext_resource type="PackedScene" uid="uid://bk5byrghqgn6d" path="res://scenes/monster/bug.tscn" id="1_lu16w"]
+[ext_resource type="Script" uid="uid://f63hvurppi7h" path="res://scenes/monster/bug_health.gd" id="2_ebxnr"]
+
+[node name="Bug" instance=ExtResource("1_lu16w")]
+script = ExtResource("2_ebxnr")
+
+[node name="AnimatedImg" parent="." index="0"]
+modulate = Color(1, 0.0509804, 0.0901961, 1)
