@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Bug
 var direction:Vector2
 var speed:int = 200
+var magic_debuff_sound:String = "res://audio/sfx/magic_parry-301969.mp3"
 
 func _ready() -> void:
 	pass
@@ -26,6 +27,8 @@ func decrease_fairy_stats():
 	GlobalStats.fairy_node.magic -= 3
 	GlobalStats.fairy_node.update_magic_text()
 	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node, Color.BLUE_VIOLET)
+	GlobalFunctions.play_sound(magic_debuff_sound, 5)
+	
 
 func _on_remove_timeout() -> void:
 	queue_free()

@@ -19,3 +19,4 @@ func set_bug_random_position(bug_instance):
 func set_summon_light(pos:Vector2):
 	$SummonLight.position = pos
 	$AnimationPlayer.play("bug_summon_light")
+	$Audio/Sfx/SummonBug.play()

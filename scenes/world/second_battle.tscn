@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://by6iqwjbkeono"]
+[gd_scene load_steps=10 format=3 uid="uid://by6iqwjbkeono"]
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
 [ext_resource type="Script" uid="uid://co63rxveasp7i" path="res://scenes/world/second_battle.gd" id="2_nut8x"]
 [ext_resource type="Texture2D" uid="uid://6x3kbdt7yet6" path="res://images/summon_light.png" id="4_nut8x"]
+[ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
 size = Vector2(2504, 432)
@@ -79,6 +80,10 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/AttackRange" index="0"]
 position = Vector2(-1274.67, 34.6667)
 shape = SubResource("RectangleShape2D_71eeo")
+
+[node name="SummonBug" type="AudioStreamPlayer" parent="Audio/Sfx" index="2"]
+stream = ExtResource("4_w7148")
+bus = &"SFX"
 
 [node name="Timers" type="Node" parent="." index="12"]
 
