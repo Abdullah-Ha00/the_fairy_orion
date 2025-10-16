@@ -3,6 +3,13 @@ var states:Array = ["normal", "hit"]
 var current_state:String
 var current_health:int
 var process:bool = true
+var min_y = 50
+var max_y = 900
+var y_pos = position.y:
+	set(value):
+		position = Vector2(position.x, clamp(value,min_y, max_y))
+	get:
+		return position.y
 var _health:int = 20
 var health:int = _health:
 	set(value):

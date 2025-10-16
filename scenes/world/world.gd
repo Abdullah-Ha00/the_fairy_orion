@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 	check_game_phase()
 	check_body_state()
 	
+	
 func _on_fence_player_shocked() -> void:
 	freeze_fairy()
 	
@@ -147,8 +148,8 @@ func  pause_game():
 
 func remove_seal(body):
 	var dead_body_script = body.get_script()
-	if dead_body_script == $Parrot.get_script() or dead_body_script == $Monster.get_script():
-		$Seal.queue_free()
+	if  dead_body_script == $Monster.get_script():
+		$Parrot/Seal.queue_free()
 
 	
 

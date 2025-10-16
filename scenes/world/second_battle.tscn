@@ -70,7 +70,7 @@ position = Vector2(935, 706)
 [node name="Fairy" parent="." index="5"]
 position = Vector2(-116, 331)
 
-[node name="Monster" parent="." index="9"]
+[node name="Monster" parent="." index="8"]
 position = Vector2(1720, 265)
 script = ExtResource("2_71eeo")
 
@@ -85,19 +85,23 @@ shape = SubResource("RectangleShape2D_71eeo")
 stream = ExtResource("4_w7148")
 bus = &"SFX"
 
-[node name="Timers" type="Node" parent="." index="12"]
+[node name="Timers" type="Node" parent="." index="11"]
 
 [node name="SummonBugs" type="Timer" parent="Timers" index="0"]
 wait_time = 5.0
 autostart = true
 
-[node name="SummonLight" type="PointLight2D" parent="." index="13"]
+[node name="MoveParrot" type="Timer" parent="Timers" index="1"]
+wait_time = 5.0
+autostart = true
+
+[node name="SummonLight" type="PointLight2D" parent="." index="12"]
 position = Vector2(902, 298)
 scale = Vector2(0.482, 0.4)
 energy = 0.0
 texture = ExtResource("4_nut8x")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="14"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="13"]
 libraries = {
 &"": SubResource("AnimationLibrary_x2y1m")
 }
@@ -105,3 +109,4 @@ libraries = {
 [connection signal="body_entered" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="Timers/SummonBugs" to="." method="_on_summon_bugs_timeout"]
+[connection signal="timeout" from="Timers/MoveParrot" to="." method="_on_move_parrot_timeout"]

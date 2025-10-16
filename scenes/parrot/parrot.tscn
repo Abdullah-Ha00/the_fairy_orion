@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkd1il7gun27t"]
+[gd_scene load_steps=11 format=3 uid="uid://bkd1il7gun27t"]
 
 [ext_resource type="Script" uid="uid://2a2dwm20a5ch" path="res://scenes/parrot/parrot.gd" id="1_h4ksm"]
+[ext_resource type="Texture2D" uid="uid://c8k81vhp72dhu" path="res://images/seal.png" id="2_5g8jx"]
 [ext_resource type="Texture2D" uid="uid://c7b06emn4wqt4" path="res://images/parrot.png" id="2_r8s7u"]
 [ext_resource type="AudioStream" uid="uid://ckh0nfi1xhf5i" path="res://audio/sfx/macaw-sound-382721.mp3" id="3_3mqut"]
 [ext_resource type="Script" uid="uid://cxulcgnbpnd8b" path="res://scenes/parrot/audio.gd" id="3_ajnbt"]
@@ -29,6 +30,11 @@ size = Vector2(89, 76)
 collision_layer = 4
 collision_mask = 23
 script = ExtResource("1_h4ksm")
+
+[node name="Seal" type="Sprite2D" parent="."]
+position = Vector2(835, 80.5)
+scale = Vector2(1.02273, 0.65625)
+texture = ExtResource("2_5g8jx")
 
 [node name="ParrotImg" type="AnimatedSprite2D" parent="."]
 position = Vector2(812, 74)
