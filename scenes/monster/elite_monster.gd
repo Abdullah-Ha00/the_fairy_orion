@@ -1,6 +1,7 @@
 extends Monster
 var in_range:bool = false
 
+
 func emit_orb():
 	if in_range:
 		super()

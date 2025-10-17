@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://by6iqwjbkeono"]
+[gd_scene load_steps=12 format=3 uid="uid://by6iqwjbkeono"]
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6x3kbdt7yet6" path="res://images/summon_light.png" id="4_nut8x"]
 [ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
 [ext_resource type="AudioStream" uid="uid://d1jl1fqw58qge" path="res://audio/sfx/magic-descend-2-259520.mp3" id="5_x2y1m"]
+[ext_resource type="PackedScene" uid="uid://8u8bdrwhy022" path="res://scenes/special_attacks/cursed_orb.tscn" id="7_opmdr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
 size = Vector2(2504, 432)
@@ -89,6 +90,7 @@ bus = &"SFX"
 [node name="MoveParrot" type="AudioStreamPlayer" parent="Audio/Sfx" index="3"]
 stream = ExtResource("5_x2y1m")
 volume_db = -7.0
+pitch_scale = 1.5
 bus = &"SFX"
 
 [node name="Timers" type="Node" parent="." index="11"]
@@ -111,6 +113,9 @@ texture = ExtResource("4_nut8x")
 libraries = {
 &"": SubResource("AnimationLibrary_x2y1m")
 }
+
+[node name="CursedOrb" parent="." index="14" instance=ExtResource("7_opmdr")]
+position = Vector2(1534, 59)
 
 [connection signal="body_entered" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_exited"]

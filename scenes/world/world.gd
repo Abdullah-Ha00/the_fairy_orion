@@ -112,8 +112,6 @@ func remove_body(body):
 	GlobalStats.dead_body = body
 	body.queue_free()
 	
-	
-
 func check_game_phase():
 	match GlobalStats.current_game_phase:
 		"second_phase":
@@ -126,7 +124,6 @@ func check_game_phase():
 			$Audio/Music/Main.stop()
 			$Audio/Music/Lose.play()
 		
-	
 func check_body_state():
 	if parrot_state =="hit":
 		show_parrot_dialogue()

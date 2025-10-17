@@ -1,7 +1,7 @@
 extends Area2D
 var speed:int = 1000
 var direction:Vector2 = Vector2.LEFT
-var orb_damage:int= 15
+var damage:int= 15
 
 func _ready() -> void:
 	$sfx.play()
@@ -14,7 +14,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_valid(body):
-		body.health -=orb_damage
+		body.health -=damage
 		body.update_health_text()
 		GlobalFunctions.change_color_on_hit(body, Color.RED)
 	queue_free() 
