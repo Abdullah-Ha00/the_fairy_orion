@@ -23,6 +23,7 @@ func set_summon_light(pos:Vector2):
 
 func _on_move_parrot_timeout() -> void:
 	if is_instance_valid(GlobalStats.parrot_node):
+		$Audio/Sfx/MoveParrot.play()
 		$Parrot.y_pos +=GlobalFunctions.choose_random_number()
 		$Timers/MoveParrot.wait_time = randi_range(4,7)
 
