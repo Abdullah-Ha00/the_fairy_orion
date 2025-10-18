@@ -82,12 +82,10 @@ func show_parrot_dialogue():
 		
 func freeze_fairy():
 	$Fairy.position.x-=$Fence.x_rebound
-	$Fairy.is_moving=false
-	$Fairy.can_cast_sword_beam =false
 	$Fairy.health -=$Fence.shock_damage
 	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node, Color.RED)
 	$Audio/Sfx/Shock.play()
-	$Fairy/Timers/Shock.start()
+	$Fairy.immobilize(0.5)
 
 func increase_stats():
 	$Monster/MonsterImg.speed_scale = 2

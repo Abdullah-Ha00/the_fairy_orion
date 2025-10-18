@@ -83,3 +83,9 @@ func change_color_on_regen(body:Node):
 		body.modulate = Color.ROYAL_BLUE
 		await get_tree().create_timer(0.5).timeout
 		body.modulate= body.self_modulate
+
+func immobilize(seconds:float):
+	$Timers/Shock.wait_time = seconds
+	$Timers/Shock.start()
+	is_moving = false
+	can_cast_sword_beam = false
