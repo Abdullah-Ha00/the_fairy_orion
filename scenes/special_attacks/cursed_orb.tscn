@@ -19,4 +19,5 @@ polygon = PackedVector2Array(-12, -36, -12, -34, -20, -34, -19, -31, -23, -31, -
 position = Vector2(-1.5, -5.5)
 scale = Vector2(2.45, 2.65)
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

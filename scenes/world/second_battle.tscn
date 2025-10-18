@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://by6iqwjbkeono"]
+[gd_scene load_steps=11 format=3 uid="uid://by6iqwjbkeono"]
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://6x3kbdt7yet6" path="res://images/summon_light.png" id="4_nut8x"]
 [ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
 [ext_resource type="AudioStream" uid="uid://d1jl1fqw58qge" path="res://audio/sfx/magic-descend-2-259520.mp3" id="5_x2y1m"]
-[ext_resource type="PackedScene" uid="uid://8u8bdrwhy022" path="res://scenes/special_attacks/cursed_orb.tscn" id="7_opmdr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
 size = Vector2(2504, 432)
@@ -83,6 +82,18 @@ collision_layer = 8
 position = Vector2(-1274.67, 34.6667)
 shape = SubResource("RectangleShape2D_71eeo")
 
+[node name="CursedOrbSpawnPositions" type="Node2D" parent="Monster" index="9"]
+
+[node name="Marker2D" type="Marker2D" parent="Monster/CursedOrbSpawnPositions" index="0"]
+position = Vector2(-90.6667, -174.667)
+
+[node name="Marker2D2" type="Marker2D" parent="Monster/CursedOrbSpawnPositions" index="1"]
+position = Vector2(94.6667, -168)
+
+[node name="CursedOrbCooldown" type="Timer" parent="Monster" index="10"]
+wait_time = 4.0
+autostart = true
+
 [node name="SummonBug" type="AudioStreamPlayer" parent="Audio/Sfx" index="2"]
 stream = ExtResource("4_w7148")
 bus = &"SFX"
@@ -114,10 +125,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_x2y1m")
 }
 
-[node name="CursedOrb" parent="." index="14" instance=ExtResource("7_opmdr")]
-position = Vector2(1534, 59)
-
+[connection signal="cursed_orb" from="Monster" to="." method="_on_monster_cursed_orb"]
 [connection signal="body_entered" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="Monster/CursedOrbCooldown" to="Monster" method="_on_cursed_orb_cooldown_timeout"]
 [connection signal="timeout" from="Timers/SummonBugs" to="." method="_on_summon_bugs_timeout"]
 [connection signal="timeout" from="Timers/MoveParrot" to="." method="_on_move_parrot_timeout"]
