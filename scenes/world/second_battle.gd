@@ -18,7 +18,7 @@ func set_bug_random_position(bug_instance):
 	bug_instance.position = summon_position
 
 func set_summon_light(pos:Vector2):
-	$SummonLight.position = pos
+	$Lights/SummonLight.position = pos
 	$AnimationPlayer.play("bug_summon_light")
 	$Audio/Sfx/SummonBug.play()
 
@@ -31,6 +31,7 @@ func _on_move_parrot_timeout() -> void:
 
 func _on_monster_cursed_orb() -> void:
 	var cursed_orb_instance = cursed_orb_scene.instantiate()
-	cursed_orb_instance.position = $Monster/CursedOrbSpawnPositions.get_children().pick_random().global_position
+	cursed_orb_instance.position = $Monster/CursedOrb.global_position
 	$SpecialAttacks.add_child(cursed_orb_instance)
-	$Monster/CursedOrbCooldown.wait_time = randi_range(4,5)
+	
+	

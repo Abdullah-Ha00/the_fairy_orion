@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 func _on_button_pressed(button:Button):
 	match button.name:
 		"Start":
-			get_tree().change_scene_to_file("res://scenes/world/world.tscn")
+			get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
 		"Quit":
 			get_tree().quit()
 		"Options":
