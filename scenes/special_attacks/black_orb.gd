@@ -4,7 +4,7 @@ var direction:Vector2 = Vector2.LEFT
 var damage:int= 15
 
 func _ready() -> void:
-	$sfx.play()
+	$Sfx.play()
 	
 func _process(delta: float) -> void:
 	position += speed*direction*delta

@@ -6,7 +6,7 @@ var direction:Vector2
 func _ready() -> void:
 	if is_instance_valid(GlobalStats.fairy_node):
 		direction = (GlobalStats.fairy_node.position - position).normalized()
-		
+		$Sfx.play()
 func _process(delta: float) -> void:
 		position += direction*speed*delta
 	
