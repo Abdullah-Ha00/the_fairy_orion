@@ -3,6 +3,7 @@ var magic_bug_scene:PackedScene = preload("res://scenes/monster/bug.tscn")
 var health_bug_scene: PackedScene = preload("res://scenes/monster/bug_health.tscn")
 var damage_bug_scene: PackedScene = preload("res://scenes/monster/bug_damage.tscn")
 var cursed_orb_scene: PackedScene = preload("res://scenes/special_attacks/cursed_orb.tscn")
+var ray_scene: PackedScene = preload("res://scenes/special_attacks/ray.tscn")
 var bug_scenes:Array = [magic_bug_scene, health_bug_scene, damage_bug_scene]
 
 func _on_summon_bugs_timeout() -> void:
@@ -35,3 +36,8 @@ func _on_monster_cursed_orb() -> void:
 	$SpecialAttacks.add_child(cursed_orb_instance)
 	
 	
+func _on_fairy_ray() -> void:
+	if $Fairy.monster_in_range:
+		var ray_instance = ray_scene.instantiate()
+		ray_instance.position = $Fairy/Marker2D.position + Vector2(460, -30)
+		$Fairy.add_child(ray_instance)

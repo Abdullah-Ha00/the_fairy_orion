@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dajtpk5a5gy1p"]
+
+[ext_resource type="Texture2D" uid="uid://cbutfje6gtsdr" path="res://images/ray.png" id="1_inrwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11xct"]
+size = Vector2(850, 17.25)
+
+[node name="Ray" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_inrwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 29.625)
+shape = SubResource("RectangleShape2D_11xct")

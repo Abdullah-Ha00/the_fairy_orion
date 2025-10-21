@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://by6iqwjbkeono"]
+[gd_scene load_steps=18 format=3 uid="uid://by6iqwjbkeono"]
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
 [ext_resource type="Script" uid="uid://co63rxveasp7i" path="res://scenes/world/second_battle.gd" id="2_nut8x"]
 [ext_resource type="Script" uid="uid://jesf2k5wu3xq" path="res://scenes/player/fairy_ch0_lv2.gd" id="3_7atv3"]
-[ext_resource type="Texture2D" uid="uid://clcpd6docnyo7" path="res://images/ray.png" id="3_c0qkw"]
 [ext_resource type="Texture2D" uid="uid://6x3kbdt7yet6" path="res://images/summon_light.png" id="4_nut8x"]
 [ext_resource type="Texture2D" uid="uid://cjsvvcg2nkkkw" path="res://images/cursed_orb.png" id="4_opmdr"]
 [ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
@@ -12,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bx7rgusikgwn8" path="res://audio/sfx/magical-focus-energy-40083.mp3" id="7_b8lft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7atv3"]
-size = Vector2(1056.25, 22.5)
+size = Vector2(863.751, 22.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
 size = Vector2(2504, 432)
@@ -172,26 +171,24 @@ position = Vector2(935, 706)
 position = Vector2(688, 285)
 script = ExtResource("3_7atv3")
 
-[node name="RayRange" type="Area2D" parent="Fairy" index="9" groups=["Ray"]]
+[node name="Marker2D" type="Marker2D" parent="Fairy" index="9"]
+position = Vector2(0, 18.75)
+scale = Vector2(1, 1)
+
+[node name="RayRange" type="Area2D" parent="Fairy" index="10" groups=["Ray"]]
 collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="0"]
-position = Vector2(540.625, 20)
+position = Vector2(444.375, 20)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_7atv3")
-
-[node name="Ray" type="Sprite2D" parent="Fairy/RayRange" index="1"]
-position = Vector2(557.5, -17.5)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_c0qkw")
 
 [node name="Monster" parent="." index="8"]
 position = Vector2(1720, 265)
 script = ExtResource("2_71eeo")
 
 [node name="AttackRange" type="Area2D" parent="Monster" index="8"]
-visible = false
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/AttackRange" index="0"]
@@ -257,6 +254,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_x2y1m")
 }
 
+[connection signal="ray" from="Fairy" to="." method="_on_fairy_ray"]
+[connection signal="body_entered" from="Fairy/RayRange" to="Fairy" method="_on_ray_range_body_entered"]
+[connection signal="body_exited" from="Fairy/RayRange" to="Fairy" method="_on_ray_range_body_exited"]
 [connection signal="cursed_orb" from="Monster" to="." method="_on_monster_cursed_orb"]
 [connection signal="body_entered" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_exited"]
