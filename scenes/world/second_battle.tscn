@@ -1,16 +1,48 @@
-[gd_scene load_steps=16 format=3 uid="uid://by6iqwjbkeono"]
+[gd_scene load_steps=19 format=3 uid="uid://by6iqwjbkeono"]
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
 [ext_resource type="Script" uid="uid://co63rxveasp7i" path="res://scenes/world/second_battle.gd" id="2_nut8x"]
+[ext_resource type="Script" uid="uid://jesf2k5wu3xq" path="res://scenes/player/fairy_ch0_lv2.gd" id="3_7atv3"]
+[ext_resource type="Texture2D" uid="uid://clcpd6docnyo7" path="res://images/ray.png" id="3_c0qkw"]
 [ext_resource type="Texture2D" uid="uid://6x3kbdt7yet6" path="res://images/summon_light.png" id="4_nut8x"]
 [ext_resource type="Texture2D" uid="uid://cjsvvcg2nkkkw" path="res://images/cursed_orb.png" id="4_opmdr"]
 [ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
 [ext_resource type="AudioStream" uid="uid://d1jl1fqw58qge" path="res://audio/sfx/magic-descend-2-259520.mp3" id="5_x2y1m"]
 [ext_resource type="AudioStream" uid="uid://bx7rgusikgwn8" path="res://audio/sfx/magical-focus-energy-40083.mp3" id="7_b8lft"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7atv3"]
+size = Vector2(1056.25, 22.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
 size = Vector2(2504, 432)
+
+[sub_resource type="Animation" id="Animation_b8lft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CursedOrb:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CursedOrb:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_opmdr"]
 resource_name = "orb_charge"
@@ -70,33 +102,6 @@ tracks/3/keys = {
 "args": [],
 "method": &"stop"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_b8lft"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CursedOrb:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CursedOrb:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c0qkw"]
@@ -164,13 +169,29 @@ position = Vector2(930, 433)
 position = Vector2(935, 706)
 
 [node name="Fairy" parent="." index="5"]
-position = Vector2(-116, 331)
+position = Vector2(688, 285)
+script = ExtResource("3_7atv3")
+
+[node name="RayRange" type="Area2D" parent="Fairy" index="9" groups=["Ray"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="0"]
+position = Vector2(540.625, 20)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_7atv3")
+
+[node name="Ray" type="Sprite2D" parent="Fairy/RayRange" index="1"]
+position = Vector2(557.5, -17.5)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_c0qkw")
 
 [node name="Monster" parent="." index="8"]
 position = Vector2(1720, 265)
 script = ExtResource("2_71eeo")
 
 [node name="AttackRange" type="Area2D" parent="Monster" index="8"]
+visible = false
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/AttackRange" index="0"]

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Fairy
 var speed:int = 300
 var is_moving:bool = true
 var can_cast_sword_beam:bool = true
