@@ -1,11 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://dajtpk5a5gy1p"]
+[gd_scene load_steps=9 format=3 uid="uid://dajtpk5a5gy1p"]
 
+[ext_resource type="Script" uid="uid://b3fds3fedadg1" path="res://scenes/special_attacks/ray.gd" id="1_5hmyb"]
 [ext_resource type="Texture2D" uid="uid://cbutfje6gtsdr" path="res://images/ray.png" id="1_inrwe"]
+[ext_resource type="Texture2D" uid="uid://gu5dju5xpi00" path="res://images/ray_light.png" id="2_11xct"]
+[ext_resource type="AudioStream" uid="uid://c1ut5poio8u7o" path="res://audio/sfx/hero-skill-attack-reveal-11-388902.mp3" id="4_tw7yv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11xct"]
 size = Vector2(850, 17.25)
 
+[sub_resource type="Animation" id="Animation_tw7yv"]
+resource_name = "on_ready"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.266667, 0.466667, 0.5, 0.6, 0.7, 0.8, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.388235), Color(1, 1, 1, 0.878431), Color(1, 1, 1, 1), Color(1, 1, 1, 0.87451), Color(1, 1, 1, 0.384314), Color(1, 1, 1, 0.266667), Color(1, 1, 1, 0.027451)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_80dom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.894118)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2npto"]
+_data = {
+&"RESET": SubResource("Animation_80dom"),
+&"on_ready": SubResource("Animation_tw7yv")
+}
+
 [node name="Ray" type="Area2D"]
+modulate = Color(1, 1, 1, 0.894118)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_5hmyb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_inrwe")
@@ -13,3 +84,22 @@ texture = ExtResource("1_inrwe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 29.625)
 shape = SubResource("RectangleShape2D_11xct")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-459, 30)
+color = Color(1, 0.027451, 0.0705882, 1)
+energy = 10.6
+texture = ExtResource("2_11xct")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2npto")
+}
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tw7yv")
+volume_db = 6.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

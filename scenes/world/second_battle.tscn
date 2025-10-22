@@ -173,7 +173,6 @@ script = ExtResource("3_7atv3")
 
 [node name="Marker2D" type="Marker2D" parent="Fairy" index="9"]
 position = Vector2(0, 18.75)
-scale = Vector2(1, 1)
 
 [node name="RayRange" type="Area2D" parent="Fairy" index="10" groups=["Ray"]]
 collision_layer = 16

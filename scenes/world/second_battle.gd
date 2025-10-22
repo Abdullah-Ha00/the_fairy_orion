@@ -38,6 +38,10 @@ func _on_monster_cursed_orb() -> void:
 	
 func _on_fairy_ray() -> void:
 	if $Fairy.monster_in_range:
-		var ray_instance = ray_scene.instantiate()
-		ray_instance.position = $Fairy/Marker2D.position + Vector2(460, -30)
-		$Fairy.add_child(ray_instance)
+		instantiate_ray()
+		$Fairy.ray_debuff()
+
+func instantiate_ray():
+	var ray_instance = ray_scene.instantiate()
+	ray_instance.position = $Fairy/Marker2D.position + Vector2(460, -30)
+	$Fairy.add_child(ray_instance)
