@@ -8,7 +8,7 @@ var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
 		$Audio/HitSfx.play()
-var _beam_damage:int = 15
+var _beam_damage:int = 150
 var beam_damage:int = _beam_damage:
 	set(value):
 		beam_damage = clamp(value, 3,_beam_damage)

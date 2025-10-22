@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://by6iqwjbkeono"]
+[gd_scene load_steps=20 format=3 uid="uid://by6iqwjbkeono"]
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://jesf2k5wu3xq" path="res://scenes/player/fairy_ch0_lv2.gd" id="3_7atv3"]
 [ext_resource type="Texture2D" uid="uid://6x3kbdt7yet6" path="res://images/summon_light.png" id="4_nut8x"]
 [ext_resource type="Texture2D" uid="uid://cjsvvcg2nkkkw" path="res://images/cursed_orb.png" id="4_opmdr"]
+[ext_resource type="AudioStream" uid="uid://26i078t8ac1a" path="res://audio/sfx/sample_confirm_success03_kofi_by_miraclei-360151.mp3" id="4_q7pjt"]
 [ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
+[ext_resource type="AudioStream" uid="uid://shisp75ykcfn" path="res://audio/sfx/error-call-to-attention-129258.mp3" id="5_an0id"]
 [ext_resource type="AudioStream" uid="uid://d1jl1fqw58qge" path="res://audio/sfx/magic-descend-2-259520.mp3" id="5_x2y1m"]
 [ext_resource type="AudioStream" uid="uid://bx7rgusikgwn8" path="res://audio/sfx/magical-focus-energy-40083.mp3" id="7_b8lft"]
 
@@ -178,7 +180,21 @@ position = Vector2(0, 18.75)
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="0"]
+[node name="Sfx" type="Node" parent="Fairy/RayRange" index="0"]
+
+[node name="RayRangeEntered" type="AudioStreamPlayer" parent="Fairy/RayRange/Sfx" index="0"]
+stream = ExtResource("4_q7pjt")
+volume_db = 6.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="RayRangeExited" type="AudioStreamPlayer" parent="Fairy/RayRange/Sfx" index="1"]
+stream = ExtResource("5_an0id")
+volume_db = 6.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="1"]
 position = Vector2(444.375, 20)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_7atv3")
