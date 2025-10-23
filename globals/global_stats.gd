@@ -24,3 +24,7 @@ var arrow_node:Node
 var is_game_started:bool
 var is_game_finished:bool
 var arrow_reset:bool
+var levels:Dictionary= {
+	"0-1":"ch0lv1",
+	"0-2":"ch0lv2",
+}

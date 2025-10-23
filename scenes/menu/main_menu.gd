@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 func _on_button_pressed(button:Button):
 	match button.name:
 		"Start":
-			get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
+			get_tree().change_scene_to_file("res://scenes/world/world.tscn")
 		"Quit":
 			get_tree().quit()
 		"Options":
@@ -28,7 +28,7 @@ func _on_button_pressed(button:Button):
 	update_button_color()
 			
 func show_high_score():
-	$HighScoreText.text = str(ScoreManager.load_score())
+	$HighScoreText.text = str(ScoreManager.load_score(GlobalStats.levels["0-1"]))
 	
 func connect_buttons():
 	for button in get_tree().get_nodes_in_group("Buttons"):

@@ -9,11 +9,13 @@ var parrot_state:String
 var parrot_hit_processed:bool = false
 var second_phase_processed:bool = false
 var fence_stopped:bool = false
-var high_score:int = ScoreManager.load_score()
+var level_key:String = "0-1"
+var high_score:int
 
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	high_score = ScoreManager.load_score(GlobalStats.levels[level_key])
 	GlobalStats.high_score = high_score
 	
 func _input(event: InputEvent) -> void:
@@ -52,11 +54,11 @@ func begin_second_phase():
 		show_monster_dialogue()
 		second_phase_processed = true
 		
-func get_score():
+func get_score(level:String):
 		if $Monster.health <=0:
 			GlobalStats.current_game_phase =GlobalStats.game_phases["monster_health_zero"]
 			GlobalStats.score = int(($Parrot/Timers/TimeLeft. time_left *10) + ($Fairy.health * 5))
-			ScoreManager.save_score(GlobalStats.score)
+			ScoreManager.save_score(GlobalStats.score, level)
 		else:
 			GlobalStats.current_game_phase = GlobalStats.game_phases["self_ally_defeated"]
 			
@@ -102,7 +104,7 @@ func check_bodies_health():
 			GlobalStats.is_game_finished = true
 			remove_body(body)
 			remove_seal(body)
-			get_score()
+			get_score(GlobalStats.levels[level_key])
 			await get_tree().create_timer(0.1).timeout
 			display_game_result()
 			

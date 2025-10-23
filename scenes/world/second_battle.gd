@@ -6,6 +6,10 @@ var cursed_orb_scene: PackedScene = preload("res://scenes/special_attacks/cursed
 var ray_scene: PackedScene = preload("res://scenes/special_attacks/ray.tscn")
 var bug_scenes:Array = [magic_bug_scene, health_bug_scene, damage_bug_scene]
 
+func _ready() -> void:
+	level_key = "0-2"
+	super()
+	
 func _on_summon_bugs_timeout() -> void:
 	var bug_instance = bug_scenes.pick_random().instantiate()
 	set_bug_random_position(bug_instance)
