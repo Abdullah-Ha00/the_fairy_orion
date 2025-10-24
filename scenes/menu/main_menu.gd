@@ -18,7 +18,9 @@ func _process(_delta: float) -> void:
 func _on_button_pressed(button:Button):
 	match button.name:
 		"Start":
-			get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
+			#get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
+			disable_buttons()
+			load_battle_menu()
 		"Quit":
 			get_tree().quit()
 		"Options":
@@ -80,3 +82,9 @@ func check_arrow():
 func initialize_audio():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),music_level)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),sfx_level)
+
+func load_battle_menu():
+	var battle_scene = preload("res://scenes/menu/battle_selection.tscn")
+	var battle_instance = battle_scene.instantiate()
+	%BattleSelection.add_child(battle_instance)
+	change_arrow_settings(Vector2(750,560), 560, 560)

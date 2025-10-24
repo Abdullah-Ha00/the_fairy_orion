@@ -254,6 +254,9 @@ text = "Options
 [node name="OptionComponents" type="Node2D" parent="MenuComponents"]
 unique_name_in_owner = true
 
+[node name="BattleSelection" type="Node2D" parent="MenuComponents"]
+unique_name_in_owner = true
+
 [node name="SelectArrowMain" type="TextureRect" parent="MenuComponents"]
 unique_name_in_owner = true
 modulate = Color(1, 0.00784314, 0, 1)
