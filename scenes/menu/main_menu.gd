@@ -19,14 +19,13 @@ func _on_button_pressed(button:Button):
 	match button.name:
 		"Start":
 			#get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
-			disable_buttons()
+			GlobalFunctions.disable_buttons("Buttons")
 			load_battle_menu()
 		"Quit":
 			get_tree().quit()
 		"Options":
-			disable_buttons()
+			GlobalFunctions.disable_buttons("Buttons")
 			load_options_menu()
-		
 	update_button_color()
 			
 func show_high_score():
@@ -58,10 +57,7 @@ func load_options_menu():
 func set_up_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	DisplayServer.warp_mouse(Vector2(1000,350))
-	
-func disable_buttons():
-	for button in get_tree().get_nodes_in_group("Buttons"):
-		button.disabled = true
+
 
 func change_arrow_settings(pos:Vector2, min_y_pos:int, max_y_pos:int):
 	$%SelectArrowMain.position = pos
@@ -82,4 +78,4 @@ func load_battle_menu():
 	var battle_scene = preload("res://scenes/menu/battle_selection.tscn")
 	var battle_instance = battle_scene.instantiate()
 	%BattleSelection.add_child(battle_instance)
-	change_arrow_settings(Vector2(750,560), 560, 560)
+	change_arrow_settings(Vector2(750,226), 560, 560)

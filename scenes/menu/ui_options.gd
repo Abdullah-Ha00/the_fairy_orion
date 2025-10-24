@@ -9,7 +9,6 @@ func _on_music_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"),value<0.05)
 	update_button_color()
 
-
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),linear_to_db(value))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"),value<0.05)
@@ -20,15 +19,10 @@ func update_button_color():
 
 func _on_save_pressed() -> void:
 	save_volume_settings()
-	enable_buttons()
+	GlobalFunctions.enable_buttons("Buttons")
 	queue_free()
 	update_button_color()
-	
-func enable_buttons():
-	for button in get_tree().get_nodes_in_group("Buttons"):
-		button.disabled=false
-	GlobalStats.arrow_reset = true
-	
+		
 func save_volume_settings():
 	var sfx_volume:float = $Sfx/Slider.value
 	var music_volume:float = $Music/Slider.value

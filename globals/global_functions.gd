@@ -29,4 +29,12 @@ func play_sound(file:String, volume:int):
 func connect_buttons(group_name:String, method_on_press:Callable):
 	for button in get_tree().get_nodes_in_group(group_name):
 		button.pressed.connect(method_on_press.bind(button))
-	
+
+func disable_buttons(group_name:String):
+	for button in get_tree().get_nodes_in_group(group_name):
+		button.disabled= true
+
+func enable_buttons(group_name:String):
+	for button in get_tree().get_nodes_in_group(group_name):
+		button.disabled=false
+	GlobalStats.arrow_reset = true
