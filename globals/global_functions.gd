@@ -26,12 +26,7 @@ func play_sound(file:String, volume:int):
 	sound.play()
 	sound.connect("finished", Callable(sound, "queue_free"))
 
-func choose_random_number():
-	var negative_number:int = randi_range(-150,-300)
-	var positive_number:int = randi_range(150,300)
-	var probability_weight: float = randf()
-	if probability_weight < 0.70:
-		return positive_number
-	else:
-		return negative_number
+func connect_buttons(group_name:String, method_on_press:Callable):
+	for button in get_tree().get_nodes_in_group(group_name):
+		button.pressed.connect(method_on_press.bind(button))
 	

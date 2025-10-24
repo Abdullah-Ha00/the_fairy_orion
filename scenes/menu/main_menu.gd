@@ -6,7 +6,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	call_deferred("set_up_mouse")
 	show_high_score()
-	connect_buttons()
+	GlobalFunctions.connect_buttons("Buttons", _on_button_pressed)
 	initialize_game_state()
 	initialize_audio()
 	update_button_color()
@@ -32,11 +32,6 @@ func _on_button_pressed(button:Button):
 func show_high_score():
 	$HighScoreText.text = str(ScoreManager.load_score(GlobalStats.levels["0-2"]))
 	
-func connect_buttons():
-	for button in get_tree().get_nodes_in_group("Buttons"):
-		button.pressed.connect(_on_button_pressed.bind(button))
-		
-
 func initialize_game_state():
 	GlobalStats.current_dialogue = GlobalStats.dialogues["introduction"]
 	GlobalStats.current_game_phase = GlobalStats.game_phases["begin"]
