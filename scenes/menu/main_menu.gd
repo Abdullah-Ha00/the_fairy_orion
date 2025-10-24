@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 func _on_button_pressed(button:Button):
 	match button.name:
 		"Start":
-			get_tree().change_scene_to_file("res://scenes/world/world.tscn")
+			get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
 		"Quit":
 			get_tree().quit()
 		"Options":
@@ -28,7 +28,7 @@ func _on_button_pressed(button:Button):
 	update_button_color()
 			
 func show_high_score():
-	$HighScoreText.text = str(ScoreManager.load_score(GlobalStats.levels["0-1"]))
+	$HighScoreText.text = str(ScoreManager.load_score(GlobalStats.levels["0-2"]))
 	
 func connect_buttons():
 	for button in get_tree().get_nodes_in_group("Buttons"):
@@ -56,7 +56,7 @@ func load_options_menu():
 	var options_scene = preload("res://scenes/menu/ui_options.tscn")
 	var options_instance = options_scene.instantiate()
 	%OptionComponents.add_child(options_instance)
-	change_arrow_settings()
+	change_arrow_settings(Vector2(750,560), 560, 560)
 
 func set_up_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -66,19 +66,14 @@ func disable_buttons():
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		button.disabled = true
 
-func change_arrow_settings():
-	$%SelectArrowMain.position = Vector2(750,560)
-	$%SelectArrowMain.min_y_pos = 560
-	$%SelectArrowMain.max_y_pos= 560
+func change_arrow_settings(pos:Vector2, min_y_pos:int, max_y_pos:int):
+	$%SelectArrowMain.position = pos
+	$%SelectArrowMain.min_y_pos = min_y_pos
+	$%SelectArrowMain.max_y_pos= max_y_pos
  
-func reset_arrow_settings():
-	$%SelectArrowMain.position = Vector2(726,226)
-	%SelectArrowMain.min_y_pos = 226
-	%SelectArrowMain.max_y_pos = 426
-
 func check_arrow():
 	if GlobalStats.arrow_reset:
-		reset_arrow_settings()
+		change_arrow_settings(Vector2(726,226), 226, 426)
 		update_button_color()
 		GlobalStats.arrow_reset = false
 
