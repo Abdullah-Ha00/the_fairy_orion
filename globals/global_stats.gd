@@ -28,3 +28,4 @@ var levels:Dictionary= {
 	"0-1":"ch0lv1",
 	"0-2":"ch0lv2",
 }
+var button_group:String

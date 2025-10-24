@@ -5,11 +5,12 @@ extends Node2D
 func _ready() -> void:
 	await get_tree().process_frame
 	call_deferred("set_up_mouse")
+	GlobalStats.button_group = "Buttons"
 	show_high_score()
 	GlobalFunctions.connect_buttons("Buttons", _on_button_pressed)
+	GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain, GlobalStats.button_group)
 	initialize_game_state()
 	initialize_audio()
-	update_button_color()
 	
 func _process(_delta: float) -> void:
 	rotate_fairies()
@@ -26,8 +27,8 @@ func _on_button_pressed(button:Button):
 		"Options":
 			GlobalFunctions.disable_buttons("Buttons")
 			load_options_menu()
-	update_button_color()
-			
+	GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain, GlobalStats.button_group)
+	
 func show_high_score():
 	$HighScoreText.text = str(ScoreManager.load_score(GlobalStats.levels["0-2"]))
 	
@@ -37,9 +38,6 @@ func initialize_game_state():
 	GlobalStats.is_game_finished = false
 	GlobalStats.score = 0
 
-func update_button_color():
-	GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain)
-	
 func rotate_fairies():
 	for fairy in get_tree().get_nodes_in_group("Fairies"):
 		fairy.rotation_degrees += 2.5
@@ -67,7 +65,7 @@ func change_arrow_settings(pos:Vector2, min_y_pos:int, max_y_pos:int):
 func check_arrow():
 	if GlobalStats.arrow_reset:
 		change_arrow_settings(Vector2(726,226), 226, 426)
-		update_button_color()
+		GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain, GlobalStats.button_group)
 		GlobalStats.arrow_reset = false
 
 func initialize_audio():
@@ -78,4 +76,4 @@ func load_battle_menu():
 	var battle_scene = preload("res://scenes/menu/battle_selection.tscn")
 	var battle_instance = battle_scene.instantiate()
 	%BattleSelection.add_child(battle_instance)
-	change_arrow_settings(Vector2(750,226), 560, 560)
+	change_arrow_settings(Vector2(745,226), 226, 426)

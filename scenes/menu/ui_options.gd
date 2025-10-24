@@ -7,21 +7,18 @@ func _ready() -> void:
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),linear_to_db(value))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"),value<0.05)
-	update_button_color()
+	GlobalFunctions.check_arrow_buttons_collision(GlobalStats.arrow_node, GlobalStats.button_group)
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),linear_to_db(value))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"),value<0.05)
-	update_button_color()
-
-func update_button_color():
-	GlobalFunctions.check_arrow_buttons_collision(GlobalStats.arrow_node)
+	GlobalFunctions.check_arrow_buttons_collision(GlobalStats.arrow_node, GlobalStats.button_group)
 
 func _on_save_pressed() -> void:
 	save_volume_settings()
 	GlobalFunctions.enable_buttons("Buttons")
 	queue_free()
-	update_button_color()
+	GlobalFunctions.check_arrow_buttons_collision(GlobalStats.arrow_node, GlobalStats.button_group)
 		
 func save_volume_settings():
 	var sfx_volume:float = $Sfx/Slider.value
