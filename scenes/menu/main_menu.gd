@@ -5,10 +5,8 @@ extends Node2D
 func _ready() -> void:
 	await get_tree().process_frame
 	call_deferred("set_up_mouse")
-	GlobalStats.button_group = "Buttons"
+	initialize_buttons()
 	show_high_score()
-	GlobalFunctions.connect_buttons("Buttons", _on_button_pressed)
-	GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain, GlobalStats.button_group)
 	initialize_game_state()
 	initialize_audio()
 	
@@ -76,4 +74,9 @@ func load_battle_menu():
 	var battle_scene = preload("res://scenes/menu/battle_selection.tscn")
 	var battle_instance = battle_scene.instantiate()
 	%BattleSelection.add_child(battle_instance)
-	change_arrow_settings(Vector2(745,226), 226, 426)
+	change_arrow_settings(Vector2(738,226), 226, 426)
+
+func initialize_buttons():
+	GlobalStats.button_group = "Buttons"
+	GlobalFunctions.connect_buttons("Buttons", _on_button_pressed)
+	GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain, GlobalStats.button_group)

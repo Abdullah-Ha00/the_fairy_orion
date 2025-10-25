@@ -8,6 +8,7 @@ var y_pos = global_position.y:
 		global_position = Vector2(global_position.x, clamp(value,min_y_pos,max_y_pos))	
 	get:
 		return global_position.y
+		
 func _ready() -> void:
 	GlobalFunctions.check_arrow_buttons_collision(self,GlobalStats.button_group)
 		
