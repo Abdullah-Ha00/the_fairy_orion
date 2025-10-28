@@ -91,7 +91,6 @@ offset_left = 6.0
 offset_top = 30.0
 offset_right = 467.0
 offset_bottom = 127.0
-text = "Achieve a score of 1000 to unlock"
 label_settings = SubResource("LabelSettings_a48c8")
 horizontal_alignment = 1
 vertical_alignment = 1

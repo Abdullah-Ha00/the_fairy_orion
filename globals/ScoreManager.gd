@@ -19,6 +19,19 @@ func load_score(level:String):
 		return score.get_value(level, "HighScore", 0)
 	else:
 		return 0
+
+func save_battle_unlock():
+	var battle_unlock = ConfigFile.new()
+	battle_unlock.set_value("Battle", "ch0lv2", 1)
+	battle_unlock.save(save_file)
+	
+func load_battle_unlock():
+	var load_battle_flag = ConfigFile.new()
+	var err = load_battle_flag.load(save_file)
+	if err == OK:
+		return load_battle_flag.get_value("Battle", "ch0lv2",0)
+	else:
+		return 0
 	
 
 

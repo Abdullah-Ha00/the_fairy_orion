@@ -38,3 +38,7 @@ func enable_buttons(group_name:String):
 	for button in get_tree().get_nodes_in_group(group_name):
 		button.disabled=false
 	GlobalStats.arrow_reset = true
+
+func connect_buttons_focused(group_name:String, method_on_press:Callable):
+	for button in get_tree().get_nodes_in_group(group_name):
+		button.focus_entered.connect(method_on_press.bind(button))

@@ -3,6 +3,7 @@ var fairy_down_text:String = "Game Over!\nYou have been defeated!"
 var parrot_down_text: String = "Game Over!\nSelene is deaaaaaaaaaaaaad!😭"
 var monster_down_text:String = "You have defeated the monster! \nSelene's curse has been lifted!"
 var text_y_position:int = 500
+var high_score_ch0_lv1:int = ScoreManager.load_score("ch0lv1")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -62,3 +63,10 @@ func show_score_labels():
 		await get_tree().create_timer(1).timeout
 		text.visible = true
 		$Audio/ScoreDisp.play()
+
+func show_new_battle_label():
+	$NewHighScoreLabel.global_position = Vector2(600,800)
+	if GlobalStats.high_score < GlobalStats.score:
+		await get_tree().create_timer(13).timeout
+		$NewHighScoreLabel.visible = true
+		$Audio/HighScoreDisp.play()

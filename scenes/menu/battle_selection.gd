@@ -1,9 +1,12 @@
 extends Node2D
+var high_score_lv1:int = ScoreManager.load_score("ch0lv1")
+var high_score_lv2:int = ScoreManager.load_score("ch0lv2")
 
 func _ready() -> void:
 	global_position = Vector2(390,180)
 	set_up_mouse()
 	initialize_buttons()
+	disable_battle_button()
 	
 func _process(_delta: float) -> void:
 	show_tooltip()
@@ -22,6 +25,7 @@ func _on_button_pressed(button:Button):
 func initialize_buttons():
 	GlobalStats.button_group = "BattleButtons"
 	GlobalFunctions.connect_buttons("BattleButtons", _on_button_pressed)
+	GlobalFunctions.connect_buttons_focused("HasToolTip", _on_button_focused)
 
 func set_up_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -43,3 +47,20 @@ func show_tooltip():
 func enable_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	DisplayServer.warp_mouse(Vector2(1000,350))
+
+func _on_button_focused(button:Button):
+	match button.name:
+		"Battle1":
+			$ButtonsToolTips/Description.text = "High Score: " + str(high_score_lv1)
+		"Battle2":
+			set_tooltip_text()
+			
+func set_tooltip_text():
+	if $Buttons/Battle2.disabled:
+		$ButtonsToolTips/Description.text = "Reach a score of 1000\n in Battle 1 to unlock"
+	else:
+		$ButtonsToolTips/Description.text = "High Score: " + str(high_score_lv2)
+
+func disable_battle_button():
+	if high_score_lv1 <1000:
+		$Buttons/Battle2.disabled = true
