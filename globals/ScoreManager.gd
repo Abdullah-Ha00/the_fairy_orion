@@ -22,6 +22,7 @@ func load_score(level:String):
 
 func save_battle_unlock():
 	var battle_unlock = ConfigFile.new()
+	battle_unlock.load(save_file)
 	battle_unlock.set_value("Battle", "ch0lv2", 1)
 	battle_unlock.save(save_file)
 	

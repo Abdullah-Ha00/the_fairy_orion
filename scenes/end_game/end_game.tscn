@@ -54,6 +54,18 @@ label_settings = SubResource("LabelSettings_c4y5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NewBattleLabel" type="Label" parent="."]
+visible = false
+offset_left = 582.0
+offset_top = 337.0
+offset_right = 1297.0
+offset_bottom = 455.0
+theme_override_font_sizes/font_size = 13
+text = "New Battle Unlocked!!"
+label_settings = SubResource("LabelSettings_c4y5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ScoreDisplay" type="Node2D" parent="."]
 
 [node name="ScoreLabel" type="Label" parent="ScoreDisplay"]
