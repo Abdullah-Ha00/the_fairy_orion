@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://4gkwqvpmqu6"]
+[gd_scene load_steps=7 format=3 uid="uid://4gkwqvpmqu6"]
 
 [ext_resource type="Script" uid="uid://bdbqvx1ww23yf" path="res://scenes/menu/battle_selection.gd" id="1_a48c8"]
 
@@ -23,6 +23,12 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.172549, 0.972549, 0.243137, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxxnv"]
+bg_color = Color(0.47451, 0, 0.87451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a48c8"]
+font_size = 27
+
 [node name="BattleSelection" type="Node2D"]
 script = ExtResource("1_a48c8")
 
@@ -36,22 +42,24 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7wniq")
 
 [node name="Buttons" type="Node2D" parent="."]
 
-[node name="Battle1" type="Button" parent="Buttons" groups=["BattleButtons"]]
+[node name="Battle1" type="Button" parent="Buttons" groups=["BattleButtons", "HasToolTip"]]
 offset_left = 472.0
 offset_top = 108.0
 offset_right = 732.0
 offset_bottom = 183.0
+mouse_filter = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_a48c8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d0im0")
 text = "Battle 1
 "
 
-[node name="Battle2" type="Button" parent="Buttons" groups=["BattleButtons"]]
+[node name="Battle2" type="Button" parent="Buttons" groups=["BattleButtons", "HasToolTip"]]
 offset_left = 472.0
 offset_top = 208.0
 offset_right = 732.0
 offset_bottom = 283.0
+mouse_filter = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_a48c8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d0im0")
@@ -63,8 +71,27 @@ offset_left = 472.0
 offset_top = 308.0
 offset_right = 732.0
 offset_bottom = 383.0
+mouse_filter = 2
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_a48c8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d0im0")
 text = "Back To Menu
 "
+
+[node name="ButtonsToolTips" type="Panel" parent="."]
+offset_left = 371.0
+offset_top = 432.0
+offset_right = 830.0
+offset_bottom = 593.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mxxnv")
+
+[node name="Description" type="Label" parent="ButtonsToolTips"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 30.0
+offset_right = 467.0
+offset_bottom = 127.0
+text = "Achieve a score of 1000 to unlock"
+label_settings = SubResource("LabelSettings_a48c8")
+horizontal_alignment = 1
+vertical_alignment = 1

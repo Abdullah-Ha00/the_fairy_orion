@@ -6,7 +6,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	call_deferred("set_up_mouse")
 	initialize_buttons()
-	show_high_score()
 	initialize_game_state()
 	initialize_audio()
 	
@@ -17,7 +16,6 @@ func _process(_delta: float) -> void:
 func _on_button_pressed(button:Button):
 	match button.name:
 		"Start":
-			#get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
 			GlobalFunctions.disable_buttons("Buttons")
 			load_battle_menu()
 		"Quit":
@@ -26,10 +24,7 @@ func _on_button_pressed(button:Button):
 			GlobalFunctions.disable_buttons("Buttons")
 			load_options_menu()
 	GlobalFunctions.check_arrow_buttons_collision(%SelectArrowMain, GlobalStats.button_group)
-	
-func show_high_score():
-	$HighScoreText.text = str(ScoreManager.load_score(GlobalStats.levels["0-2"]))
-	
+
 func initialize_game_state():
 	GlobalStats.current_dialogue = GlobalStats.dialogues["introduction"]
 	GlobalStats.current_game_phase = GlobalStats.game_phases["begin"]
@@ -53,7 +48,6 @@ func load_options_menu():
 func set_up_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	DisplayServer.warp_mouse(Vector2(1000,350))
-
 
 func change_arrow_settings(pos:Vector2, min_y_pos:int, max_y_pos:int):
 	$%SelectArrowMain.position = pos
