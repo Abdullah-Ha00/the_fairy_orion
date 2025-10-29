@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=22 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
 [ext_resource type="Texture2D" uid="uid://db1wk1vkx7g5q" path="res://images/sky.png" id="2_m114p"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bkd1il7gun27t" path="res://scenes/parrot/parrot.tscn" id="6_adcqc"]
 [ext_resource type="PackedScene" uid="uid://hnh8mnniyyal" path="res://scenes/dialogues/dialogues.tscn" id="12_dlabj"]
 [ext_resource type="Script" uid="uid://codw6x8lhl4re" path="res://scenes/world/audio.gd" id="12_umvgx"]
-[ext_resource type="AudioStream" uid="uid://ccckcfblptrlp" path="res://audio/music/17 - Decisive Battle 2 - The Calamity.mp3" id="13_srmg5"]
 [ext_resource type="AudioStream" uid="uid://ctc74qboelaww" path="res://audio/music/victory-gold-star-award-267259.mp3" id="14_umvgx"]
 [ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 [ext_resource type="AudioStream" uid="uid://biv5lh7da1k13" path="res://audio/sfx/electric-discharge-386160.mp3" id="16_m114p"]
@@ -264,9 +263,7 @@ script = ExtResource("12_umvgx")
 [node name="Music" type="Node" parent="Audio"]
 
 [node name="Main" type="AudioStreamPlayer" parent="Audio/Music"]
-stream = ExtResource("13_srmg5")
 volume_db = -7.0
-autoplay = true
 bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio/Music"]

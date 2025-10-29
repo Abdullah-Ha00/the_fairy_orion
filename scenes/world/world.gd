@@ -11,12 +11,13 @@ var second_phase_processed:bool = false
 var fence_stopped:bool = false
 var level_key:String = "0-1"
 var high_score:int
+var battle_music: String = "res://audio/music/17 - Decisive Battle 2 - The Calamity.mp3"
 
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	high_score = ScoreManager.load_score(GlobalStats.levels[level_key])
-	GlobalStats.high_score = high_score
+	play_battle_music()
+	set_score_values()
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -147,6 +148,14 @@ func remove_seal(body):
 	var dead_body_script = body.get_script()
 	if  dead_body_script == $Monster.get_script():
 		$Parrot/Seal.queue_free()
+
+func set_score_values():
+	high_score = ScoreManager.load_score(GlobalStats.levels[level_key])
+	GlobalStats.high_score = high_score
+
+func play_battle_music():
+	$Audio/Music/Main.stream = load(battle_music)
+	$Audio/Music/Main.play()
 
 	
 
