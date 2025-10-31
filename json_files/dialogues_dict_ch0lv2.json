@@ -1,30 +1,34 @@
 {
   "intro": 
-["Selene:  Orion!! He got me again!!",
-"Teratos: You’re under my curse now ! Your power will be mine soon!",
-"Orion: Why won’t anyone leave Selene alone for just one day??",
-"Selene: Don’t be intimidated, Orion!\nJust hit him with [color=red]SPACE[/color] while dodging his attacks — and make sure to conserve your [color=blue]magic energy![/color]",
-"Teratos: It’s over for you, birdie!\nWithin [color=red]two minutes[/color], you’ll become part of me!!",
-"Orion: One hundred twenty seconds is more than enough for me to \nshut your mouth for good!",
-"Teratos: You’re full of yourself, insect!",
-"Selene: Get ready, Orion!",],
+["Selene:  Orion!! Slug Guy got me again!!",
+"Orion: That's your prize for letting him go, Selene!",
+"Teratos: This time you won't stop me, insect!\nThanks to that [color=green]thing[/color], I will easily crush you and consume the bird's power.",
+"Selene: I sense a strange power coming from him!\nBe carefull, Orion!",
+"Orion: What's that 'thing'??",
+"Teratos: Your brainless head cannot comprehend it.\nGive up now , and I might spare you!",
+"Orion: You will not beat me by just throwing purple mucus!",
+"Teratos: Hah! You don't know who you're up against, brainless fly!",
+"Selene: He's not joking, Orion!\nOn your guard!!"
+],
   "second_phase":
-["Teratos: Damn insect!",
-"I will show you my true power!!"],
+["Teratos: Ouch! Alright then!!\nYou're finished, insect!!",
+"Selene: I knew it! It's the [color=green]mark's[/color] power! \nOrion!! You're in danger!",
+"Orion: What 'mark'??",
+"Selene: Mark 60 pages...",
+"Orion: HOW DARE YOU MOCK ME IN YOUR WORTHLESS STA—",
+"Selene: He's charging something, Orion!\nKeep your focus!!"
+],
    "parrot":
-["Selene: YOU MORON!! Have you forgotten your training??",
- "One more hit and I'll be fried wings!!",
-  "Teratos: Hahaha!! Orion the Moron!!",
-  "Orion: Ugh! Stupid sword!\nIt won't happen again, Selene!"
+["Selene: ARE YOU SCHEMING YOUR REVENGE AGAINST ME, ORION???",
+ "Orion: DO YOU THINK I DID IT ON PURPOSE??",
+ "Teratos: Good job, brainless insect!\nMy plan is working as intended! Hahaha!!",
+ "Selene: You... if only I had the power to break this seal..."
 ],
   "fence":
-	["Teratos: Get smashed, insect!!!",
-	 "Orion: Damn you...",
-	".....",
-	"Teratos: Huh?? Why won't my barrier move??",
-	"Selene: Orion! I dispelled his barrier!\nIt won't crush you!!",
-	"Teratos: Curse you!! (Wait, he's already cursed...)",
-	"Orion: Let's end this!!"
+	["Teratos: You cannot stop me this time birdie!\nYour friend is squashed!!",
+	"Selene: You're underestimating me, slug! ",
+	"Teratos: Ugh... It doesn't matter!\nThere's no way he'll survive in this state!",
+	"Orion: It's not over yet!"
 	]
 
   
