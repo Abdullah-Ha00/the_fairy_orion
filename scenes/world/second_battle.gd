@@ -8,7 +8,7 @@ var bug_scenes:Array = [magic_bug_scene, health_bug_scene, damage_bug_scene]
 
 func _ready() -> void:
 	level_key = "0-2"
-	battle_music = "res://audio/music/lost-fairy-land-109017.mp3"
+	battle_music = "res://audio/music/royal-funeral-march-with-powerful-organ-248324.mp3"
 	super()
 	
 func _on_summon_bugs_timeout() -> void:

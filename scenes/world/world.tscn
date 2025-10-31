@@ -263,7 +263,6 @@ script = ExtResource("12_umvgx")
 [node name="Music" type="Node" parent="Audio"]
 
 [node name="Main" type="AudioStreamPlayer" parent="Audio/Music"]
-volume_db = -7.0
 bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio/Music"]

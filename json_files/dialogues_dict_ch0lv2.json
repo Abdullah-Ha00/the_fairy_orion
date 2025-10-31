@@ -1,0 +1,31 @@
+{
+  "intro": 
+["Selene:  Orion!! Help me!!",
+"Teratos: You’re under my curse now ! Your power will be mine soon!",
+"Orion: Why won’t anyone leave Selene alone for just one day??",
+"Selene: Don’t be intimidated, Orion!\nJust hit him with [color=red]SPACE[/color] while dodging his attacks — and make sure to conserve your [color=blue]magic energy![/color]",
+"Teratos: It’s over for you, birdie!\nWithin [color=red]two minutes[/color], you’ll become part of me!!",
+"Orion: One hundred twenty seconds is more than enough for me to \nshut your mouth for good!",
+"Teratos: You’re full of yourself, insect!",
+"Selene: Get ready, Orion!",],
+  "second_phase":
+["Teratos: Damn insect!",
+"I will show you my true power!!"],
+   "parrot":
+["Selene: YOU MORON!! Have you forgotten your training??",
+ "One more hit and I'll be fried wings!!",
+  "Teratos: Hahaha!! Orion the Moron!!",
+  "Orion: Ugh! Stupid sword!\nIt won't happen again, Selene!"
+],
+  "fence":
+	["Teratos: Get smashed, insect!!!",
+	 "Orion: Damn you...",
+	".....",
+	"Teratos: Huh?? Why won't my barrier move??",
+	"Selene: Orion! I dispelled his barrier!\nIt won't crush you!!",
+	"Teratos: Curse you!! (Wait, he's already cursed...)",
+	"Orion: Let's end this!!"
+	]
+
+  
+}

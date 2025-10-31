@@ -4,10 +4,11 @@ var dialogue_number:int = 0
 var can_skip:bool = false
 var can_start:bool = false
 var selected_dialogues:Array 
+var dialogues_level:Dictionary
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	select_dialogue()
+	select_dialogue(DialoguesPath.dialogues)
 	pause_game()
 	show_dialogue()
 	
@@ -51,19 +52,19 @@ func process_letters():
 func pause_game():
 	get_tree().paused = true
 	
-func select_dialogue():
+func select_dialogue(dialogues_path:Dictionary):
 	match GlobalStats.current_dialogue:
 			"intro":
-				selected_dialogues = DialoguesPath.dialogues["intro"]
+				selected_dialogues = dialogues_path["intro"]
 				$DialogueScreenComponents/ButtonsDescription.show()
 				$Audio/Parrot.play()
 			"second_phase":
-				selected_dialogues = DialoguesPath.dialogues["second_phase"]
+				selected_dialogues = dialogues_path["second_phase"]
 				$Audio/MonsterHit.play()
 			"parrot_hurt":
-				selected_dialogues = DialoguesPath.dialogues["parrot"]
+				selected_dialogues = dialogues_path["parrot"]
 			"fence_stopped":
-				selected_dialogues = DialoguesPath.dialogues["fence"]
+				selected_dialogues = dialogues_path["fence"]
 				$Audio/MonsterLaugh.play()
 
 func play_text_sound():

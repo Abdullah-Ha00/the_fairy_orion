@@ -101,7 +101,7 @@ func show_monster_dialogue():
 	
 func check_bodies_health():
 	for body in get_tree().get_nodes_in_group("Body"):
-		if body.health <=0:
+		if body.health <=0 and is_instance_valid(body):
 			GlobalStats.is_game_finished = true
 			remove_body(body)
 			remove_seal(body)
