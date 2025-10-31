@@ -15,8 +15,10 @@ func _on_button_pressed(button:Button):
 	match button.name:
 		"Battle1":
 			get_tree().change_scene_to_file("res://scenes/world/world.tscn")
+			GlobalStats.current_level = GlobalStats.levels["0-1"]
 		"Battle2":
 			get_tree().change_scene_to_file("res://scenes/world/second_battle.tscn")
+			GlobalStats.current_level = GlobalStats.levels["0-2"]
 		"Back":
 			return_to_main()
 			enable_mouse()

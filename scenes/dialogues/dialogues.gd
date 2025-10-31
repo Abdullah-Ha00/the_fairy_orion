@@ -8,7 +8,8 @@ var dialogues_level:Dictionary
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	select_dialogue(DialoguesPath.dialogues)
+	check_level()
+	select_dialogue(dialogues_level)
 	pause_game()
 	show_dialogue()
 	
@@ -71,4 +72,10 @@ func play_text_sound():
 	$Audio/Text.play()
 	await get_tree().create_timer(0.08).timeout
 	$Audio/Text.stop()
+
+func check_level():
+	if GlobalStats.current_level =="ch0lv1":
+		dialogues_level = DialoguesPath.dialogues_ch0lv1
+	else:
+		dialogues_level = DialoguesPath.dialogues_ch0lv2
 	
