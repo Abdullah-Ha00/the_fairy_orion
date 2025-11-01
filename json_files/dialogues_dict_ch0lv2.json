@@ -29,7 +29,20 @@
 	"Selene: You're underestimating me, slug! ",
 	"Teratos: Ugh... It doesn't matter!\nThere's no way he'll survive in this state!",
 	"Orion: It's not over yet!"
-	]
+	],
+   "ray_hint":
+	["Orion: (Wow... That orb was enormous!! This isn't looking good...)",
+	"(I should probably use the Forbidden [color=red](R)ay[/color].)",
+	"(I can't hit him unless he's in range. I also need to have [color=red]enough health. [/color])",
+	"(It's a risky gamble, but I don't have another choice. \nMy ears won't be the same after using it...)"
+	],
+	"ray_hit":
+		["Teratos: Impossible!! How did you unleash such power??!", 
+		"Selene: YOU IMBECILE!!\nHave you forgotten our master's words??\nYou could've been turned to dust!!",
+		"Orion: I'm... fine... Selene...(Better than nothing, I guess...)",
+		"Teratos: CURSE YOU!!" 
+		]
+		
 
   
 }
