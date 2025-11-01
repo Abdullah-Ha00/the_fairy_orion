@@ -9,6 +9,7 @@ var bug_scenes:Array = [magic_bug_scene, health_bug_scene, damage_bug_scene]
 func _ready() -> void:
 	level_key = "0-2"
 	battle_music = "res://audio/music/royal-funeral-march-with-powerful-organ-248324.mp3"
+	$Audio/Music/Main.volume_db = 5
 	super()
 	
 func _on_summon_bugs_timeout() -> void:
@@ -44,6 +45,7 @@ func _on_fairy_ray() -> void:
 	if $Fairy.monster_in_range:
 		instantiate_ray()
 		$Fairy.ray_debuff()
+		display_dialogue()
 
 func instantiate_ray():
 	var ray_instance = ray_scene.instantiate()
@@ -60,4 +62,9 @@ func begin_second_phase():
 
 func _on_ray_hint_timeout() -> void:
 	GlobalStats.current_dialogue = GlobalStats.dialogues["ray_hint"]
+	load_dialogue()
+	$Fairy.ray_available = true
+
+func display_dialogue():
+	GlobalStats.current_dialogue = GlobalStats.dialogues["ray_hit"]
 	load_dialogue()

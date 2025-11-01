@@ -176,25 +176,25 @@ script = ExtResource("3_7atv3")
 [node name="Marker2D" type="Marker2D" parent="Fairy" index="9"]
 position = Vector2(0, 18.75)
 
-[node name="RayRange" type="Area2D" parent="Fairy" index="10" groups=["Ray"]]
-collision_layer = 16
-collision_mask = 2
+[node name="RayRangeSFX" type="Node" parent="Fairy" index="10"]
 
-[node name="Sfx" type="Node" parent="Fairy/RayRange" index="0"]
-
-[node name="RayRangeEntered" type="AudioStreamPlayer" parent="Fairy/RayRange/Sfx" index="0"]
+[node name="RayRangeEntered" type="AudioStreamPlayer" parent="Fairy/RayRangeSFX" index="0"]
 stream = ExtResource("4_q7pjt")
 volume_db = 6.0
 pitch_scale = 1.5
 bus = &"SFX"
 
-[node name="RayRangeExited" type="AudioStreamPlayer" parent="Fairy/RayRange/Sfx" index="1"]
+[node name="RayRangeExited" type="AudioStreamPlayer" parent="Fairy/RayRangeSFX" index="1"]
 stream = ExtResource("5_an0id")
 volume_db = 6.0
 pitch_scale = 2.0
 bus = &"SFX"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="1"]
+[node name="RayRange" type="Area2D" parent="Fairy" index="11" groups=["Ray"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="0"]
 position = Vector2(444.375, 20)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_7atv3")

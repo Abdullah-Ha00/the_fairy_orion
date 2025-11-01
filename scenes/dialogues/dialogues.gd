@@ -71,6 +71,7 @@ func select_dialogue(dialogues_path:Dictionary):
 				selected_dialogues = dialogues_path["ray_hint"]
 			"monster_hit":
 				selected_dialogues = dialogues_path["ray_hit"]
+				$Audio/Ray.play()
 
 func play_text_sound():
 	$Audio/Text.play()

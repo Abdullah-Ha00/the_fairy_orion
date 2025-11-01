@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hnh8mnniyyal"]
+[gd_scene load_steps=12 format=3 uid="uid://hnh8mnniyyal"]
 
 [ext_resource type="Script" uid="uid://br5djtjbgogak" path="res://scenes/dialogues/dialogues.gd" id="1_1gcki"]
 [ext_resource type="Texture2D" uid="uid://b40qifkircejg" path="res://images/enter_button.png" id="3_1lc76"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c4tg68vobgwlc" path="res://audio/sfx/bllrr-text-loop-82399.mp3" id="5_0h1ty"]
 [ext_resource type="AudioStream" uid="uid://dn1qi5f7cmerx" path="res://audio/sfx/monster-growl-390285.mp3" id="6_jovaq"]
 [ext_resource type="AudioStream" uid="uid://dcg8p3k32ecd5" path="res://audio/sfx/diabolic-laugh-202978.mp3" id="7_xex2w"]
+[ext_resource type="AudioStream" uid="uid://c1ut5poio8u7o" path="res://audio/sfx/hero-skill-attack-reveal-11-388902.mp3" id="8_hait0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgcd3"]
 draw_center = false
@@ -115,6 +116,12 @@ bus = &"SFX"
 
 [node name="MonsterLaugh" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_xex2w")
+bus = &"SFX"
+
+[node name="Ray" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_hait0")
+volume_db = 6.0
+pitch_scale = 2.0
 bus = &"SFX"
 
 [connection signal="timeout" from="NexLineTimer" to="." method="_on_nex_line_timer_timeout"]

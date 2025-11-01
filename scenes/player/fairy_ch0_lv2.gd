@@ -2,15 +2,16 @@ extends Fairy
 var monster_in_range:bool = false
 var ray_health_cost: int = 20
 var ray_used:bool = false
+var ray_available:bool = false
 signal ray
 
 func _on_ray_range_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Monster") and GlobalStats.current_game_phase == GlobalStats.game_phases["monster_health_halved"]:
+	if body.is_in_group("Monster") and ray_available:
 		monster_in_range = true
 		play_ray_area_sound()
 		
 func _on_ray_range_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Monster") and GlobalStats.current_game_phase == GlobalStats.game_phases["monster_health_halved"]:
+	if body.is_in_group("Monster") and ray_available:
 		monster_in_range = false
 		play_ray_area_sound()
 
@@ -27,7 +28,7 @@ func ray_debuff():
 
 func play_ray_area_sound():
 	if monster_in_range and not ray_used:
-		$RayRange/Sfx/RayRangeEntered.play()
+		$RayRangeSFX/RayRangeEntered.play()
 	elif not monster_in_range and not ray_used:
-		$RayRange/Sfx/RayRangeExited.play()
+		$RayRangeSFX/RayRangeExited.play()
 		

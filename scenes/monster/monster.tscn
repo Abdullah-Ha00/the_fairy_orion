@@ -161,7 +161,7 @@ vertical_alignment = 1
 
 [node name="HitSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_jpvs1")
-volume_db = -10.0
+volume_db = -3.0
 pitch_scale = 1.5
 bus = &"SFX"
 
