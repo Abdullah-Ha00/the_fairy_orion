@@ -256,6 +256,10 @@ autostart = true
 wait_time = 4.0
 autostart = true
 
+[node name="RayHint" type="Timer" parent="Timers" index="2"]
+wait_time = 5.0
+one_shot = true
+
 [node name="Lights" type="Node2D" parent="." index="12"]
 
 [node name="SummonLight" type="PointLight2D" parent="Lights" index="0"]
@@ -278,3 +282,4 @@ libraries = {
 [connection signal="timeout" from="Monster/CursedOrbCooldown" to="Monster" method="_on_cursed_orb_cooldown_timeout"]
 [connection signal="timeout" from="Timers/SummonBugs" to="." method="_on_summon_bugs_timeout"]
 [connection signal="timeout" from="Timers/MoveParrot" to="." method="_on_move_parrot_timeout"]
+[connection signal="timeout" from="Timers/RayHint" to="." method="_on_ray_hint_timeout"]

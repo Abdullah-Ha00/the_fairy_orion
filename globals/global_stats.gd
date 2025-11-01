@@ -5,7 +5,9 @@ var dialogues:Dictionary ={
 	"introduction":"intro",
 	"monster":"second_phase",
 	"parrot":"parrot_hurt",
-	"fence":"fence_stopped"
+	"fence":"fence_stopped",
+	"ray_hint":"hint",
+	"ray_hit":"monster_hit"
 }
 var current_dialogue:String
 var game_phases:Dictionary= {

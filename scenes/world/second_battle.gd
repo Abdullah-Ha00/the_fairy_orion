@@ -40,7 +40,6 @@ func _on_monster_cursed_orb() -> void:
 	cursed_orb_instance.position = $Monster/CursedOrb.global_position
 	$SpecialAttacks.add_child(cursed_orb_instance)
 	
-	
 func _on_fairy_ray() -> void:
 	if $Fairy.monster_in_range:
 		instantiate_ray()
@@ -50,3 +49,15 @@ func instantiate_ray():
 	var ray_instance = ray_scene.instantiate()
 	ray_instance.position = $Fairy/Marker2D.position + Vector2(460, -30)
 	$Fairy.add_child(ray_instance)
+
+func begin_second_phase():
+	if is_instance_valid(GlobalStats.monster_node) and not second_phase_processed:
+		increase_stats()
+		show_monster_dialogue()
+		$Timers/RayHint.start()
+		second_phase_processed = true
+
+
+func _on_ray_hint_timeout() -> void:
+	GlobalStats.current_dialogue = GlobalStats.dialogues["ray_hint"]
+	load_dialogue()

@@ -67,6 +67,10 @@ func select_dialogue(dialogues_path:Dictionary):
 			"fence_stopped":
 				selected_dialogues = dialogues_path["fence"]
 				$Audio/MonsterLaugh.play()
+			"hint":
+				selected_dialogues = dialogues_path["ray_hint"]
+			"monster_hit":
+				selected_dialogues = dialogues_path["ray_hit"]
 
 func play_text_sound():
 	$Audio/Text.play()
