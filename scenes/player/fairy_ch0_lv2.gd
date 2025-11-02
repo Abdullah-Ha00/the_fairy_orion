@@ -9,6 +9,10 @@ func _ready() -> void:
 	super()
 	initialize_ray_sprite()
 	
+func _process(delta: float) -> void:
+	super(delta)
+	disable_ray()
+	
 func _on_ray_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Monster") and ray_available:
 		monster_in_range = true
@@ -41,3 +45,8 @@ func play_ray_area_sound():
 func initialize_ray_sprite():
 	$RayRange/RaySprite.visible = false
 	$RayRange/RaySprite.modulate = Color.RED
+
+func disable_ray():
+	if health <= ray_health_cost and not ray_used:
+		ray_available= false
+		$RayRange/RaySprite.visible = false

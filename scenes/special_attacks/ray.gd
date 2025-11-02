@@ -19,6 +19,5 @@ func hit_monster(body):
 	body.update_health_text()
 	GlobalFunctions.change_color_on_hit(GlobalStats.monster_node, Color.DARK_MAGENTA)
 
-
 func _on_area_entered(area: Area2D) -> void:
 	area.queue_free()
