@@ -63,8 +63,12 @@ func begin_second_phase():
 func _on_ray_hint_timeout() -> void:
 	GlobalStats.current_dialogue = GlobalStats.dialogues["ray_hint"]
 	load_dialogue()
-	$Fairy.ray_available = true
+	enable_ray()
 
 func display_dialogue():
 	GlobalStats.current_dialogue = GlobalStats.dialogues["ray_hit"]
 	load_dialogue()
+
+func enable_ray():
+	$Fairy.ray_available = true
+	$Fairy/RayRange/RaySprite.visible = true

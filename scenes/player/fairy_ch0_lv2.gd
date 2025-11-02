@@ -5,14 +5,20 @@ var ray_used:bool = false
 var ray_available:bool = false
 signal ray
 
+func _ready() -> void:
+	super()
+	initialize_ray_sprite()
+	
 func _on_ray_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Monster") and ray_available:
 		monster_in_range = true
+		$RayRange/RaySprite.modulate = Color.WHITE
 		play_ray_area_sound()
 		
 func _on_ray_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Monster") and ray_available:
 		monster_in_range = false
+		$RayRange/RaySprite.modulate = Color.RED
 		play_ray_area_sound()
 
 func _input(event: InputEvent) -> void:
@@ -31,4 +37,7 @@ func play_ray_area_sound():
 		$RayRangeSFX/RayRangeEntered.play()
 	elif not monster_in_range and not ray_used:
 		$RayRangeSFX/RayRangeExited.play()
-		
+
+func initialize_ray_sprite():
+	$RayRange/RaySprite.visible = false
+	$RayRange/RaySprite.modulate = Color.RED

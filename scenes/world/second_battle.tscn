@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://by6iqwjbkeono"]
+[gd_scene load_steps=21 format=3 uid="uid://by6iqwjbkeono"]
 
 [ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
 [ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
 [ext_resource type="AudioStream" uid="uid://shisp75ykcfn" path="res://audio/sfx/error-call-to-attention-129258.mp3" id="5_an0id"]
 [ext_resource type="AudioStream" uid="uid://d1jl1fqw58qge" path="res://audio/sfx/magic-descend-2-259520.mp3" id="5_x2y1m"]
+[ext_resource type="Texture2D" uid="uid://c01414lhreuqw" path="res://images/ray_range.png" id="6_an0id"]
 [ext_resource type="AudioStream" uid="uid://bx7rgusikgwn8" path="res://audio/sfx/magical-focus-energy-40083.mp3" id="7_b8lft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7atv3"]
@@ -194,7 +195,12 @@ bus = &"SFX"
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="0"]
+[node name="RaySprite" type="Sprite2D" parent="Fairy/RayRange" index="0"]
+position = Vector2(446.25, -10)
+scale = Vector2(1, 1)
+texture = ExtResource("6_an0id")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="1"]
 position = Vector2(444.375, 20)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_7atv3")
@@ -232,6 +238,7 @@ texture = ExtResource("4_opmdr")
 
 [node name="SummonBug" type="AudioStreamPlayer" parent="Audio/Sfx" index="2"]
 stream = ExtResource("4_w7148")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="MoveParrot" type="AudioStreamPlayer" parent="Audio/Sfx" index="3"]
