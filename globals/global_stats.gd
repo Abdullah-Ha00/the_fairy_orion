@@ -5,7 +5,9 @@ var dialogues:Dictionary ={
 	"introduction":"intro",
 	"monster":"second_phase",
 	"parrot":"parrot_hurt",
-	"fence":"fence_stopped"
+	"fence":"fence_stopped",
+	"ray_hint":"hint",
+	"ray_hit":"monster_hit"
 }
 var current_dialogue:String
 var game_phases:Dictionary= {
@@ -24,3 +26,9 @@ var arrow_node:Node
 var is_game_started:bool
 var is_game_finished:bool
 var arrow_reset:bool
+var levels:Dictionary= {
+	"0-1":"ch0lv1",
+	"0-2":"ch0lv2",
+}
+var current_level:String
+var button_group:String

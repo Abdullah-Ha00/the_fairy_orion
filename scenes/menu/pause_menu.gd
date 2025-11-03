@@ -4,7 +4,7 @@ func _ready():
 	set_up_mouse()
 	$Audio/Pause.play(0.1)
 	set_up_menu()
-	connect_buttons()
+	GlobalFunctions.connect_buttons("Buttons", _on_button_pressed)
 	
 func _on_button_pressed(button:Button):
 	match button.name:
@@ -19,7 +19,7 @@ func _on_button_pressed(button:Button):
 			get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 		"NoButton":
 			show_pause_menu()	
-	update_button_color()
+	GlobalFunctions.check_arrow_buttons_collision($SelectArrow, GlobalStats.button_group)
 	
 func show_quit_option():
 	$QuitOptions.visible= true
@@ -37,17 +37,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("accept"):
 		$Audio/Accept.play()
 		
-func connect_buttons():
-	for button in get_tree().get_nodes_in_group("Buttons"):
-		button.pressed.connect(_on_button_pressed.bind(button))
-
 func set_up_menu():
 	get_tree().paused = true
 	position = Vector2(750,350)
 	$QuitOptions.global_position = Vector2(0,0)
-
-func update_button_color():
-		GlobalFunctions.check_arrow_buttons_collision($SelectArrow)
 
 func set_up_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

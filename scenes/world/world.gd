@@ -1,4 +1,5 @@
 extends Node2D
+class_name MainScene
 var sword_beam_scene:PackedScene = preload("res://scenes/special_attacks/sword_beam.tscn")
 var orb_scene:PackedScene = preload("res://scenes/special_attacks/black_orb.tscn")
 var end_game_scene: PackedScene = preload("res://scenes/end_game/end_game.tscn")
@@ -8,12 +9,15 @@ var parrot_state:String
 var parrot_hit_processed:bool = false
 var second_phase_processed:bool = false
 var fence_stopped:bool = false
-var high_score:int = ScoreManager.load_score()
+var level_key:String = "0-1"
+var high_score:int
+var battle_music: String = "res://audio/music/17 - Decisive Battle 2 - The Calamity.mp3"
 
 func _ready() -> void:
 	$ShootingStars.emitting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	GlobalStats.high_score = high_score
+	play_battle_music()
+	set_score_values()
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -24,7 +28,8 @@ func _process(_delta: float) -> void:
 	check_bodies_health()
 	check_game_phase()
 	check_body_state()
-
+	
+	
 func _on_fence_player_shocked() -> void:
 	freeze_fairy()
 	
@@ -50,11 +55,11 @@ func begin_second_phase():
 		show_monster_dialogue()
 		second_phase_processed = true
 		
-func get_score():
+func get_score(level:String):
 		if $Monster.health <=0:
 			GlobalStats.current_game_phase =GlobalStats.game_phases["monster_health_zero"]
 			GlobalStats.score = int(($Parrot/Timers/TimeLeft. time_left *10) + ($Fairy.health * 5))
-			ScoreManager.save_score(GlobalStats.score)
+			ScoreManager.save_score(GlobalStats.score, level)
 		else:
 			GlobalStats.current_game_phase = GlobalStats.game_phases["self_ally_defeated"]
 			
@@ -80,12 +85,10 @@ func show_parrot_dialogue():
 		
 func freeze_fairy():
 	$Fairy.position.x-=$Fence.x_rebound
-	$Fairy.is_moving=false
-	$Fairy.can_cast_sword_beam =false
 	$Fairy.health -=$Fence.shock_damage
-	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node)
+	GlobalFunctions.change_color_on_hit(GlobalStats.fairy_node, Color.RED)
 	$Audio/Sfx/Shock.play()
-	$Fairy/Timers/Shock.start()
+	$Fairy.immobilize(0.5)
 
 func increase_stats():
 	$Monster/MonsterImg.speed_scale = 2
@@ -98,11 +101,11 @@ func show_monster_dialogue():
 	
 func check_bodies_health():
 	for body in get_tree().get_nodes_in_group("Body"):
-		if body.health <=0:
+		if body.health <=0 and is_instance_valid(body):
 			GlobalStats.is_game_finished = true
 			remove_body(body)
 			remove_seal(body)
-			get_score()
+			get_score(GlobalStats.levels[level_key])
 			await get_tree().create_timer(0.1).timeout
 			display_game_result()
 			
@@ -110,8 +113,6 @@ func remove_body(body):
 	GlobalStats.dead_body = body
 	body.queue_free()
 	
-	
-
 func check_game_phase():
 	match GlobalStats.current_game_phase:
 		"second_phase":
@@ -124,7 +125,6 @@ func check_game_phase():
 			$Audio/Music/Main.stop()
 			$Audio/Music/Lose.play()
 		
-	
 func check_body_state():
 	if parrot_state =="hit":
 		show_parrot_dialogue()
@@ -146,8 +146,16 @@ func  pause_game():
 
 func remove_seal(body):
 	var dead_body_script = body.get_script()
-	if dead_body_script == $Parrot.get_script() or dead_body_script == $Monster.get_script():
-		$Seal.queue_free()
+	if  dead_body_script == $Monster.get_script():
+		$Parrot/Seal.queue_free()
+
+func set_score_values():
+	high_score = ScoreManager.load_score(GlobalStats.levels[level_key])
+	GlobalStats.high_score = high_score
+
+func play_battle_music():
+	$Audio/Music/Main.stream = load(battle_music)
+	$Audio/Music/Main.play()
 
 	
 

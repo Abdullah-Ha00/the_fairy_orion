@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://8u8bdrwhy022"]
+
+[ext_resource type="Script" uid="uid://b8ayfa21i1epd" path="res://scenes/special_attacks/cursed_orb.gd" id="1_qce4y"]
+[ext_resource type="Texture2D" uid="uid://cjsvvcg2nkkkw" path="res://images/cursed_orb.png" id="1_tkguk"]
+[ext_resource type="AudioStream" uid="uid://brhdkupdccsqo" path="res://audio/sfx/abstract-magic-whoosh-03-204485.mp3" id="3_2gxb5"]
+
+[node name="CursedOrb" type="Area2D"]
+collision_layer = 16
+collision_mask = 17
+script = ExtResource("1_qce4y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.775, 0.479)
+texture = ExtResource("1_tkguk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, -36, -12, -34, -20, -34, -19, -31, -23, -31, -23, -27, -28, -26, -27, -21, -31, -22, -31, -12, -35, -12, -35, 9, -31, 9, -31, 19, -27, 19, -27, 23, -23, 24, -23, 28, -20, 29, -19, 31, -12, 31, -12, 34, 4, 34, 4, 32, 11, 31, 11, 29, 15, 29, 15, 25, 19, 24, 20, 20, 23, 19, 23, 10, 27, 10, 27, -12, 24, -12, 23, -21, 20, -22, 19, -26, 16, -26, 16, -31, 12, -31, 12, -33, 4, -34, 4, -36)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.5, -5.5)
+scale = Vector2(2.45, 2.65)
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2gxb5")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

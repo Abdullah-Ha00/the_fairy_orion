@@ -8,18 +8,19 @@ var y_pos = global_position.y:
 		global_position = Vector2(global_position.x, clamp(value,min_y_pos,max_y_pos))	
 	get:
 		return global_position.y
+		
 func _ready() -> void:
-	GlobalFunctions.check_arrow_buttons_collision(self)
+	GlobalFunctions.check_arrow_buttons_collision(self,GlobalStats.button_group)
 		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("down") and y_pos < max_y_pos :
 		y_pos+= 100
 		GlobalFunctions.play_sound(file_path, -10)
-		GlobalFunctions.check_arrow_buttons_collision(self)
+		GlobalFunctions.check_arrow_buttons_collision(self,GlobalStats.button_group)
 	if event.is_action_pressed("up") and y_pos > min_y_pos:
 		y_pos -=100
 		GlobalFunctions.play_sound(file_path, -10)
-		GlobalFunctions.check_arrow_buttons_collision(self)
+		GlobalFunctions.check_arrow_buttons_collision(self,GlobalStats.button_group)
 	
 	
 

@@ -1,0 +1,48 @@
+{
+  "intro": 
+["Selene:  Orion!! Slug Guy got me again!!",
+"Orion: That's your prize for letting him go, Selene!",
+"Teratos: This time you won't stop me, insect!\nThanks to that [color=green]thing[/color], I will easily crush you and consume the bird's power.",
+"Selene: I sense a strange power coming from him!\nBe carefull, Orion!",
+"Orion: What's that 'thing'??",
+"Teratos: Your brainless head cannot comprehend it.\nGive up now , and I might spare you!",
+"Orion: You will not beat me by just throwing purple mucus!",
+"Teratos: Hah! You don't know who you're up against, brainless fly!",
+"Selene: He's not joking, Orion!\nOn your guard!!"
+],
+  "second_phase":
+["Teratos: Ouch! Alright then!!\nYou're finished, insect!!",
+"Selene: I knew it! It's the [color=green]mark's[/color] power! \nOrion!! You're in danger!",
+"Orion: What 'mark'??",
+"Selene: Mark 60 pages...",
+"Orion: HOW DARE YOU MOCK ME IN YOUR WORTHLESS STA—",
+"Selene: He's charging something, Orion!\nKeep your focus!!"
+],
+   "parrot":
+["Selene: ARE YOU SCHEMING YOUR REVENGE AGAINST ME, ORION???",
+ "Orion: DO YOU THINK I DID IT ON PURPOSE??",
+ "Teratos: Good job, brainless insect!\nMy plan is working as intended! Hahaha!!",
+ "Selene: You... if only I had the power to break this seal..."
+],
+  "fence":
+	["Teratos: You cannot stop me this time birdie!\nYour friend is squashed!!",
+	"Selene: You're underestimating me, slug! ",
+	"Teratos: Ugh... It doesn't matter!\nThere's no way he'll survive in this state!",
+	"Orion: It's not over yet!"
+	],
+   "ray_hint":
+	["Orion: (Wow... That orb was enormous!! This isn't looking good...)",
+	"(I should probably use the Forbidden [color=red](R)ay[/color].)",
+	"(I can't hit him unless he's in range. I also need to have [color=red]enough health. [/color])",
+	"(It's a risky gamble, but I don't have another choice. \nMy ears won't be the same after using it...)"
+	],
+	"ray_hit":
+		["Teratos: Impossible!! How did you unleash such power??!", 
+		"Selene: YOU IMBECILE!!\nHave you forgotten our master's words??You could've been turned to dust!!",
+		"Orion: I'm... fine... Selene...(Better than nothing, I guess...)",
+		"Teratos: CURSE YOU!!" 
+		]
+		
+
+  
+}

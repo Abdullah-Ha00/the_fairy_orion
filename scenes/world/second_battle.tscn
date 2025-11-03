@@ -1,0 +1,291 @@
+[gd_scene load_steps=21 format=3 uid="uid://by6iqwjbkeono"]
+
+[ext_resource type="PackedScene" uid="uid://d4c0adjb3688m" path="res://scenes/world/world.tscn" id="1_bxg58"]
+[ext_resource type="Script" uid="uid://7jtgr7knqhpf" path="res://scenes/monster/elite_monster.gd" id="2_71eeo"]
+[ext_resource type="Script" uid="uid://co63rxveasp7i" path="res://scenes/world/second_battle.gd" id="2_nut8x"]
+[ext_resource type="Script" uid="uid://jesf2k5wu3xq" path="res://scenes/player/fairy_ch0_lv2.gd" id="3_7atv3"]
+[ext_resource type="Texture2D" uid="uid://6x3kbdt7yet6" path="res://images/summon_light.png" id="4_nut8x"]
+[ext_resource type="Texture2D" uid="uid://cjsvvcg2nkkkw" path="res://images/cursed_orb.png" id="4_opmdr"]
+[ext_resource type="AudioStream" uid="uid://26i078t8ac1a" path="res://audio/sfx/sample_confirm_success03_kofi_by_miraclei-360151.mp3" id="4_q7pjt"]
+[ext_resource type="AudioStream" uid="uid://bxk35hdwyomq4" path="res://audio/sfx/scifi-anime-whoosh-64-207085.mp3" id="4_w7148"]
+[ext_resource type="AudioStream" uid="uid://shisp75ykcfn" path="res://audio/sfx/error-call-to-attention-129258.mp3" id="5_an0id"]
+[ext_resource type="AudioStream" uid="uid://d1jl1fqw58qge" path="res://audio/sfx/magic-descend-2-259520.mp3" id="5_x2y1m"]
+[ext_resource type="Texture2D" uid="uid://c01414lhreuqw" path="res://images/ray_range.png" id="6_an0id"]
+[ext_resource type="AudioStream" uid="uid://bx7rgusikgwn8" path="res://audio/sfx/magical-focus-energy-40083.mp3" id="7_b8lft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7atv3"]
+size = Vector2(863.751, 22.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71eeo"]
+size = Vector2(2504, 432)
+
+[sub_resource type="Animation" id="Animation_b8lft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CursedOrb:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CursedOrb:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_opmdr"]
+resource_name = "orb_charge"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CursedOrb:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.8, 1.2, 1.66667, 2.13333, 2.53333, 2.93333, 3.3, 3.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.155, 0.095), Vector2(0.232, 0.143), Vector2(0.31, 0.19), Vector2(0.387, 0.238), Vector2(0.465, 0.285), Vector2(0.543, 0.333), Vector2(0.62, 0.38), Vector2(0.698, 0.428), Vector2(0.775, 0.479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CursedOrb:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_cursed_orb_position"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Audio/Sfx/OrbCharge")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0qkw"]
+_data = {
+&"RESET": SubResource("Animation_b8lft"),
+&"orb_charge": SubResource("Animation_opmdr")
+}
+
+[sub_resource type="Animation" id="Animation_w7148"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/SummonLight:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nut8x"]
+resource_name = "bug_summon_light"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/SummonLight:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.466667, 0.666667, 0.866667, 1.06667, 1.3, 1.5, 1.73333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.0, 4.0, 6.0, 8.0, 10.0, 8.0, 6.0, 4.0, 2.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x2y1m"]
+_data = {
+&"RESET": SubResource("Animation_w7148"),
+&"bug_summon_light": SubResource("Animation_nut8x")
+}
+
+[node name="World" instance=ExtResource("1_bxg58")]
+script = ExtResource("2_nut8x")
+
+[node name="BugsSpawnPositions" type="Node2D" parent="Fence" index="5"]
+position = Vector2(-880, -533)
+
+[node name="Marker2D" type="Marker2D" parent="Fence/BugsSpawnPositions" index="0"]
+position = Vector2(900, 824)
+
+[node name="Marker2D5" type="Marker2D" parent="Fence/BugsSpawnPositions" index="1"]
+position = Vector2(967, 563)
+
+[node name="Marker2D4" type="Marker2D" parent="Fence/BugsSpawnPositions" index="2"]
+position = Vector2(898, 284)
+
+[node name="Marker2D3" type="Marker2D" parent="Fence/BugsSpawnPositions" index="3"]
+position = Vector2(930, 433)
+
+[node name="Marker2D2" type="Marker2D" parent="Fence/BugsSpawnPositions" index="4"]
+position = Vector2(935, 706)
+
+[node name="Fairy" parent="." index="5"]
+position = Vector2(688, 285)
+script = ExtResource("3_7atv3")
+
+[node name="Marker2D" type="Marker2D" parent="Fairy" index="9"]
+position = Vector2(0, 18.75)
+
+[node name="RayRangeSFX" type="Node" parent="Fairy" index="10"]
+
+[node name="RayRangeEntered" type="AudioStreamPlayer" parent="Fairy/RayRangeSFX" index="0"]
+stream = ExtResource("4_q7pjt")
+volume_db = 6.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="RayRangeExited" type="AudioStreamPlayer" parent="Fairy/RayRangeSFX" index="1"]
+stream = ExtResource("5_an0id")
+volume_db = 6.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="RayRange" type="Area2D" parent="Fairy" index="11" groups=["Ray"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="RaySprite" type="Sprite2D" parent="Fairy/RayRange" index="0"]
+position = Vector2(446.25, -10)
+texture = ExtResource("6_an0id")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fairy/RayRange" index="1"]
+position = Vector2(444.375, 20)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_7atv3")
+
+[node name="Monster" parent="." index="8"]
+position = Vector2(1720, 265)
+script = ExtResource("2_71eeo")
+
+[node name="AttackRange" type="Area2D" parent="Monster" index="8"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/AttackRange" index="0"]
+position = Vector2(-1274.67, 34.6667)
+shape = SubResource("RectangleShape2D_71eeo")
+
+[node name="CursedOrbSpawnPositions" type="Node2D" parent="Monster" index="9"]
+
+[node name="Marker2D" type="Marker2D" parent="Monster/CursedOrbSpawnPositions" index="0"]
+position = Vector2(-90.6667, -174.667)
+
+[node name="Marker2D2" type="Marker2D" parent="Monster/CursedOrbSpawnPositions" index="1"]
+position = Vector2(94.6667, -168)
+
+[node name="CursedOrbCooldown" type="Timer" parent="Monster" index="10"]
+wait_time = 4.0
+
+[node name="CursedOrbAnimation" type="AnimationPlayer" parent="Monster" index="11"]
+libraries = {
+&"": SubResource("AnimationLibrary_c0qkw")
+}
+
+[node name="CursedOrb" type="Sprite2D" parent="Monster" index="12"]
+position = Vector2(-480, -72)
+texture = ExtResource("4_opmdr")
+
+[node name="SummonBug" type="AudioStreamPlayer" parent="Audio/Sfx" index="2"]
+stream = ExtResource("4_w7148")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="MoveParrot" type="AudioStreamPlayer" parent="Audio/Sfx" index="3"]
+stream = ExtResource("5_x2y1m")
+volume_db = -7.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="OrbCharge" type="AudioStreamPlayer" parent="Audio/Sfx" index="4"]
+stream = ExtResource("7_b8lft")
+volume_db = 20.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Timers" type="Node" parent="." index="11"]
+
+[node name="SummonBugs" type="Timer" parent="Timers" index="0"]
+wait_time = 5.0
+autostart = true
+
+[node name="MoveParrot" type="Timer" parent="Timers" index="1"]
+wait_time = 4.0
+autostart = true
+
+[node name="RayHint" type="Timer" parent="Timers" index="2"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Lights" type="Node2D" parent="." index="12"]
+
+[node name="SummonLight" type="PointLight2D" parent="Lights" index="0"]
+position = Vector2(902, 298)
+scale = Vector2(0.482, 0.4)
+energy = 0.0
+texture = ExtResource("4_nut8x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="13"]
+libraries = {
+&"": SubResource("AnimationLibrary_x2y1m")
+}
+
+[connection signal="ray" from="Fairy" to="." method="_on_fairy_ray"]
+[connection signal="body_entered" from="Fairy/RayRange" to="Fairy" method="_on_ray_range_body_entered"]
+[connection signal="body_exited" from="Fairy/RayRange" to="Fairy" method="_on_ray_range_body_exited"]
+[connection signal="cursed_orb" from="Monster" to="." method="_on_monster_cursed_orb"]
+[connection signal="body_entered" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="Monster/AttackRange" to="Monster" method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="Monster/CursedOrbCooldown" to="Monster" method="_on_cursed_orb_cooldown_timeout"]
+[connection signal="timeout" from="Timers/SummonBugs" to="." method="_on_summon_bugs_timeout"]
+[connection signal="timeout" from="Timers/MoveParrot" to="." method="_on_move_parrot_timeout"]
+[connection signal="timeout" from="Timers/RayHint" to="." method="_on_ray_hint_timeout"]

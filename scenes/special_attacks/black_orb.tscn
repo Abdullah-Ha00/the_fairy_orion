@@ -26,7 +26,7 @@ shape = SubResource("CircleShape2D_m4ibi")
 position = Vector2(8, -6)
 scale = Vector2(5.2, 6.5)
 
-[node name="sfx" type="AudioStreamPlayer" parent="."]
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hdpxp")
 bus = &"SFX"
 

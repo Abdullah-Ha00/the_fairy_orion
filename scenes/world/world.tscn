@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d4c0adjb3688m"]
+[gd_scene load_steps=22 format=4 uid="uid://d4c0adjb3688m"]
 
 [ext_resource type="Script" uid="uid://dynjoxueanbnl" path="res://scenes/world/world.gd" id="1_vadfg"]
 [ext_resource type="Texture2D" uid="uid://db1wk1vkx7g5q" path="res://images/sky.png" id="2_m114p"]
@@ -10,12 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bkd1il7gun27t" path="res://scenes/parrot/parrot.tscn" id="6_adcqc"]
 [ext_resource type="PackedScene" uid="uid://hnh8mnniyyal" path="res://scenes/dialogues/dialogues.tscn" id="12_dlabj"]
 [ext_resource type="Script" uid="uid://codw6x8lhl4re" path="res://scenes/world/audio.gd" id="12_umvgx"]
-[ext_resource type="AudioStream" uid="uid://ccckcfblptrlp" path="res://audio/music/17 - Decisive Battle 2 - The Calamity.mp3" id="13_srmg5"]
 [ext_resource type="AudioStream" uid="uid://ctc74qboelaww" path="res://audio/music/victory-gold-star-award-267259.mp3" id="14_umvgx"]
 [ext_resource type="AudioStream" uid="uid://dg87hag4f62pa" path="res://audio/music/failure-4-with-gong-69906.mp3" id="15_mxkvs"]
 [ext_resource type="AudioStream" uid="uid://biv5lh7da1k13" path="res://audio/sfx/electric-discharge-386160.mp3" id="16_m114p"]
 [ext_resource type="AudioStream" uid="uid://s5oxl3gmdyb3" path="res://audio/sfx/electrical-current-outdoor-electric-box-102763.mp3" id="17_71ii3"]
-[ext_resource type="Texture2D" uid="uid://c8k81vhp72dhu" path="res://images/seal.png" id="17_bt7bg"]
 [ext_resource type="Texture2D" uid="uid://bfub181wrsmiu" path="res://images/cloud.png" id="18_bt7bg"]
 
 [sub_resource type="Gradient" id="Gradient_5qq27"]
@@ -242,18 +240,12 @@ position = Vector2(880, 533)
 [node name="Clouds" type="TileMapLayer" parent="."]
 texture_filter = 1
 texture_repeat = 1
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAjAAMAAAAAAAAAAAAjAAQAAAAAAAAAAAAjAAUAAAAAAAAAAAAjAAYAAAAAAAAAAAAjAAcAAAAAAAAAAAAjAAgAAAAAAAAAAAAjAAkAAAAAAAAAAAAjAAoAAAAAAAAAAAAjAAsAAAAAAAAAAAAjAAwAAAAAAAAAAAAjAA0AAAAAAAAAAAAjAA4AAAAAAAAAAAAjAA8AAAAAAAAAAAAjABAAAAAAAAAAAAAjABEAAAAAAAAAAAAhABEAAAAAAAAAAAAeABEAAAAAAAAAAAAcABEAAAAAAAAAAAAaABEAAAAAAAAAAAAYABEAAAAAAAAAAAAWABEAAAAAAAAAAAAUABEAAAAAAAAAAAASABEAAAAAAAAAAAAQABEAAAAAAAAAAAAOABEAAAAAAAAAAAAMABEAAAAAAAAAAAAKABEAAAAAAAAAAAAIABEAAAAAAAAAAAAGABEAAAAAAAAAAAAEABEAAAAAAAAAAAACABEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAjAAMAAAAAAAAAAAAjAAQAAAAAAAAAAAAjAAUAAAAAAAAAAAAjAAYAAAAAAAAAAAAjAAcAAAAAAAAAAAAjAAgAAAAAAAAAAAAjAAkAAAAAAAAAAAAjAAoAAAAAAAAAAAAjAAsAAAAAAAAAAAAjAAwAAAAAAAAAAAAjAA0AAAAAAAAAAAAjAA4AAAAAAAAAAAAjAA8AAAAAAAAAAAAjABAAAAAAAAAAAAAjABEAAAAAAAAAAAAhABEAAAAAAAAAAAAeABEAAAAAAAAAAAAcABEAAAAAAAAAAAAaABEAAAAAAAAAAAAYABEAAAAAAAAAAAAWABEAAAAAAAAAAAAUABEAAAAAAAAAAAASABEAAAAAAAAAAAAQABEAAAAAAAAAAAAOABEAAAAAAAAAAAAMABEAAAAAAAAAAAAKABEAAAAAAAAAAAAIABEAAAAAAAAAAAAGABEAAAAAAAAAAAAEABEAAAAAAAAAAAACABEAAAAAAAAAAAAjAAEAAAAAAAAAAAAjAAIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_71ii3")
 
 [node name="Fairy" parent="." instance=ExtResource("3_l1hd3")]
 position = Vector2(-116, 323)
 scale = Vector2(0.8, 0.8)
-
-[node name="Seal" type="Sprite2D" parent="."]
-modulate = Color(0.556863, 1, 0.47451, 1)
-position = Vector2(1857, 132)
-scale = Vector2(0.826, 0.826)
-texture = ExtResource("17_bt7bg")
 
 [node name="Parrot" parent="." instance=ExtResource("6_adcqc")]
 position = Vector2(958, 15)
@@ -271,9 +263,6 @@ script = ExtResource("12_umvgx")
 [node name="Music" type="Node" parent="Audio"]
 
 [node name="Main" type="AudioStreamPlayer" parent="Audio/Music"]
-stream = ExtResource("13_srmg5")
-volume_db = -7.0
-autoplay = true
 bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio/Music"]

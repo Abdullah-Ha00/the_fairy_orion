@@ -1,15 +1,17 @@
 extends CharacterBody2D
+class_name Fairy
 var speed:int = 300
 var is_moving:bool = true
 var can_cast_sword_beam:bool = true
-var is_enemy:bool = false
-var is_ally:bool = true
 var _health:int = 100
 var health:int = _health:
 	set(value):
 		health = clamp(value, 0, _health)
 		$Audio/HitSfx.play()
-		
+var _beam_damage:int = 15
+var beam_damage:int = _beam_damage:
+	set(value):
+		beam_damage = clamp(value, 3,_beam_damage)
 var _magic:int = 50
 var magic:int = _magic:
 	set(value):
@@ -82,3 +84,9 @@ func change_color_on_regen(body:Node):
 		body.modulate = Color.ROYAL_BLUE
 		await get_tree().create_timer(0.5).timeout
 		body.modulate= body.self_modulate
+
+func immobilize(seconds:float):
+	$Timers/Shock.wait_time = seconds
+	$Timers/Shock.start()
+	is_moving = false
+	can_cast_sword_beam = false

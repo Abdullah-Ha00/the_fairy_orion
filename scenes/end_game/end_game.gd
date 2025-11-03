@@ -3,6 +3,8 @@ var fairy_down_text:String = "Game Over!\nYou have been defeated!"
 var parrot_down_text: String = "Game Over!\nSelene is deaaaaaaaaaaaaad!😭"
 var monster_down_text:String = "You have defeated the monster! \nSelene's curse has been lifted!"
 var text_y_position:int = 500
+var high_score_ch0_lv1:int = ScoreManager.load_score("ch0lv1")
+var battle_unlocked:bool = ScoreManager.load_battle_unlock()
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -11,6 +13,7 @@ func _ready() -> void:
 	show_text()
 	show_score()
 	show_high_score_label()
+	show_new_battle_label()
 	await get_tree().create_timer(18).timeout
 	go_to_main_menu()
 	
@@ -62,3 +65,11 @@ func show_score_labels():
 		await get_tree().create_timer(1).timeout
 		text.visible = true
 		$Audio/ScoreDisp.play()
+
+func show_new_battle_label():
+	$NewBattleLabel.global_position = Vector2(600,800)
+	if high_score_ch0_lv1 >=1000 and not battle_unlocked:
+		await get_tree().create_timer(13).timeout
+		$NewBattleLabel.visible = true
+		ScoreManager.save_battle_unlock()
+		
