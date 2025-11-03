@@ -31,10 +31,10 @@ shadow_color = Color(0, 0, 0, 1)
 script = ExtResource("1_s71ug")
 
 [node name="TextResult" type="Label" parent="."]
-offset_left = -596.0
-offset_top = 235.0
-offset_right = 119.0
-offset_bottom = 353.0
+offset_left = -784.0
+offset_top = 210.0
+offset_right = -69.0
+offset_bottom = 328.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_oq3b2")
 text = "Game Over!!!!"
