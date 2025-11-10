@@ -1,0 +1,153 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj7k7hpxr5h2r"]
+
+[ext_resource type="Texture2D" uid="uid://dcvercq8nq315" path="res://images/lore_background.png" id="1_ennck"]
+[ext_resource type="Texture2D" uid="uid://cky05orgqwjlk" path="res://images/scroll.png" id="2_ls8ml"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ennck"]
+bg_color = Color(0.322706, 0.207645, 7.21961e-08, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iyfb"]
+size = Vector2(45.5, 78.5313)
+
+[node name="Lore" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1381, 536)
+texture = ExtResource("1_ennck")
+
+[node name="ScrollBackground" type="Panel" parent="."]
+offset_left = 1.0
+offset_right = 840.0
+offset_bottom = 1077.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ennck")
+
+[node name="Scrolls" type="Node2D" parent="."]
+
+[node name="Scroll" type="Area2D" parent="Scrolls" groups=["Scroll"]]
+modulate = Color(0.45098, 1, 1, 1)
+position = Vector2(-67, -20)
+collision_layer = 8
+collision_mask = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll"]
+position = Vector2(139, 151)
+texture = ExtResource("2_ls8ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll"]
+position = Vector2(142.25, 150)
+shape = SubResource("RectangleShape2D_5iyfb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll"]
+offset_left = 87.0
+offset_top = 30.0
+offset_right = 196.0
+offset_bottom = 108.0
+theme_override_colors/default_color = Color(0.996078, 0.321569, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scroll2" type="Area2D" parent="Scrolls" groups=["Scroll"]]
+modulate = Color(0.45098, 1, 1, 1)
+position = Vector2(47, -20)
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll2"]
+position = Vector2(139, 151)
+texture = ExtResource("2_ls8ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll2"]
+position = Vector2(142.25, 150)
+shape = SubResource("RectangleShape2D_5iyfb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll2"]
+offset_left = 87.0
+offset_top = 30.0
+offset_right = 196.0
+offset_bottom = 108.0
+theme_override_colors/default_color = Color(0.996078, 0.321569, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scroll3" type="Area2D" parent="Scrolls" groups=["Scroll"]]
+modulate = Color(0.45098, 1, 1, 1)
+position = Vector2(161, -20)
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll3"]
+position = Vector2(139, 151)
+texture = ExtResource("2_ls8ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll3"]
+position = Vector2(142.25, 150)
+shape = SubResource("RectangleShape2D_5iyfb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll3"]
+offset_left = 87.0
+offset_top = 30.0
+offset_right = 196.0
+offset_bottom = 108.0
+theme_override_colors/default_color = Color(0.996078, 0.321569, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scroll4" type="Area2D" parent="Scrolls" groups=["Scroll"]]
+modulate = Color(0.45098, 1, 1, 1)
+position = Vector2(275, -20)
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll4"]
+position = Vector2(139, 151)
+texture = ExtResource("2_ls8ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll4"]
+position = Vector2(142.25, 150)
+shape = SubResource("RectangleShape2D_5iyfb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll4"]
+offset_left = 87.0
+offset_top = 30.0
+offset_right = 196.0
+offset_bottom = 108.0
+theme_override_colors/default_color = Color(0.996078, 0.321569, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scroll5" type="Area2D" parent="Scrolls" groups=["Scroll"]]
+modulate = Color(0.45098, 1, 1, 1)
+position = Vector2(389, -20)
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll5"]
+position = Vector2(139, 151)
+texture = ExtResource("2_ls8ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll5"]
+position = Vector2(142.25, 150)
+shape = SubResource("RectangleShape2D_5iyfb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll5"]
+offset_left = 87.0
+offset_top = 30.0
+offset_right = 196.0
+offset_bottom = 108.0
+theme_override_colors/default_color = Color(0.996078, 0.321569, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
