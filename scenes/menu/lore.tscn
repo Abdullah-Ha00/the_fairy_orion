@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj7k7hpxr5h2r"]
+[gd_scene load_steps=7 format=3 uid="uid://bj7k7hpxr5h2r"]
 
 [ext_resource type="Texture2D" uid="uid://dcvercq8nq315" path="res://images/lore_background.png" id="1_ennck"]
 [ext_resource type="Texture2D" uid="uid://cky05orgqwjlk" path="res://images/scroll.png" id="2_ls8ml"]
@@ -8,6 +8,22 @@ bg_color = Color(0.322706, 0.207645, 7.21961e-08, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iyfb"]
 size = Vector2(45.5, 78.5313)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls8ml"]
+bg_color = Color(0.533333, 0, 0.121569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.129412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5iyfb"]
+bg_color = Color(0.533333, 0, 0.121569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.129412, 1)
 
 [node name="Lore" type="Node2D"]
 
@@ -151,3 +167,24 @@ theme_override_font_sizes/normal_font_size = 50
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScrollDescription" type="Label" parent="."]
+offset_left = 1098.0
+offset_top = 543.0
+offset_right = 1508.0
+offset_bottom = 612.0
+theme_override_colors/font_color = Color(0.877701, 0.992143, 0.922312, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="." groups=["Buttons"]]
+offset_left = 162.0
+offset_top = 977.0
+offset_right = 614.0
+offset_bottom = 1052.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_ls8ml")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5iyfb")
+text = "Return to Main Menu
+"
