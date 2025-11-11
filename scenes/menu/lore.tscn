@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bj7k7hpxr5h2r"]
+[gd_scene load_steps=14 format=3 uid="uid://bj7k7hpxr5h2r"]
 
 [ext_resource type="Script" uid="uid://dmjt4ft1pgdnk" path="res://scenes/menu/lore.gd" id="1_5iyfb"]
 [ext_resource type="Texture2D" uid="uid://dcvercq8nq315" path="res://images/lore_background.png" id="1_ennck"]
 [ext_resource type="Texture2D" uid="uid://cky05orgqwjlk" path="res://images/scroll.png" id="2_ls8ml"]
+[ext_resource type="Texture2D" uid="uid://cithkihk04j43" path="res://images/scroll_text_bg.png" id="4_6csdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ennck"]
 bg_color = Color(0.322706, 0.207645, 7.21961e-08, 1)
@@ -37,6 +38,12 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.8, 0.8, 0.129412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_od7yx"]
+line_spacing = 5.0
+paragraph_spacing = 10.0
+font_size = 35
+font_color = Color(0, 0, 0, 1)
 
 [node name="Lore" type="Node2D"]
 script = ExtResource("1_5iyfb")
@@ -198,4 +205,31 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_ls8ml")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5iyfb")
 text = "Return to Main Menu
+"
+
+[node name="TextBackground" type="Panel" parent="."]
+offset_right = 2.0
+offset_bottom = 4.0
+
+[node name="ScrollTextBg" type="Sprite2D" parent="TextBackground"]
+position = Vector2(1353, 1592)
+texture = ExtResource("4_6csdk")
+
+[node name="Label" type="Label" parent="TextBackground"]
+offset_left = 895.0
+offset_top = 1109.0
+offset_right = 1880.0
+offset_bottom = 2079.0
+text = "Hi, my name is Tuj"
+label_settings = SubResource("LabelSettings_od7yx")
+
+[node name="Close" type="Button" parent="TextBackground" groups=["Buttons"]]
+offset_left = 1228.0
+offset_top = 2030.0
+offset_right = 1423.0
+offset_bottom = 2074.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_ls8ml")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5iyfb")
+text = "Close
 "

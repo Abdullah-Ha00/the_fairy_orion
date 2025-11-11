@@ -1,8 +1,15 @@
 extends Node2D
-
+var scrolls:Dictionary = {
+	"Scroll":"collected",
+	"Scroll2":"collected",
+	"Scroll3":"collected",
+	"Scroll4":"",
+	"Scroll5":""
+}
 func _ready() -> void:
 	scroll_mouse_entered()
 	scroll_mouse_exited()
+	enable_scroll()
 	
 	
 func scroll_mouse_entered():
@@ -26,4 +33,11 @@ func scroll_mouse_exited():
 
 func _on_mouse_exited():
 	$ScrollDescription.text = ""
+	
+func enable_scroll():
+	for scroll in get_tree().get_nodes_in_group("Scroll"):
+		if scrolls[scroll.name] == "collected":
+			scroll.modulate = Color(255,255,255)
+		else:
+			pass
 	
