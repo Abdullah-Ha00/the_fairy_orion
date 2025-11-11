@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj7k7hpxr5h2r"]
+[gd_scene load_steps=12 format=3 uid="uid://bj7k7hpxr5h2r"]
 
+[ext_resource type="Script" uid="uid://dmjt4ft1pgdnk" path="res://scenes/menu/lore.gd" id="1_5iyfb"]
 [ext_resource type="Texture2D" uid="uid://dcvercq8nq315" path="res://images/lore_background.png" id="1_ennck"]
 [ext_resource type="Texture2D" uid="uid://cky05orgqwjlk" path="res://images/scroll.png" id="2_ls8ml"]
 
@@ -7,7 +8,19 @@
 bg_color = Color(0.322706, 0.207645, 7.21961e-08, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iyfb"]
-size = Vector2(45.5, 78.5313)
+size = Vector2(46.5, 81.2657)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6csdk"]
+size = Vector2(47, 83.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_od7yx"]
+size = Vector2(49, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ji3f2"]
+size = Vector2(48, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7jgc"]
+size = Vector2(47, 82.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls8ml"]
 bg_color = Color(0.533333, 0, 0.121569, 1)
@@ -26,6 +39,7 @@ border_width_bottom = 4
 border_color = Color(0.8, 0.8, 0.129412, 1)
 
 [node name="Lore" type="Node2D"]
+script = ExtResource("1_5iyfb")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(1381, 536)
@@ -35,6 +49,7 @@ texture = ExtResource("1_ennck")
 offset_left = 1.0
 offset_right = 840.0
 offset_bottom = 1077.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ennck")
 
 [node name="Scrolls" type="Node2D" parent="."]
@@ -50,7 +65,7 @@ position = Vector2(139, 151)
 texture = ExtResource("2_ls8ml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll"]
-position = Vector2(142.25, 150)
+position = Vector2(142.75, 151.367)
 shape = SubResource("RectangleShape2D_5iyfb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll"]
@@ -69,15 +84,14 @@ modulate = Color(0.45098, 1, 1, 1)
 position = Vector2(47, -20)
 collision_layer = 8
 collision_mask = 8
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll2"]
 position = Vector2(139, 151)
 texture = ExtResource("2_ls8ml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll2"]
-position = Vector2(142.25, 150)
-shape = SubResource("RectangleShape2D_5iyfb")
+position = Vector2(142.5, 150.25)
+shape = SubResource("RectangleShape2D_6csdk")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll2"]
 offset_left = 87.0
@@ -95,15 +109,14 @@ modulate = Color(0.45098, 1, 1, 1)
 position = Vector2(161, -20)
 collision_layer = 8
 collision_mask = 8
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll3"]
 position = Vector2(139, 151)
 texture = ExtResource("2_ls8ml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll3"]
-position = Vector2(142.25, 150)
-shape = SubResource("RectangleShape2D_5iyfb")
+position = Vector2(142.5, 150.5)
+shape = SubResource("RectangleShape2D_od7yx")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll3"]
 offset_left = 87.0
@@ -121,15 +134,14 @@ modulate = Color(0.45098, 1, 1, 1)
 position = Vector2(275, -20)
 collision_layer = 8
 collision_mask = 8
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll4"]
 position = Vector2(139, 151)
 texture = ExtResource("2_ls8ml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll4"]
-position = Vector2(142.25, 150)
-shape = SubResource("RectangleShape2D_5iyfb")
+position = Vector2(143, 151)
+shape = SubResource("RectangleShape2D_ji3f2")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll4"]
 offset_left = 87.0
@@ -147,15 +159,14 @@ modulate = Color(0.45098, 1, 1, 1)
 position = Vector2(389, -20)
 collision_layer = 8
 collision_mask = 8
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Scrolls/Scroll5"]
 position = Vector2(139, 151)
 texture = ExtResource("2_ls8ml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scrolls/Scroll5"]
-position = Vector2(142.25, 150)
-shape = SubResource("RectangleShape2D_5iyfb")
+position = Vector2(142.5, 149.75)
+shape = SubResource("RectangleShape2D_b7jgc")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Scrolls/Scroll5"]
 offset_left = 87.0

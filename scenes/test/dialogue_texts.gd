@@ -36,3 +36,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_can_press_space_timer_timeout() -> void:
 	can_skip = true # Replace with function body.
+
+
+func _on_area_2d_mouse_entered() -> void:
+	print("tuj")
