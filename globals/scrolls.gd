@@ -1,6 +1,6 @@
 extends Node
 var scrolls:Dictionary = {
-	"Scroll":"",
+	"Scroll":"collected",
 	"Scroll2":"",
 	"Scroll3":"",
 	"Scroll4":"",

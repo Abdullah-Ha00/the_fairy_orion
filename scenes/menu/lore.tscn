@@ -201,6 +201,7 @@ offset_left = 162.0
 offset_top = 977.0
 offset_right = 614.0
 offset_bottom = 1052.0
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_ls8ml")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5iyfb")
@@ -222,7 +223,6 @@ offset_left = 895.0
 offset_top = 1109.0
 offset_right = 1880.0
 offset_bottom = 2079.0
-text = "Hi, my name is Tuj"
 label_settings = SubResource("LabelSettings_od7yx")
 
 [node name="Close" type="Button" parent="TextBackground" groups=["Buttons"]]
@@ -231,6 +231,7 @@ offset_left = 1228.0
 offset_top = 2030.0
 offset_right = 1423.0
 offset_bottom = 2074.0
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_ls8ml")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5iyfb")
