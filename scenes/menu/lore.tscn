@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmjt4ft1pgdnk" path="res://scenes/menu/lore.gd" id="1_5iyfb"]
 [ext_resource type="Texture2D" uid="uid://dcvercq8nq315" path="res://images/lore_background.png" id="1_ennck"]
 [ext_resource type="Texture2D" uid="uid://cky05orgqwjlk" path="res://images/scroll.png" id="2_ls8ml"]
-[ext_resource type="Texture2D" uid="uid://cithkihk04j43" path="res://images/scroll_text_bg.png" id="4_6csdk"]
+[ext_resource type="Texture2D" uid="uid://cuhll8n5wkyf2" path="res://images/scroll_text_bg.png" id="4_6csdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ennck"]
 bg_color = Color(0.322706, 0.207645, 7.21961e-08, 1)
@@ -216,6 +216,7 @@ position = Vector2(1353, 1592)
 texture = ExtResource("4_6csdk")
 
 [node name="Label" type="Label" parent="TextBackground"]
+layout_mode = 0
 offset_left = 895.0
 offset_top = 1109.0
 offset_right = 1880.0
@@ -224,6 +225,7 @@ text = "Hi, my name is Tuj"
 label_settings = SubResource("LabelSettings_od7yx")
 
 [node name="Close" type="Button" parent="TextBackground" groups=["Buttons"]]
+layout_mode = 0
 offset_left = 1228.0
 offset_top = 2030.0
 offset_right = 1423.0

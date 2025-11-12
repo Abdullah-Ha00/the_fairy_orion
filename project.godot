@@ -22,6 +22,7 @@ ScoreManager="*res://globals/ScoreManager.gd"
 GlobalStats="*res://globals/global_stats.gd"
 DialoguesPath="*res://globals/dialogues_path.gd"
 Settings="*res://globals/settings.gd"
+Scrolls="*res://globals/scrolls.gd"
 
 [display]
 
