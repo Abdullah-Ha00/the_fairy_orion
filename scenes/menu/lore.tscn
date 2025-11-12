@@ -210,6 +210,7 @@ text = "Return to Main Menu
 [node name="TextBackground" type="Panel" parent="."]
 offset_right = 2.0
 offset_bottom = 4.0
+mouse_filter = 2
 
 [node name="ScrollTextBg" type="Sprite2D" parent="TextBackground"]
 position = Vector2(1353, 1592)
