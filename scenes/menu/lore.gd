@@ -7,13 +7,15 @@ func _ready() -> void:
 	scroll_mouse_exited()
 	enable_scroll()
 	GlobalFunctions.connect_buttons("Buttons",_on_button_pressed)
+	arrow_mouse_entered()
+	arrow_mouse_exited()
 	
 func scroll_mouse_entered():
 	for scroll in get_tree().get_nodes_in_group("Scroll"):
-		scroll.mouse_entered.connect(_on_mouse_entered.bind(scroll))
+		scroll.mouse_entered.connect(_on_scroll_mouse_entered.bind(scroll))
 		
 	
-func _on_mouse_entered(scroll:Area2D):
+func _on_scroll_mouse_entered(scroll:Area2D):
 	if Scrolls.scrolls[scroll.name] == "collected":
 		match_scroll_collected(scroll)
 		scroll_clickable = true
@@ -22,10 +24,10 @@ func _on_mouse_entered(scroll:Area2D):
 
 func scroll_mouse_exited():
 	for scroll in get_tree().get_nodes_in_group("Scroll"):
-		scroll.mouse_exited.connect(_on_mouse_exited)
+		scroll.mouse_exited.connect(_on_scroll_mouse_exited)
 		
 
-func _on_mouse_exited():
+func _on_scroll_mouse_exited():
 	$ScrollDescription.text = ""
 	scroll_clickable = false
 	
@@ -86,3 +88,25 @@ func _on_button_pressed(button:Button):
 			get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 		"Close":
 			$TextBackground.position = Vector2(0,0)
+			
+func arrow_mouse_entered():
+	for arrow in get_tree().get_nodes_in_group("Page"):
+		arrow.mouse_entered.connect(_on_arrow_mouse_entered.bind(arrow))
+
+func _on_arrow_mouse_entered(arrow:Area2D):
+	match arrow.name:
+		"NextPage":
+			print("next")
+		"PreviousPage":
+			print("previous")
+			
+func arrow_mouse_exited():
+	for arrow in get_tree().get_nodes_in_group("Page"):
+		arrow.mouse_exited.connect(_on_arrow_mouse_exited.bind(arrow))
+
+func _on_arrow_mouse_exited(arrow:Area2D):
+	match arrow.name:
+		"NextPage":
+			print("disablenext")
+		"PreviousPage":
+			print("disableprevious")

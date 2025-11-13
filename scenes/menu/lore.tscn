@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bj7k7hpxr5h2r"]
+[gd_scene load_steps=17 format=3 uid="uid://bj7k7hpxr5h2r"]
 
 [ext_resource type="Script" uid="uid://dmjt4ft1pgdnk" path="res://scenes/menu/lore.gd" id="1_5iyfb"]
 [ext_resource type="Texture2D" uid="uid://dcvercq8nq315" path="res://images/lore_background.png" id="1_ennck"]
 [ext_resource type="Texture2D" uid="uid://cky05orgqwjlk" path="res://images/scroll.png" id="2_ls8ml"]
 [ext_resource type="Texture2D" uid="uid://cuhll8n5wkyf2" path="res://images/scroll_text_bg.png" id="4_6csdk"]
+[ext_resource type="Texture2D" uid="uid://b1yvdvqxm40lm" path="res://images/page_arrow.png" id="5_od7yx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ennck"]
 bg_color = Color(0.322706, 0.207645, 7.21961e-08, 1)
@@ -44,6 +45,12 @@ line_spacing = 5.0
 paragraph_spacing = 10.0
 font_size = 35
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t58pi"]
+size = Vector2(80, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lss8"]
+size = Vector2(79.5, 8)
 
 [node name="Lore" type="Node2D"]
 script = ExtResource("1_5iyfb")
@@ -237,3 +244,26 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_ls8ml")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5iyfb")
 text = "Close
 "
+
+[node name="NextPage" type="Area2D" parent="TextBackground" groups=["Page"]]
+position = Vector2(1424, 1723)
+
+[node name="Sprite2D" type="Sprite2D" parent="TextBackground/NextPage"]
+position = Vector2(371, 333)
+texture = ExtResource("5_od7yx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextBackground/NextPage"]
+position = Vector2(371, 329)
+shape = SubResource("RectangleShape2D_t58pi")
+
+[node name="PreviousPage" type="Area2D" parent="TextBackground" groups=["Page"]]
+position = Vector2(1649, 2029)
+
+[node name="Sprite2D" type="Sprite2D" parent="TextBackground/PreviousPage"]
+position = Vector2(28, 27)
+texture = ExtResource("5_od7yx")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextBackground/PreviousPage"]
+position = Vector2(28.25, 23)
+shape = SubResource("RectangleShape2D_3lss8")
